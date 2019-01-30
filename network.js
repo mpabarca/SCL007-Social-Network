@@ -11,17 +11,23 @@
     
     }());
 
-
-    validateEmail: (stringEmail) => {
-
+    function validateEmail (stringEmail){
+      var re = /\S+@\S+/;
+      return re.test(stringEmail);
     }
-    validatePassword: (stringPass)=>{
+
+    function validatePassword (stringPass) {
+      if (stringPass.length>=6)  {
+        return true
+      }else if (stringPass.length<6){
+        return false
+      }
+    }
+
+    function createUser (stringEmail, stringPass) {
       
     }
-    createUser: (stringEmail, stringPass) => {
-      
-    }
-    verifyUser: (stringEmail, stringPass) => {
+    function verifyUser (stringEmail, stringPass) {
       
     }
     
