@@ -4,6 +4,23 @@
     <meta charset="utf-8" lang="es">
     <title></title>
     <link rel="stylesheet" href="style.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDq32x2TqGNHpgeslfjkcGi9J9N6SLO0so",
+        authDomain: "prueba-36834.firebaseapp.com",
+        databaseURL: "https://prueba-36834.firebaseio.com",
+        projectId: "prueba-36834",
+        storageBucket: "prueba-36834.appspot.com",
+        messagingSenderId: "898648978118"
+      };
+      firebase.initializeApp(config);
+    </script>
+
 </head>
 <body>
     <header>
@@ -13,19 +30,29 @@
     <main>
         <!-- CONTENIDO BASE -->
 
-
+        <h4>REGISTRO DE USUARIOS</h4> 
+        <input id="email" type="email" placeholder="Ingresa email">
+        <input id="contrasena" type="password" placeholder="Ingresa Contraseña">
+        <button onclick="registrar()">Enviar</button>
+        
+        <h4>INGRESO DE USUARIOS</h4> 
+        <input id="email2" type="email" placeholder="Ingresa email">
+        <input id="contrasena2" type="password" placeholder="Ingresa Contraseña">
+        <button onclick="ingreso()">Acceder</button>
+        
+        <div id="contenido"></div>
         <div id="root"></div>
 
         <div>
             <!-- SCRIPT DE ARCHIVOS-->
             <script src="main.js"></script> 
-            <script src="functions.js"></script>
+            <script src="network.js"></script>
             <script></script>
         </div>
 
         <div>
             <!-- SCRIPT DE FRAMEWORKS-->
-            <script></script>
+            <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
             <script></script>
             <script></script>
         </div>
