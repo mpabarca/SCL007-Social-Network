@@ -14,13 +14,13 @@
 
     validateEmail: (stringEmail) => {
 
-    },
+    }
     validatePassword: (stringPass)=>{
       
-    },
+    }
     createUser: (stringEmail, stringPass) => {
       
-    },
+    }
     verifyUser: (stringEmail, stringPass) => {
       
     }
