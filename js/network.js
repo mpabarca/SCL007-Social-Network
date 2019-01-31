@@ -1,33 +1,140 @@
-(function(){
-    const config = {
-        apiKey: "AIzaSyDzLbBDkog-28DBB1ykLhIzzqdbhGRsb_E",
-        authDomain: "redsocial-e2ac6.firebaseapp.com",
-        databaseURL: "https://redsocial-e2ac6.firebaseio.com",
-        projectId: "redsocial-e2ac6",
-        storageBucket: "redsocial-e2ac6.appspot.com",
-        messagingSenderId: "250121361452"
-      };
-      firebase.initializeApp(config);
-    
-    }());
+//REGISTRO USUARIO VIA MAIL Y CLAVE
+document.getElementById("registro").addEventListener("click",() => {
+    let email = document.getElementById('email').value;
+    let contrasena = document.getElementById('contrasena').value;
+   
+    firebase.auth().createUserWithEmailAndPassword(email, contrasena)
+    .then(function(){
+        verificar()
+    })
+    .catch(error => {
+        // Handle Errors here.
+        if(contrasena.length <= 5) {
+            alert("Ingrese contraseña de 6 dígitos o más");
+        }else if (email.indexOf("@")); 
+            alert("Ingrese email válido")
+      });
+})
 
-    function validateEmail (stringEmail){
-      var re = /\S+@\S+/;
-      return re.test(stringEmail);
-    }
 
-    function validatePassword (stringPass) {
-      if (stringPass.length>=6)  {
-        return true
-      }else if (stringPass.length<6){
-        return false
-      }
-    }
+//INGRESO USUARIO VIA MAIL Y CLAVE
+document.getElementById("acceder").addEventListener("click",() => {
+    let email2 = document.getElementById('email2').value;
+    let contrasena2 = document.getElementById('contrasena2').value;
 
-    function createUser (stringEmail, stringPass) {
-      
-    }
-    function verifyUser (stringEmail, stringPass) {
-      
-    }
-    
+    firebase.auth().signInWithEmailAndPassword(email2, contrasena2)
+    .catch(function(error) {
+        // Handle Errors here.
+        if(contrasena2.length <= 5) {
+            alert("Ingrese contraseña de 6 dígitos o más");
+        }else if (email2.indexOf("@"));
+            alert("Ingrese email válido");
+        // var errorCode = error.code;
+        // var errorMessage = error.message;
+      });
+})
+
+
+//OBSERVA SI ES UN USUARIO REGISTRADO
+observador = () => {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            aparece(user);
+          // User is signed in.
+          let displayName = user.displayName;
+          let email = user.email;
+          console.log(user);
+          let emailVerified = user.emailVerified;
+          console.log(user.emailVerified)
+          let photoURL = user.photoURL;
+          let isAnonymous = user.isAnonymous;
+          let uid = user.uid;
+          let providerData = user.providerData;
+          // ...
+        } else {
+            console.log("No existe usuario activo")
+            apareceNousuario(); //ingresa tus datos para acceder
+            }
+      });
+}
+observador();
+
+
+//APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
+aparece = user => {
+    var user = user;
+    let contenido = document.getElementById('contenido');
+    if (user.emailVerified){
+        contenido.innerHTML = `
+        <p>Bienvenido a la Red Social</p>
+        <p>ver post</p>
+        <p>ver post</p>
+        <p>ver post</p>
+        <p>ver post</p>
+        <p>ver post</p>
+        <button onclick="cerrar()">Cerrar sesion</button>
+        `;
+    }    
+}
+
+//ESTO SE MUESTRA EN CASO DE NO ESTAR LOGUEADO
+apareceNousuario = () => {
+    let contenido = document.getElementById('contenido');
+    contenido.innerHTML = "Ingresa tus datos para acceder";
+}
+
+//CERAR SESION USUARIOS LOG
+cerrar = () => {
+    firebase.auth().signOut()
+    .then()(function(){
+        console.log('Saliendo...')
+    })
+    .catch()(function(error){
+        console.log(error)
+    })
+}
+
+//ENVIANDO MAIL DE VERIFICACION
+verificar = () => {
+    let user = firebase.auth().currentUser;
+user.sendEmailVerification().then(function() {
+  // Email sent.
+  console.log('enviando correo')
+}).catch(function(error) {
+  // An error happened.
+});
+}
+
+
+//GOOGLE
+document.getElementById("google").addEventListener("click",() => {
+
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+    .then(result => {
+        alert("Exito google")
+        console.log(result);
+    })
+    .catch(error => {
+        alert("Salio mal google");
+        console.log(error);
+    })
+})
+
+
+
+//FACEBOOK 
+document.getElementById("facebook").addEventListener("click",() => {
+
+    var provider = new firebase.auth.FacebookAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+    .then(result => {
+        alert("Exito facebook")
+        console.log(result);
+    })
+    .catch(error => {
+        alert("Salio mal facebook");
+        console.log(error);
+    })
+})
+
