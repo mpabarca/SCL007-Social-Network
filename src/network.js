@@ -2,18 +2,17 @@
 document.getElementById("registro").addEventListener("click",() => {
     let email = document.getElementById('email').value;
     let contrasena = document.getElementById('contrasena').value;
-    
+   
     firebase.auth().createUserWithEmailAndPassword(email, contrasena)
     .then(function(){
         verificar()
     })
     .catch(function(error) {
-        
         // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        
-        // ...
+        if(contrasena.length <= 5) {
+            alert("Ingrese contraseña de 6 dígitos o más");
+        }else if (email.indexOf("@")); 
+            alert("Ingrese email válido")
       });
 })
 
@@ -22,46 +21,49 @@ document.getElementById("registro").addEventListener("click",() => {
 document.getElementById("acceder").addEventListener("click",() => {
     let email2 = document.getElementById('email2').value;
     let contrasena2 = document.getElementById('contrasena2').value;
-    firebase.auth().signInWithEmailAndPassword(email2, contrasena2).catch(function(error) {
+
+    firebase.auth().signInWithEmailAndPassword(email2, contrasena2)
+    .catch(function(error) {
         // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
+        if(contrasena2.length <= 5) {
+            alert("Ingrese contraseña de 6 dígitos o más");
+        }else if (email2.indexOf("@"));
+            alert("Ingrese email válido");
+        // var errorCode = error.code;
+        // var errorMessage = error.message;
       });
 })
 
 
 //OBSERVA SI ES UN USUARIO REGISTRADO
-function observador(){
+observador = () => {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
             aparece(user);
           // User is signed in.
-          var displayName = user.displayName;
-          var email = user.email;
+          let displayName = user.displayName;
+          let email = user.email;
           console.log(user);
-          var emailVerified = user.emailVerified;
+          let emailVerified = user.emailVerified;
           console.log(user.emailVerified)
-          var photoURL = user.photoURL;
-          var isAnonymous = user.isAnonymous;
-          var uid = user.uid;
-          var providerData = user.providerData;
+          let photoURL = user.photoURL;
+          let isAnonymous = user.isAnonymous;
+          let uid = user.uid;
+          let providerData = user.providerData;
           // ...
         } else {
             console.log("No existe usuario activo")
-            apareceNousuario();
-          // User is signed out.
-          // ...
-        }
+            apareceNousuario(); //ingresa tus datos para acceder
+            }
       });
 }
 observador();
 
 
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
-function aparece(user){
+aparece = user => {
     var user = user;
-    var contenido = document.getElementById('contenido');
+    let contenido = document.getElementById('contenido');
     if (user.emailVerified){
         contenido.innerHTML = `
         <p>Bienvenido a la Red Social</p>
@@ -76,13 +78,13 @@ function aparece(user){
 }
 
 //ESTO SE MUESTRA EN CASO DE NO ESTAR LOGUEADO
-function apareceNousuario(){
-    var contenido = document.getElementById('contenido');
+apareceNousuario = () => {
+    let contenido = document.getElementById('contenido');
     contenido.innerHTML = "Ingresa tus datos para acceder";
 }
 
 //CERAR SESION USUARIOS LOG
-function cerrar() {
+cerrar = () => {
     firebase.auth().signOut()
     .then()(function(){
         console.log('Saliendo...')
@@ -93,8 +95,8 @@ function cerrar() {
 }
 
 //ENVIANDO MAIL DE VERIFICACION
-function verificar(){
-    var user = firebase.auth().currentUser;
+verificar = () => {
+    let user = firebase.auth().currentUser;
 user.sendEmailVerification().then(function() {
   // Email sent.
   console.log('enviando correo')
@@ -102,3 +104,26 @@ user.sendEmailVerification().then(function() {
   // An error happened.
 });
 }
+
+
+
+//GOOGLE
+
+var provider = new firebase.auth.GoogleAuthProvider();
+
+firebase.auth().signInWithPopup(provider).then(function(result) {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    var token = result.credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
+    // ...
+  }).catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    // ...
+  });
