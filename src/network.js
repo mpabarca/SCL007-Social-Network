@@ -7,7 +7,7 @@ document.getElementById("registro").addEventListener("click",() => {
     .then(function(){
         verificar()
     })
-    .catch(function(error) {
+    .catch(error => {
         // Handle Errors here.
         if(contrasena.length <= 5) {
             alert("Ingrese contraseña de 6 dígitos o más");
@@ -37,7 +37,7 @@ document.getElementById("acceder").addEventListener("click",() => {
 
 //OBSERVA SI ES UN USUARIO REGISTRADO
 observador = () => {
-    firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(user => {
         if (user) {
             aparece(user);
           // User is signed in.
