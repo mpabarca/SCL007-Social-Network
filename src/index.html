@@ -6,11 +6,22 @@
     <link rel="stylesheet" href="style.css" />
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 
+       <!-- Firebase App is always required and must be first -->
+       <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+
+       <!-- Add additional services that you want to use -->
+       <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script> <!--autentificar-->
+       <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script> <!--datos se sincronizan con todos los clientes en tiempo real -->
+       <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-functions.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-storage.js"></script> <!--alamcenar y publicar contenido usuarios-->
+             
+    
+    <!--// Initialize Firebase-->   
 
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
     <script>
-      // Initialize Firebase
-      var config = {
+      const config = {
         apiKey: "AIzaSyDq32x2TqGNHpgeslfjkcGi9J9N6SLO0so",
         authDomain: "prueba-36834.firebaseapp.com",
         databaseURL: "https://prueba-36834.firebaseio.com",
@@ -30,19 +41,40 @@
     <main>
         <!-- CONTENIDO BASE -->
 
-        <h4>REGISTRO DE USUARIOS<br/></h4> 
-        <input id="email" type="email" placeholder="Ingresa email">
-        <input id="contrasena" type="password" placeholder="Ingresa Contraseña">
-        <button id="registro">Enviar</button>
-    
         
-        <h4>INGRESO DE USUARIOS</h4> 
-        <input id="email2" type="email" placeholder="Ingresa email">
-        <input id="contrasena2" type="password" placeholder="Ingresa Contraseña">
-        <button id="acceder">Acceder</button>
+
+        <div> 
+            <h4>REGISTRO DE USUARIOS<br/></h4> 
+
+            <div>
+                <button id="facebook">Facebook</button>
+                <button id="google">Google</button>
+
+            </div>
+
+            <br/><br/>
+
+            <input id="email" type="email" placeholder="Ingresa email">
+            <input id="contrasena" type="password" placeholder="Ingresa Contraseña">
+            <button id="registro">Enviar</button>
+        </div>
        
+    
+        <div>
+            <h4>INGRESO DE USUARIOS</h4> 
+            <input id="email2" type="email" placeholder="Ingresa email">
+            <input id="contrasena2" type="password" placeholder="Ingresa Contraseña">
+            <button id="acceder">Acceder</button>
+        </div>
        
         <div id="contenido"></div>
+
+        
+
+     
+       
+
+
 
 
         <div>
