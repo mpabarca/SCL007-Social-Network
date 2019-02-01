@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8" lang="es">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
     <link rel="stylesheet" href="../src/css/style.css" />
     <link rel="stylesheet" href="../src/css/grid.css" />
@@ -38,28 +40,33 @@
     <header>
         <!-- MENU NAVEGADOR -->
     </header>
- <!-- LOGIN -->
-    <main id="firstView">
-            <h4>REGISTRO DE USUARIOS<br/></h4> 
+
+    <main id="firt-view">
+        <!-- PAGINA LOGIN -->
+
+            <div> 
+            <h4>INGRESA O REGISTRATE<br/></h4> 
+
+            <div>
+                <button id="facebook">Facebook</button>
+                <button id="google">Google</button>
+
+            </div>
+
+            <br/><br/>
+
             <input id="email" type="email" placeholder="Ingresa email">
             <input id="contrasena" type="password" placeholder="Ingresa Contraseña">
             <button id="acceder">Ingresar</button>
             <button id="registro">Registrar</button>
 
         </div>
-        <br>
-        <div>
-            <h4>INGRESO DE USUARIOS</h4> 
-            <input id="email2" type="email" placeholder="Ingresa email">
-            <input id="contrasena2" type="password" placeholder="Ingresa Contraseña">
-            <button id="acceder">Acceder</button>
-        </div>
-        <br>
-            <h4>O Puedes ingresar con:</h4>
-            <div>
-                <button id="facebook">Facebook</button>
-                <button id="google">Google</button>
-            </div>
+        <br/>
+        
+    </main>
+    <main id="second-view">
+        <!-- PAGINA LOGIN -->
+        <div id="contenido"></div>
     </main>
     <div id="contenido"></div>
 
