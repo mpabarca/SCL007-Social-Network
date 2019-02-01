@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8" lang="es">
     <title></title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../src/css/style.css" />
     <link rel="stylesheet" href="../src/css/grid.css" />
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
        <!-- Firebase App is always required and must be first -->
        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
@@ -38,39 +39,117 @@
     <header>
         <!-- MENU NAVEGADOR -->
     </header>
-
     <main>
         <!-- CONTENIDO BASE -->
-
-            <div> 
-            <h4>REGISTRO DE USUARIOS<br/></h4> 
-
-            <div>
-                <button id="facebook">Facebook</button>
-                <button id="google">Google</button>
-
-            </div>
-
-            <br/><br/>
-
-            <input id="email" type="email" placeholder="Ingresa email">
-            <input id="contrasena" type="password" placeholder="Ingresa Contraseña">
-            <button id="registro">Enviar</button>
-        </div>
-       
-    
         <div>
-            <h4>INGRESO DE USUARIOS</h4> 
-            <input id="email2" type="email" placeholder="Ingresa email">
-            <input id="contrasena2" type="password" placeholder="Ingresa Contraseña">
-            <button id="acceder">Acceder</button>
+            <!-- LOGIN  -->
+            <div> 
+                <h4>REGISTRO DE USUARIOS<br/></h4> 
+
+                <div>
+                    <button id="facebook">Facebook</button>
+                    <button id="google">Google</button>
+
+                </div>
+
+                <br/><br/>
+
+                <input id="email" type="email" placeholder="Ingresa email">
+                <input id="contrasena" type="password" placeholder="Ingresa Contraseña">
+                <button id="registro">Enviar</button>
+            </div>
+        
+        
+            <div>
+                <h4>INGRESO DE USUARIOS</h4> 
+                <input id="email2" type="email" placeholder="Ingresa email">
+                <input id="contrasena2" type="password" placeholder="Ingresa Contraseña">
+                <button id="acceder">Acceder</button>
+            </div>
+        
+            <div id="contenido"></div>
         </div>
-       
-        <div id="contenido"></div>
+    <main>
+        <!-- TIMELINE -->
+        <div class="comments-container">
+            <h1>Comentarios <a href="http://creaticode.com">creaticode.com</a></h1>
 
+            <ul id="comments-list" class="comments-list">
+                <li>
+                    <div class="comment-main-level">
+                        <!-- Avatar -->
+                        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+                        <!-- Contenedor del Comentario -->
+                        <div class="comment-box">
+                            <div class="comment-head">
+                                <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
+                                <span>hace 20 minutos</span>
+                                <i class="fa fa-reply"></i>
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <div class="comment-content">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Respuestas de los comentarios -->
+                    <ul class="comments-list reply-list">
+                        <li>
+                            <!-- Avatar -->
+                            <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+                            <!-- Contenedor del Comentario -->
+                            <div class="comment-box">
+                                <div class="comment-head">
+                                    <h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
+                                    <span>hace 10 minutos</span>
+                                    <i class="fa fa-reply"></i>
+                                    <i class="fa fa-heart"></i>
+                                </div>
+                                <div class="comment-content">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                </div>
+                            </div>
+                        </li>
 
+                        <li>
+                            <!-- Avatar -->
+                            <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt=""></div>
+                            <!-- Contenedor del Comentario -->
+                            <div class="comment-box">
+                                <div class="comment-head">
+                                    <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Agustin Ortiz</a></h6>
+                                    <span>hace 10 minutos</span>
+                                    <i class="fa fa-reply"></i>
+                                    <i class="fa fa-heart"></i>
+                                </div>
+                                <div class="comment-content">
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
 
-      
+                <li>
+                    <div class="comment-main-level">
+                        <!-- Avatar -->
+                        <div class="comment-avatar"><img src="http://i9.photobucket.com/albums/a88/creaticode/avatar_2_zps7de12f8b.jpg" alt=""></div>
+                        <!-- Contenedor del Comentario -->
+                        <div class="comment-box">
+                            <div class="comment-head">
+                                <h6 class="comment-name"><a href="http://creaticode.com/blog">Lorena Rojero</a></h6>
+                                <span>hace 10 minutos</span>
+                                <i class="fa fa-reply"></i>
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <div class="comment-content">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </main>
 
     <footer>
