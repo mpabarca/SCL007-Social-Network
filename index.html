@@ -4,6 +4,19 @@
     <meta charset="utf-8" lang="es">
     <title></title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDzLbBDkog-28DBB1ykLhIzzqdbhGRsb_E",
+        authDomain: "redsocial-e2ac6.firebaseapp.com",
+        databaseURL: "https://redsocial-e2ac6.firebaseio.com",
+        projectId: "redsocial-e2ac6",
+        storageBucket: "redsocial-e2ac6.appspot.com",
+        messagingSenderId: "250121361452"
+      };
+      firebase.initializeApp(config);
+    </script>
 </head>
 <body>
     <header>
@@ -13,8 +26,20 @@
     <main>
         <!-- CONTENIDO BASE -->
 
-
         <div id="root"></div>
+
+        <!--BOTONES LOGIN-->
+        <h4>Registro de usuarios</h4>
+        <input id="email" type="email" placeholder="Ingresa email">
+        <input id="password" type ="password" placeholder="Ingresa Contraseña">
+        <button onclick="register()">Enviar</button>
+        
+        <h4>Ingreso de usuarios</h4>
+        <input id="email2" type="email" placeholder="Ingresa email">
+        <input id="password2" type ="password" placeholder="Ingresa Contraseña">
+        <button onclick="entry()">Ingresar</button>
+
+        <div id="container"></div>
 
         <div>
             <!-- SCRIPT DE ARCHIVOS-->
@@ -25,7 +50,6 @@
 
         <div>
             <!-- SCRIPT DE FRAMEWORKS-->
-            <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
             <script src="main.js"></script>
             <script src="network.js"></script>
         </div>
