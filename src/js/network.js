@@ -19,8 +19,8 @@ document.getElementById("registro").addEventListener("click",() => {
 
 //INGRESO USUARIO VIA MAIL Y CLAVE
 document.getElementById("acceder").addEventListener("click",() => {
-    let email2 = document.getElementById('email2').value;
-    let contrasena2 = document.getElementById('contrasena2').value;
+    let email2 = document.getElementById('email').value;
+    let contrasena2 = document.getElementById('contrasena').value;
 
     firebase.auth().signInWithEmailAndPassword(email2, contrasena2)
     .catch(error => {
@@ -109,7 +109,6 @@ user.sendEmailVerification()
     console.log('No se envio el correo')
 });
 }
-
 
 //GOOGLE
 document.getElementById("google").addEventListener("click",() => {
