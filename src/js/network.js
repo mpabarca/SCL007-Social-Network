@@ -64,12 +64,13 @@ observador();
 
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
 aparece = user => {
-    var user = user;
+    const user = user;
     let contenido = document.getElementById('contenido');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         contenido.innerHTML = `
         <p>Bienvenido a la Red Social</p>
-        <p>ver post</p>
+        <input type="text">
+        <button>Post</button>
         <p>ver post</p>
         <p>ver post</p>
         <p>ver post</p>
@@ -125,8 +126,6 @@ document.getElementById("google").addEventListener("click",() => {
     })
 })
 
-
-
 //FACEBOOK 
 document.getElementById("facebook").addEventListener("click",() => {
 
@@ -141,7 +140,6 @@ document.getElementById("facebook").addEventListener("click",() => {
         console.log(error);
     })
 
-   
 
     //enviar email para verificar
     //verificar()
