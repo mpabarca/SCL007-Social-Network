@@ -23,7 +23,7 @@ document.getElementById("acceder").addEventListener("click",() => {
     let contrasena2 = document.getElementById('contrasena2').value;
 
     firebase.auth().signInWithEmailAndPassword(email2, contrasena2)
-    .catch(function(error) {
+    .catch(error => {
         // Handle Errors here.
         if(contrasena2.length <= 5) {
             alert("Ingrese contraseña de 6 dígitos o más");
@@ -50,6 +50,8 @@ observador = () => {
           let isAnonymous = user.isAnonymous;
           let uid = user.uid;
           let providerData = user.providerData;
+          console.log (user.providerData[0].providerId)
+
           // ...
         } else {
             console.log("No existe usuario activo")
@@ -64,7 +66,7 @@ observador();
 aparece = user => {
     var user = user;
     let contenido = document.getElementById('contenido');
-    if (user.emailVerified){
+    if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         contenido.innerHTML = `
         <p>Bienvenido a la Red Social</p>
         <p>ver post</p>
@@ -89,7 +91,7 @@ cerrar = () => {
     .then()(function(){
         console.log('Saliendo...')
     })
-    .catch()(function(error){
+    .catch()(error => {
         console.log(error)
     })
 }
@@ -97,11 +99,13 @@ cerrar = () => {
 //ENVIANDO MAIL DE VERIFICACION
 verificar = () => {
     let user = firebase.auth().currentUser;
-user.sendEmailVerification().then(function() {
+user.sendEmailVerification()
+    .then(function() {
   // Email sent.
-  console.log('enviando correo')
-}).catch(function(error) {
-  // An error happened.
+     console.log('enviando correo')
+})
+    .catch(error => {
+    console.log('No se envio el correo')
 });
 }
 
@@ -136,5 +140,10 @@ document.getElementById("facebook").addEventListener("click",() => {
         alert("Salio mal facebook");
         console.log(error);
     })
-})
 
+   
+
+    //enviar email para verificar
+    //verificar()
+
+})
