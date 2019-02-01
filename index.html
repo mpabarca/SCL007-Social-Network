@@ -3,20 +3,36 @@
 <head>
     <meta charset="utf-8" lang="es">
     <title></title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../src/css/style.css" />
+    <link rel="stylesheet" href="../src/css/grid.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
+
+       <!-- Firebase App is always required and must be first -->
+       <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-app.js"></script>
+
+       <!-- Add additional services that you want to use -->
+       <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-auth.js"></script> <!--autentificar-->
+       <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-database.js"></script> <!--datos se sincronizan con todos los clientes en tiempo real -->
+       <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-messaging.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-functions.js"></script>
+       <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-storage.js"></script> <!--alamcenar y publicar contenido usuarios-->
+             
+    
+    <!--// Initialize Firebase-->   
+
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
     <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyDzLbBDkog-28DBB1ykLhIzzqdbhGRsb_E",
-        authDomain: "redsocial-e2ac6.firebaseapp.com",
-        databaseURL: "https://redsocial-e2ac6.firebaseio.com",
-        projectId: "redsocial-e2ac6",
-        storageBucket: "redsocial-e2ac6.appspot.com",
-        messagingSenderId: "250121361452"
+      const config = {
+        apiKey: "AIzaSyDq32x2TqGNHpgeslfjkcGi9J9N6SLO0so",
+        authDomain: "prueba-36834.firebaseapp.com",
+        databaseURL: "https://prueba-36834.firebaseio.com",
+        projectId: "prueba-36834",
+        storageBucket: "prueba-36834.appspot.com",
+        messagingSenderId: "898648978118"
       };
       firebase.initializeApp(config);
     </script>
+
 </head>
 <body>
     <header>
@@ -26,37 +42,49 @@
     <main>
         <!-- CONTENIDO BASE -->
 
-        <div id="root"></div>
+            <div> 
+            <h4>REGISTRO DE USUARIOS<br/></h4> 
 
-        <!--BOTONES LOGIN-->
-        <h4>Registro de usuarios</h4>
-        <input id="email" type="email" placeholder="Ingresa email">
-        <input id="password" type ="password" placeholder="Ingresa Contraseña">
-        <button onclick="register()">Enviar</button>
-        
-        <h4>Ingreso de usuarios</h4>
-        <input id="email2" type="email" placeholder="Ingresa email">
-        <input id="password2" type ="password" placeholder="Ingresa Contraseña">
-        <button onclick="entry()">Ingresar</button>
+            <div>
+                <button id="facebook">Facebook</button>
+                <button id="google">Google</button>
 
-        <div id="container"></div>
+            </div>
 
-        <div>
-            <!-- SCRIPT DE ARCHIVOS-->
-            <script src="main.js"></script> 
-            <script src="functions.js"></script>
-            <script></script>
+            <br/><br/>
+
+            <input id="email" type="email" placeholder="Ingresa email">
+            <input id="contrasena" type="password" placeholder="Ingresa Contraseña">
+            <button id="registro">Enviar</button>
         </div>
-
+       
+    
         <div>
-            <!-- SCRIPT DE FRAMEWORKS-->
-            <script src="main.js"></script>
-            <script src="network.js"></script>
+            <h4>INGRESO DE USUARIOS</h4> 
+            <input id="email2" type="email" placeholder="Ingresa email">
+            <input id="contrasena2" type="password" placeholder="Ingresa Contraseña">
+            <button id="acceder">Acceder</button>
         </div>
+       
+        <div id="contenido"></div>
+
+
+
+      
     </main>
 
     <footer>
         <!-- PIE DE PÁGINA -->
     </footer>
+
+    
+             <!-- SCRIPT DE FRAMEWORKS-->
+            <script src="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.js"></script>
+
+            <!-- SCRIPT DE ARCHIVOS-->
+            <script src="../src/js/main.js"></script> 
+            <script src="../src/js/network.js"></script>
+            <script></script>
+        
 </body> 
 </html>
