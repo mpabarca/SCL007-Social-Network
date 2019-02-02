@@ -1,15 +1,15 @@
 /* Estilos globales */
 /* ABAJO SE AGREGAN MEDIA QUERIES */
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
   
   .container {
-    width: 100%;
+    width: 60%;
     margin: 0 auto;
+  }
+  [class*="col-"] {
+    min-height: 7px;
+    float: left;
+    max-width: 100%;
   }
   
   .row:before, .row:after {
@@ -19,13 +19,6 @@
   
   .row:after { /*Para que las columnas no colapsen*/
     clear: both;
-  }
-  
-  [class*="col-"] {
-    min-height: 7px;
-    padding: 12px; /* gutters */
-    float: left;
-    max-width: 100%;
   }
   
   .col-1 {
