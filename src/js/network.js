@@ -79,11 +79,11 @@ aparece = user => {
     }    
 }
 
-//ESTO SE MUESTRA EN CASO DE NO ESTAR LOGUEADO
+/*ESTO SE MUESTRA EN CASO DE NO ESTAR LOGUEADO
 apareceNousuario = () => {
     let contenido = document.getElementById('contenido');
     contenido.innerHTML = "Ingresa tus datos para acceder";
-}
+}*/
 
 //CERAR SESION USUARIOS LOG
 cerrar = () => {
