@@ -146,3 +146,20 @@ document.getElementById("facebook").addEventListener("click",() => {
     //verificar()
 
 })
+
+//RECUPERAR CONTRASEÑA
+document.getElementById("recuperarContrasena").addEventListener("click",() => {
+        var auth = firebase.auth();
+        let email = document.getElementById('email').value;
+
+    auth.sendPasswordResetEmail(email)
+    .then(function() {
+        alert("Revisa tu correo para cambiar tu contraseña")
+      // Email sent.
+    }).catch(function(error) {
+        console.log("No se a enviado mail")
+      // An error happened.
+    });
+    
+   
+    })
