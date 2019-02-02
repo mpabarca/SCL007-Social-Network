@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
-    <link rel="stylesheet" href="../src/css/style.css" />
+    <link rel="stylesheet" href="../src/css/style.css" type="text/css" media="screen,handheld" />
+    <link rel="stylesheet" href="../src/css/enhanced.css" type="text/css" media="screen and (min-width:40.5em)"/>
     <link rel="stylesheet" href="../src/css/grid.css" />
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 
@@ -20,7 +21,7 @@
        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-storage.js"></script> <!--alamcenar y publicar contenido usuarios-->
              
     
-    <!--// Initialize Firebase-->   
+    <!-- Initialize Firebase-->   
 
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
     <script>
@@ -41,29 +42,38 @@
         <!-- MENU NAVEGADOR -->
     </header>
 
-    <main id="firt-view">
+    <main>
         <!-- PAGINA LOGIN -->
-
-            <div> 
-            <h4>INGRESA O REGISTRATE<br/></h4> 
-
-            <div>
-                <button id="facebook">Facebook</button>
-                <button id="google">Google</button>
-
-            </div>
-
-            <br/><br/>
-
-            <input id="email" type="email" placeholder="Ingresa email">
-            <input id="contrasena" type="password" placeholder="Ingresa Contraseña">
-            <button id="acceder">Ingresar</button>
-            <button id="registro">Registrar</button>
-
+        <div class="container" id="firt-view">
+            <div class="row" id="logo"></div>
+            
+            <div class="row" id="login-register"><div class="col-10">
+                <div class="row"><div class="col-10"><h4>INGRESA O REGISTRATE</h4></div></div>
+                <div class="row" id="datos"><div class="col-10">
+                    <div class="row">
+                        <input id="email" type="email" placeholder="Ingresa email">
+                    </div>
+                    <div class="row">
+                        <input id="contrasena" type="password" placeholder="Ingresa Contraseña">
+                    </div>
+                </div></div>
+                <div class="row" id="botones">
+                    <div class="col-6"><button id="acceder">Ingresar</button></div>
+                    <div class="col-6"><button id="registro">Registrar</button></div>
+                </div>
+                <div class="row"><div class="col-8"><h4>¿Olvidaste tu contraseña?</h4></div></div>
+            </div></div>
+            <div class="space"><div class="col-6"><h4>---------o---------</h4></div></div>
+            <div class="row" id="fb-google"><div class="col-10">
+                <div class="row"><div class="col-10"><h4>INGRESA CON TUS REDES SOCIALES</h4></div></div>
+                <div class="row">
+                    <div class="col-6"><button id="facebook">Facebook</button></div>
+                    <div class="col-6"><button id="google">Google</button></div>
+                </div>
+            </div></div> 
         </div>
-        <br/>
-        
     </main>
+
     <main id="second-view">
         <!-- PAGINA LOGIN -->
         <div id="contenido"></div>
