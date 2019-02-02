@@ -11,6 +11,9 @@
     -->
     <link rel="stylesheet" href="../src/css/style.css" type="text/css" />
     <link rel="stylesheet" href="../src/css/grid.css" />
+    <!--Import Icon Font-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 
        <!-- Firebase App is always required and must be first -->
@@ -45,36 +48,31 @@
         <!-- MENU NAVEGADOR -->
     </header>
 
-    <main>
+    <main class="container" id="firt-view">
         <!-- PAGINA LOGIN -->
-        <div class="container" id="firt-view">
-            <div class="row" id="logo"></div>
+        <div class="row" id="container-logo"><i class="fab fa-pagelines" id="logo"></i></div>
             
-            <div class="row" id="login-register"><div class="col-10">
-                <div class="row"><div class="col-10"><h4>INGRESA O REGISTRATE</h4></div></div>
-                <div class="row" id="datos"><div class="col-10">
-                    <div class="row">
-                        <input id="email" type="email" placeholder="Ingresa email">
-                    </div>
-                    <div class="row">
-                        <input id="contrasena" type="password" placeholder="Ingresa Contraseña">
-                    </div>
-                </div></div>
-                <div class="row" id="botones">
-                    <div class="col-6"><button id="acceder">Ingresar</button></div>
-                    <div class="col-6"><button id="registro">Registrar</button></div>
-                </div>
-                <div class="row"><div class="col-8"><h4>¿Olvidaste tu contraseña?</h4></div></div>
-            </div></div>
-            <div class="space"><div class="col-6"><h4>---------o---------</h4></div></div>
-            <div class="row" id="fb-google"><div class="col-10">
-                <div class="row"><div class="col-10"><h4>INGRESA CON TUS REDES SOCIALES</h4></div></div>
-                <div class="row">
-                    <div class="col-6"><button id="facebook">Facebook</button></div>
-                    <div class="col-6"><button id="google">Google</button></div>
-                </div>
-            </div></div> 
+        <div class="row" id="login-register">
+            <div class="row" id="description"><h4>Ingresa o Registrate</h4></div>
+            <div class="row" id="datos">
+                <div class="row"><input id="email" type="email" placeholder="Ingresa email"></div>
+                <div class="row"><input id="contrasena" type="password" placeholder="Ingresa Contraseña"></div>
+            </div>
+            <div class="row" id="botones">
+                <div class="col-6"><button id="acceder">Ingresar</button></div>
+                <div class="col-6"><button id="registro">Registrar</button></div>
+            </div>
+            <div class="row" id="description"><h4>¿Olvidaste tu contraseña?</h4></div>
         </div>
+
+        <div class="space" style="text-align: center"><h4>---------o---------</h4></div>
+        <div class="row" id="fb-google">
+            <div class="row" id="description"><h4>Ingresa con tus redes sociales</h4></div>
+            <div class="row" id="redes">
+                <div class="col-6"><button id="facebook"></button></div>
+                <div class="col-6"><button id="google"></button></div>
+            </div>
+        </div> 
     </main>
 
     <main id="second-view">
