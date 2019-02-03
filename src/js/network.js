@@ -68,7 +68,9 @@ aparece = user => {
     let contenido = document.getElementById('contenido');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         contenido.innerHTML = `
-        <p>Bienvenido a la Red Social</p>
+        <img class="imagen-perfil" src="${user.photoURL}" alt="">
+        <p>Hola ${user.displayName} "</p>
+        <p>Bienvenidx a Medicina Natural"</p>
         <p>ver post</p>
         <p>ver post</p>
         <p>ver post</p>
@@ -151,7 +153,7 @@ document.getElementById("facebook").addEventListener("click",() => {
 document.getElementById("recuperarContrasena").addEventListener("click",() => {
         var auth = firebase.auth();
         let email = document.getElementById('email').value;
-
+        alert("Ingresa tu mail para reestablecer")
     auth.sendPasswordResetEmail(email)
     .then(function() {
         alert("Revisa tu correo para cambiar tu contraseña")
