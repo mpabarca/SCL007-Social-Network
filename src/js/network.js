@@ -16,7 +16,6 @@ document.getElementById("registro").addEventListener("click",() => {
       });
 })
 
-
 //INGRESO USUARIO VIA MAIL Y CLAVE
 document.getElementById("acceder").addEventListener("click",() => {
     let email2 = document.getElementById('email').value;
@@ -34,7 +33,6 @@ document.getElementById("acceder").addEventListener("click",() => {
       });
 })
 
-
 //OBSERVA SI ES UN USUARIO REGISTRADO
 observador = () => {
     firebase.auth().onAuthStateChanged(user => {
@@ -51,8 +49,6 @@ observador = () => {
           let uid = user.uid;
           let providerData = user.providerData;
           console.log (user.providerData[0].providerId)
-
-          // ...
         } else {
             console.log("No existe usuario activo")
             apareceNousuario(); //ingresa tus datos para acceder
@@ -113,7 +109,6 @@ user.sendEmailVerification()
 
 //GOOGLE
 document.getElementById("google").addEventListener("click",() => {
-
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider)
     .then(result => {
@@ -129,26 +124,20 @@ document.getElementById("google").addEventListener("click",() => {
     })
 })
 
-
-
 //FACEBOOK 
 document.getElementById("facebook").addEventListener("click",() => {
-
     var provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithPopup(provider)
     .then(result => {
-        
         alert("Exito facebook")
         console.log(result);
     })
     .catch(error => {
-       
         alert("Salio mal facebook");
         console.log(error);
         if (error.message.indexOf("exists")) {
             alert("Ya existe un usuario con el mismo email")
         }
-
     })
 
    
@@ -171,10 +160,4 @@ document.getElementById("recuperarContrasena").addEventListener("click",() => {
         console.log("No se a enviado mail")
       // An error happened.
     });
-    
-   
-    })
-
-    //STORAGE
-    var storage = firebase.storage();
-  
+})
