@@ -88,12 +88,8 @@ apareceNousuario = () => {
 //CERAR SESION USUARIOS LOG
 cerrar = () => {
     firebase.auth().signOut()
-    .then()(function(){
-        console.log('Saliendo...')
-    })
-    .catch()(error => {
-        console.log(error)
-    })
+    console.log('Saliendo...')
+    
 }
 
 //ENVIANDO MAIL DE VERIFICACION
@@ -102,6 +98,7 @@ verificar = () => {
 user.sendEmailVerification()
     .then(function() {
   // Email sent.
+     alert('verifica la cuenta desde tu correo')
      console.log('enviando correo')
 })
     .catch(error => {
