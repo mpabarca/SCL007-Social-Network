@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
-    <link rel="stylesheet" href="../src/css/style.css" />
+    <!-- SEPARAR HOJAS DE ESTILO POR TAMAÑO DE PANTALLA
+    <link rel="stylesheet" href="../src/css/style.css" type="text/css" media="screen,handheld" />
+    <link rel="stylesheet" href="../src/css/enhanced.css" type="text/css" media="screen and (min-width:40.5em)"/>
+    -->
+    <link rel="stylesheet" href="../src/css/style.css" type="text/css" />
     <link rel="stylesheet" href="../src/css/grid.css" />
+    <!--Import Icon Font-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.1.1/firebaseui.css" />
 
        <!-- Firebase App is always required and must be first -->
@@ -20,7 +27,7 @@
        <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase-storage.js"></script> <!--alamcenar y publicar contenido usuarios-->
              
     
-    <!--// Initialize Firebase-->   
+    <!-- Initialize Firebase-->   
 
     <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
     <script>
@@ -41,8 +48,9 @@
         <!-- MENU NAVEGADOR -->
     </header>
 
-    <main id="firt-view">
+    <main class="container" id="firt-view">
         <!-- PAGINA LOGIN -->
+<<<<<<< HEAD
         <div> 
             <div>
                  <h4>INGRESA O REGISTRATE<br/></h4> 
@@ -58,10 +66,38 @@
                 <h4>INGRESA CON TUS REDES<br/></h4> 
                 <button id="facebook">Facebook</button>
                 <button id="google">Google</button>
+=======
+        <div class="row" id="container-logo"><i class="fab fa-pagelines" id="logo"></i></div>
+            
+        <div class="row" id="login-register">
+            <div class="row" id="description"><h4>Ingresa o Registrate</h4></div>
+            <div class="row" id="datos">
+                <div class="row"><input id="email" type="email" placeholder="Ingresa email"></div>
+                <div class="row"><input id="contrasena" type="password" placeholder="Ingresa Contraseña"></div>
+>>>>>>> buttonDown
             </div>
+            <div class="row" id="botones">
+                <div class="row" ><button id="acceder">Ingresar</button></div>
+                <div class="row" ><button id="registro">Registrar</button></div>
+            </div>
+            
 
+<<<<<<< HEAD
         </div>
         <br/>
+=======
+            <div class="row" id="description"><button id="recuperarContrasena">¿Olvidaste Tu Contraseña?</button></div>
+        </div>
+
+        <div class="space" style="text-align: center"><h4>---------o---------</h4></div>
+        <div class="row" id="fb-google">
+            <div class="row" id="description"><h4>Ingresa con tus redes sociales</h4></div>
+            <div class="row" id="redes">
+                <div class="col-6"><button id="facebook"></button></div>
+                <div class="col-6"><button id="google"></button></div>
+            </div>
+        </div> 
+>>>>>>> buttonDown
     </main>
 
     <main id="second-view">
