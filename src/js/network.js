@@ -79,11 +79,11 @@ aparece = user => {
     }    
 }
 
-//ESTO SE MUESTRA EN CASO DE NO ESTAR LOGUEADO
+/*ESTO SE MUESTRA EN CASO DE NO ESTAR LOGUEADO
 apareceNousuario = () => {
     let contenido = document.getElementById('contenido');
     contenido.innerHTML = "Ingresa tus datos para acceder";
-}
+}*/
 
 //CERAR SESION USUARIOS LOG
 cerrar = () => {
@@ -110,7 +110,8 @@ user.sendEmailVerification()
 }
 
 //GOOGLE
-document.getElementById("google").addEventListener("click",() => {
+document.getElementById("button-google").addEventListener("click",() => {
+
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider)
     .then(result => {
@@ -127,7 +128,7 @@ document.getElementById("google").addEventListener("click",() => {
 })
 
 //FACEBOOK 
-document.getElementById("facebook").addEventListener("click",() => {
+document.getElementById("button-facebook").addEventListener("click",() => {
     var provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithPopup(provider)
     .then(result => {
@@ -150,7 +151,7 @@ document.getElementById("facebook").addEventListener("click",() => {
 })
 
 //RECUPERAR CONTRASEÑA
-document.getElementById("recuperarContrasena").addEventListener("click",() => {
+document.getElementById("forgot-pass").addEventListener("click",() => {
         var auth = firebase.auth();
         let email = document.getElementById('email').value;
         alert("Ingresa tu mail para reestablecer")
