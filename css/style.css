@@ -37,7 +37,7 @@
    height: 12%;
    text-align: center;
 }
-#facebook, #google{
+#button-facebook, #button-google{
    width: 44px;
    height: 44px;
    left: 122px;
