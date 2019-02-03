@@ -65,14 +65,16 @@ aparece = user => {
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         contenido.innerHTML = `
         <img class="imagen-perfil" src="${user.photoURL}" alt="">
-        <p>Hola ${user.displayName} "</p>
-        <p>Bienvenidx a Medicina Natural"</p>
-        <p>ver post</p>
-        <p>ver post</p>
-        <p>ver post</p>
-        <p>ver post</p>
-        <p>ver post</p>
         <button onclick="cerrar()">Cerrar sesion</button>
+        <p>Hola ${user.displayName} "</p>
+        <p>Bienvenidx a Medicina Natural"</p> <br/>
+
+            <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
+            <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
+            <button id="botonGuardar" onclick="guardar()">Publicar</button>
+      
+            
+
         `;
     }    
 }
@@ -161,3 +163,34 @@ document.getElementById("recuperarContrasena").addEventListener("click",() => {
       // An error happened.
     });
 })
+
+//STORAGE GUARDAR DATOS EN FIRE
+guardar = () => {
+    let tituloPublicacion = document.getElementById("tituloPublicacion").value;
+    let textoPublicacion = document.getElementById("textoPublicacion").value;
+    let f = new Date(); (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
+    
+    var db = firebase.firestore();
+    db.collection("users").add({ //con el add se agrega un ID automatico
+        titulo : tituloPublicacion,
+        texto: textoPublicacion,
+        fecha: f
+    })
+    .then(function(docRef) {
+        document.getElementById("tituloPublicacion").value = ''; //Limpiar
+        document.getElementById("textoPublicacion").value = ''; // Limpiar
+        console.log("Document written with ID: ", docRef.id);
+        console.log("Se subio a dataBase correctamente")
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+}
+
+//LEER DATOS EN CONSOLA
+var db = firebase.firestore(); //la volvi a declarar por quE no medejaba continuaR, luego mirar con window
+db.collection("users").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        console.log(`Id: ${doc.id} Título: ${doc.data().titulo} Descripción: ${doc.data().texto}`);
+    });
+});
