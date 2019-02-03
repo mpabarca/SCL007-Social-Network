@@ -16,7 +16,6 @@ document.getElementById("registro").addEventListener("click",() => {
       });
 })
 
-
 //INGRESO USUARIO VIA MAIL Y CLAVE
 document.getElementById("acceder").addEventListener("click",() => {
     let email2 = document.getElementById('email').value;
@@ -34,7 +33,6 @@ document.getElementById("acceder").addEventListener("click",() => {
       });
 })
 
-
 //OBSERVA SI ES UN USUARIO REGISTRADO
 observador = () => {
     firebase.auth().onAuthStateChanged(user => {
@@ -51,8 +49,6 @@ observador = () => {
           let uid = user.uid;
           let providerData = user.providerData;
           console.log (user.providerData[0].providerId)
-
-          // ...
         } else {
             console.log("No existe usuario activo")
             apareceNousuario(); //ingresa tus datos para acceder
@@ -69,14 +65,16 @@ aparece = user => {
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         contenido.innerHTML = `
         <img class="imagen-perfil" src="${user.photoURL}" alt="">
-        <p>Hola ${user.displayName} "</p>
-        <p>Bienvenidx a Medicina Natural"</p>
-        <p>ver post</p>
-        <p>ver post</p>
-        <p>ver post</p>
-        <p>ver post</p>
-        <p>ver post</p>
         <button onclick="cerrar()">Cerrar sesion</button>
+        <p>Hola ${user.displayName} "</p>
+        <p>Bienvenidx a Medicina Natural"</p> <br/>
+
+            <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
+            <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
+            <button id="botonGuardar" onclick="guardar()">Publicar</button>
+      
+            
+
         `;
     }    
 }
@@ -123,14 +121,14 @@ document.getElementById("button-google").addEventListener("click",() => {
     .catch(error => {
         alert("Salio mal google");
         console.log(error);
+        if (error.message.indexOf("exists")) {
+            alert("Ya existe un usuario con el mismo email")
+        }
     })
 })
 
-
-
 //FACEBOOK 
 document.getElementById("button-facebook").addEventListener("click",() => {
-
     var provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithPopup(provider)
     .then(result => {
@@ -140,6 +138,9 @@ document.getElementById("button-facebook").addEventListener("click",() => {
     .catch(error => {
         alert("Salio mal facebook");
         console.log(error);
+        if (error.message.indexOf("exists")) {
+            alert("Ya existe un usuario con el mismo email")
+        }
     })
 
    
@@ -150,7 +151,7 @@ document.getElementById("button-facebook").addEventListener("click",() => {
 })
 
 //RECUPERAR CONTRASEÑA
-document.getElementById("recuperarContrasena").addEventListener("click",() => {
+document.getElementById("forgot-pass").addEventListener("click",() => {
         var auth = firebase.auth();
         let email = document.getElementById('email').value;
         alert("Ingresa tu mail para reestablecer")
@@ -162,6 +163,35 @@ document.getElementById("recuperarContrasena").addEventListener("click",() => {
         console.log("No se a enviado mail")
       // An error happened.
     });
+})
+
+//STORAGE GUARDAR DATOS EN FIRE
+guardar = () => {
+    let tituloPublicacion = document.getElementById("tituloPublicacion").value;
+    let textoPublicacion = document.getElementById("textoPublicacion").value;
+    let f = new Date(); (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
     
-   
+    var db = firebase.firestore();
+    db.collection("users").add({ //con el add se agrega un ID automatico
+        titulo : tituloPublicacion,
+        texto: textoPublicacion,
+        fecha: f
     })
+    .then(function(docRef) {
+        document.getElementById("tituloPublicacion").value = ''; //Limpiar
+        document.getElementById("textoPublicacion").value = ''; // Limpiar
+        console.log("Document written with ID: ", docRef.id);
+        console.log("Se subio a dataBase correctamente")
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+}
+
+//LEER DATOS EN CONSOLA
+var db = firebase.firestore(); //la volvi a declarar por quE no medejaba continuaR, luego mirar con window
+db.collection("users").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        console.log(`Id: ${doc.id} Título: ${doc.data().titulo} Descripción: ${doc.data().texto}`);
+    });
+});
