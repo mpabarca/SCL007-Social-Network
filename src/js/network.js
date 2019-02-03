@@ -123,6 +123,9 @@ document.getElementById("google").addEventListener("click",() => {
     .catch(error => {
         alert("Salio mal google");
         console.log(error);
+        if (error.message.indexOf("exists")) {
+            alert("Ya existe un usuario con el mismo email")
+        }
     })
 })
 
@@ -134,12 +137,18 @@ document.getElementById("facebook").addEventListener("click",() => {
     var provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithPopup(provider)
     .then(result => {
+        
         alert("Exito facebook")
         console.log(result);
     })
     .catch(error => {
+       
         alert("Salio mal facebook");
         console.log(error);
+        if (error.message.indexOf("exists")) {
+            alert("Ya existe un usuario con el mismo email")
+        }
+
     })
 
    
@@ -165,3 +174,7 @@ document.getElementById("recuperarContrasena").addEventListener("click",() => {
     
    
     })
+
+    //STORAGE
+    var storage = firebase.storage();
+  
