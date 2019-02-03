@@ -51,7 +51,7 @@ observador = () => {
           console.log (user.providerData[0].providerId)
         } else {
             console.log("No existe usuario activo")
-            apareceNousuario(); //ingresa tus datos para acceder
+            //apareceNousuario(); //ingresa tus datos para acceder
             }
       });
 }
@@ -66,8 +66,8 @@ aparece = user => {
         contenido.innerHTML = `
         <img class="imagen-perfil" src="${user.photoURL}" alt="">
         <button onclick="cerrar()">Cerrar sesion</button>
-        <p>Hola ${user.displayName} "</p>
-        <p>Bienvenidx a Medicina Natural"</p> <br/>
+        <p>Hola ${user.displayName} </p>
+        <p>Bienvenidx a Medicina Natural</p> <br/>
 
             <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
             <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
