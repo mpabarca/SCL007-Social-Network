@@ -1,6 +1,11 @@
 /* Estilos globales */
 /* ABAJO SE AGREGAN MEDIA QUERIES */
-
+html{
+    background-image: url("../img/background.png");
+    position: relative;
+    
+    
+}
   .container {
     width: 60%;
     margin: 0 auto;
