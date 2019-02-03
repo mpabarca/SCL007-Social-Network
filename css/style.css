@@ -15,11 +15,11 @@
    width: 80%;
    margin: 0 auto;
 }
-#botones, #forgot-pass {
+#botones{
    width: 80%;
    margin: 0 auto;
 } 
-#email, #contrasena, #recuperarContraseña{
+#email, #contrasena{
    margin-top: 10%;
    margin-bottom: 10%;
    width: 100%;
@@ -30,7 +30,7 @@
    float: none;
    text-align: center;
 }
-#acceder, #registro, #recuperContraseña{
+#acceder, #registro, #forgot-pass{
    padding: 5%;
    margin: 2%; 
    width: 100%;
