@@ -65,7 +65,7 @@ aparece = user => {
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         contenido.innerHTML = `
         <img class="imagen-perfil" src="${user.photoURL}" alt="">
-        <button onclick="cerrar()">Cerrar sesion</button>
+        <button onclick="cerrar()">Cerrar Sesion</button>
         <p>Hola ${user.displayName} </p>
         <p>Bienvenidx a Medicina Natural</p> <br/>
 
@@ -88,9 +88,13 @@ apareceNousuario = () => {
 //CERAR SESION USUARIOS LOG
 cerrar = () => {
     firebase.auth().signOut()
-    console.log('Saliendo...')
+    
+        console.log('Saliendo...')
     
 }
+
+
+
 
 //ENVIANDO MAIL DE VERIFICACION
 verificar = () => {
@@ -110,7 +114,7 @@ user.sendEmailVerification()
 document.getElementById("button-google").addEventListener("click",() => {
 
     var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider)
+    firebase.auth().signInWithRedirect(provider)
     .then(result => {
         alert("Exito google")
         console.log(result);
@@ -127,7 +131,7 @@ document.getElementById("button-google").addEventListener("click",() => {
 //FACEBOOK 
 document.getElementById("button-facebook").addEventListener("click",() => {
     var provider = new firebase.auth.FacebookAuthProvider();
-    firebase.auth().signInWithPopup(provider)
+    firebase.auth().signInWithRedirect(provider)
     .then(result => {
         alert("Exito facebook")
         console.log(result);
