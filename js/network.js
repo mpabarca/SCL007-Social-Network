@@ -51,7 +51,7 @@ observador = () => {
           console.log (user.providerData[0].providerId)
         } else {
             console.log("No existe usuario activo")
-            //apareceNousuario(); //ingresa tus datos para acceder
+            apareceNousuario(); //ingresa tus datos para acceder
             }
       });
 }
@@ -60,14 +60,14 @@ observador();
 
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
 aparece = user => {
-    const user = user;
+    //const user = user;
     let contenido = document.getElementById('contenido');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         contenido.innerHTML = `
         <img class="imagen-perfil" src="${user.photoURL}" alt="">
-        <button onclick="cerrar()">Cerrar Sesion</button>
-        <p>Hola ${user.displayName} </p>
-        <p>Bienvenidx a Medicina Natural</p> <br/>
+        <button onclick="cerrar()">Cerrar sesion</button>
+        <p>Hola ${user.displayName} "</p>
+        <p>Bienvenidx a Medicina Natural"</p> <br/>
 
             <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
             <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
@@ -88,9 +88,12 @@ apareceNousuario = () => {
 //CERAR SESION USUARIOS LOG
 cerrar = () => {
     firebase.auth().signOut()
-    
+    .then()(function(){
         console.log('Saliendo...')
-    
+    })
+    .catch()(error => {
+        console.log(error)
+    })
 }
 
 //ENVIANDO MAIL DE VERIFICACION
@@ -99,7 +102,6 @@ verificar = () => {
 user.sendEmailVerification()
     .then(function() {
   // Email sent.
-     alert('verifica la cuenta desde tu correo')
      console.log('enviando correo')
 })
     .catch(error => {
@@ -111,7 +113,7 @@ user.sendEmailVerification()
 document.getElementById("button-google").addEventListener("click",() => {
 
     var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithRedirect(provider)
+    firebase.auth().signInWithPopup(provider)
     .then(result => {
         alert("Exito google")
         console.log(result);
@@ -128,7 +130,7 @@ document.getElementById("button-google").addEventListener("click",() => {
 //FACEBOOK 
 document.getElementById("button-facebook").addEventListener("click",() => {
     var provider = new firebase.auth.FacebookAuthProvider();
-    firebase.auth().signInWithRedirect(provider)
+    firebase.auth().signInWithPopup(provider)
     .then(result => {
         alert("Exito facebook")
         console.log(result);
@@ -192,77 +194,3 @@ db.collection("users").get().then((querySnapshot) => {
         console.log(`Id: ${doc.id} Título: ${doc.data().titulo} Descripción: ${doc.data().texto}`);
     });
 });
-
-function register(){
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode);
-        console.log(errorMessage);
-
-        // ...
-      });
-}
-
-function entry(){
-    const email2 = document.getElementById("email2").value;
-    const password2 = document.getElementById("password2").value;
-
-    firebase.auth().createUserWithEmailAndPassword(email2, password2).catch(function(error) {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode);
-        console.log(errorMessage);
-        console.log(errorCode);
-        console.log(errorMessage);
-        // ...
-      });
-}
-
-function viewer(){
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            console.log("si existe usuario")
-            aparece()
-          // User is signed in.
-          var displayName = user.displayName;
-          var email = user.email;
-          var emailVerified = user.emailVerified;
-          var photoURL = user.photoURL;
-          var isAnonymous = user.isAnonymous;
-          var uid = user.uid;
-          var providerData = user.providerData;
-          // ...
-        } else {
-          // User is signed out.
-          console.log("no existe usuario")
-          // ...
-        }
-      });
-}
-viewer();
-
-function aparece(){
-    const container = document.getElementById("container");
-    container.innerHTML= `
-    <p>Bienvenido</p>
-    <button onclick="close()">Cerrar Sesión</button>
-    `;
-}
-function close(){
-    firebase.auth().singOut()
-    .then(function(){
-        console.log(saliendo)
-    })
-    .catch(function(error){
-        console.log(error)
-    })
-} 
-
-
-
