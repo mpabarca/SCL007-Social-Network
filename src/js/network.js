@@ -22,6 +22,8 @@ document.getElementById("acceder").addEventListener("click",() => {
     let contrasena2 = document.getElementById('contrasena').value;
 
     firebase.auth().signInWithEmailAndPassword(email2, contrasena2)
+    .then(function(){        
+    })
     .catch(error => {
         // Handle Errors here.
         if(contrasena2.length <= 5) {
@@ -63,6 +65,7 @@ aparece = user => {
     //const user = user;
     let contenido = document.getElementById('contenido');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
+        var item = document.getElementById("first-view").style.display = "none"
         contenido.innerHTML = `
         <img class="imagen-perfil" src="${user.photoURL}" alt="">
         <button onclick="cerrar()">Cerrar sesion</button>
@@ -72,11 +75,9 @@ aparece = user => {
             <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
             <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
             <button id="botonGuardar" onclick="guardar()">Publicar</button>
-      
-            
-
+            <input type="">
         `;
-    }    
+    }  
 }
 
 /*ESTO SE MUESTRA EN CASO DE NO ESTAR LOGUEADO
@@ -103,6 +104,7 @@ user.sendEmailVerification()
     .then(function() {
   // Email sent.
      console.log('enviando correo')
+     alert("Revisa tu correo")
 })
     .catch(error => {
     console.log('No se envio el correo')
