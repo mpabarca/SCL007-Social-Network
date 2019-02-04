@@ -75,14 +75,9 @@ aparece = user => {
             <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
             <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
             <button id="botonGuardar" onclick="guardar()">Publicar</button>
-      
-            
-
+            <input type="">
         `;
     }  
-
-
-
 }
 
 /*ESTO SE MUESTRA EN CASO DE NO ESTAR LOGUEADO
