@@ -1,10 +1,16 @@
 /* Estilos globales */
 /* ABAJO SE AGREGAN MEDIA QUERIES */
-
-  
+html{
+    background-image: url("../img/background.png");
+    position: relative;
+    
+    
+}
   .container {
     width: 60%;
     margin: 0 auto;
+    padding: 0 auto;
+    min-height: 100vh;
   }
   [class*="col-"] {
     min-height: 7px;
