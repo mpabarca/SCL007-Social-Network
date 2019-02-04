@@ -39,13 +39,6 @@ body{
    position: relative;
 }
 
-.comments-list li:after {
-   content: '';
-   display: block;
-   clear: both;
-   height: 0;
-   width: 0;
-}
 /* AVATAR */
 .comments-list .comment-avatar {
    width: 65px;
