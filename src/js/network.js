@@ -53,7 +53,7 @@ observador = () => {
           console.log (user.providerData[0].providerId)
         } else {
             console.log("No existe usuario activo")
-            apareceNousuario(); //ingresa tus datos para acceder
+            //apareceNousuario(); //ingresa tus datos para acceder
             }
       });
 }
@@ -62,15 +62,15 @@ observador();
 
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
 aparece = user => {
-    //const user = user;
+    //var user = user;
     let contenido = document.getElementById('contenido');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         var item = document.getElementById("first-view").style.display = "none"
         contenido.innerHTML = `
         <img class="imagen-perfil" src="${user.photoURL}" alt="">
-        <button onclick="cerrar()">Cerrar sesion</button>
-        <p>Hola ${user.displayName} "</p>
-        <p>Bienvenidx a Medicina Natural"</p> <br/>
+        <button onclick="cerrar()">Cerrar Sesion</button>
+        <p>Hola ${user.displayName} </p>
+        <p>Bienvenidx a Medicina Natural</p> <br/>
 
             <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
             <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
@@ -89,12 +89,8 @@ apareceNousuario = () => {
 //CERAR SESION USUARIOS LOG
 cerrar = () => {
     firebase.auth().signOut()
-    .then()(function(){
+    
         console.log('Saliendo...')
-    })
-    .catch()(error => {
-        console.log(error)
-    })
 }
 
 //ENVIANDO MAIL DE VERIFICACION
@@ -102,9 +98,9 @@ verificar = () => {
     let user = firebase.auth().currentUser;
 user.sendEmailVerification()
     .then(function() {
-  // Email sent.
-     console.log('enviando correo')
-     alert("Revisa tu correo")
+  // Email sent
+  alert('verifica la cuenta desde tu correo')
+  console.log('enviando correo')
 })
     .catch(error => {
     console.log('No se envio el correo')
@@ -115,7 +111,7 @@ user.sendEmailVerification()
 document.getElementById("button-google").addEventListener("click",() => {
 
     var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider)
+    firebase.auth().signInWithRedirect(provider)
     .then(result => {
         alert("Exito google")
         console.log(result);
@@ -132,7 +128,7 @@ document.getElementById("button-google").addEventListener("click",() => {
 //FACEBOOK 
 document.getElementById("button-facebook").addEventListener("click",() => {
     var provider = new firebase.auth.FacebookAuthProvider();
-    firebase.auth().signInWithPopup(provider)
+    firebase.auth().signInWithRedirect(provider)
     .then(result => {
         alert("Exito facebook")
         console.log(result);
