@@ -93,9 +93,6 @@ cerrar = () => {
     
 }
 
-
-
-
 //ENVIANDO MAIL DE VERIFICACION
 verificar = () => {
     let user = firebase.auth().currentUser;
