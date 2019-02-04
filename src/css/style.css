@@ -77,6 +77,8 @@ footer{
    text-align: center;
    width: 100%;
    margin-top: 5%;
+   position: absolute;
+   bottom: 0;
 }
 @media screen and (min-width:480px){
 
