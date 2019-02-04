@@ -62,7 +62,7 @@ observador();
 
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
 aparece = user => {
-   // const user = user;
+    const user = user;
     let contenido = document.getElementById('contenido');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         var item = document.getElementById("first-view").style.display = "none"
