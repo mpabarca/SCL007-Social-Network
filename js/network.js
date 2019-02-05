@@ -223,7 +223,18 @@ guardar = () => {
         displayName: user.displayName
     });
 
-    db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "POST"
+    db.collection('preguntas').add({ //AÑADIENDO EN FIRESTORE COLECCION: "PREGUNTAS"
+        titulo : tituloPublicacion,
+        texto: textoPublicacion,
+        fecha: f,
+        uid: user.uid,
+        email: user.email, 
+        displayName: user.displayName,
+        comentarios : 0,
+        like: 0, 
+    })
+
+    db.collection('recomendacions').add({ //AÑADIENDO EN FIRESTORE COLECCION: "PREGUNTAS"
         titulo : tituloPublicacion,
         texto: textoPublicacion,
         fecha: f,
@@ -233,7 +244,7 @@ guardar = () => {
         comentarios : 0,
         like: 0, 
 
-    })
+})
     
     
     .then(function(docRef) {
