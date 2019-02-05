@@ -1,4 +1,6 @@
 //REGISTRO USUARIO VIA MAIL Y CLAVE
+
+
 document.getElementById("registro").addEventListener("click",() => {
     let email = document.getElementById('email').value;
     let contrasena = document.getElementById('contrasena').value;
@@ -49,6 +51,7 @@ observador = () => {
           let photoURL = user.photoURL;
           let isAnonymous = user.isAnonymous;
           let uid = user.uid;
+          console.log(user.uid)
           let providerData = user.providerData;
           console.log (user.providerData[0].providerId)
         } else {
@@ -74,8 +77,9 @@ aparece = user => {
 
             <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
             <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
-            <button id="botonGuardar" onclick="guardar()">Publicar</button>
-            <input type="">
+            <button id="botonGuardar" onclick="guardar()">Publicar</button>         
+          
+            
         `;
     }  
 }
@@ -162,33 +166,59 @@ document.getElementById("forgot-pass").addEventListener("click",() => {
     });
 })
 
-//STORAGE GUARDAR DATOS EN FIRE
+
+ //STORAGE GUARDAR DATOS EN FIRE
+
+firebase.auth().onAuthStateChanged(function(user) {
 guardar = () => {
     let tituloPublicacion = document.getElementById("tituloPublicacion").value;
     let textoPublicacion = document.getElementById("textoPublicacion").value;
     let f = new Date(); (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
     
     var db = firebase.firestore();
-    db.collection("users").add({ //con el add se agrega un ID automatico
-        titulo : tituloPublicacion,
-        texto: textoPublicacion,
-        fecha: f
+
+    db.collection("users").doc(user.uid).set({ 
+        email: user.email, 
+        displayName: user.displayName
+    });
+
+    db.collection("users").doc(user.uid).collection('post').add({ 
+            titulo : tituloPublicacion,
+            texto: textoPublicacion,
     })
+    
+    
     .then(function(docRef) {
         document.getElementById("tituloPublicacion").value = ''; //Limpiar
         document.getElementById("textoPublicacion").value = ''; // Limpiar
-        console.log("Document written with ID: ", docRef.id);
         console.log("Se subio a dataBase correctamente")
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
 }
+     
+    });
+
 
 //LEER DATOS EN CONSOLA
 var db = firebase.firestore(); //la volvi a declarar por quE no medejaba continuaR, luego mirar con window
-db.collection("users").get().then((querySnapshot) => {
+db.collection("users").get()
+    .then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
-        console.log(`Id: ${doc.id} Título: ${doc.data().titulo} Descripción: ${doc.data().texto}`);
+        contenido.innerHTML += `
+
+        <br/><br/><br/>
+        <div class="w3-card-4">
+            <header class="w3-container w3-green">
+                <h4>${doc.data().titulo}</h4>
+            </header>
+
+            <div class="w3-container">
+                <p>${doc.data().texto}</p>
+            </div>
+
+        </div>
+    `
     });
 });
