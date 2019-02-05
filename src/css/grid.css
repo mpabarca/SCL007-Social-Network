@@ -1,11 +1,9 @@
 /* Estilos globales */
 /* ABAJO SE AGREGAN MEDIA QUERIES */
-html{
-    background-image: url("../img/background.png");
+html {
+    min-height: 100%;
     position: relative;
-    
-    
-}
+  }
   .container {
     width: 60%;
     margin: 0 auto;
