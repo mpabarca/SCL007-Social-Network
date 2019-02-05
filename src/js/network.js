@@ -6,7 +6,7 @@ document.getElementById("registro").addEventListener("click",() => {
     let contrasena = document.getElementById('contrasena').value;
    
     firebase.auth().createUserWithEmailAndPassword(email, contrasena)
-    .then(function(){
+    .then(()=>{
         verificar()
     })
     .catch(error => {
@@ -66,6 +66,9 @@ observador();
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
 aparece = user => {
     //var user = user;
+
+    //DATOS DE LA CUENTA 
+    let db = firebase.firestore();
     let contenido = document.getElementById('contenido');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         var item = document.getElementById("first-view").style.display = "none"
@@ -134,7 +137,6 @@ apareceNousuario = () => {
 //CERAR SESION USUARIOS LOG
 cerrar = () => {
     firebase.auth().signOut()
-    
         console.log('Saliendo...')
 }
 
@@ -143,9 +145,9 @@ verificar = () => {
     let user = firebase.auth().currentUser;
 user.sendEmailVerification()
     .then(function() {
-  // Email sent
-  alert('verifica la cuenta desde tu correo')
-  console.log('enviando correo')
+    // Email sent
+    alert('verifica la cuenta desde tu correo')
+    console.log('enviando correo')
 })
     .catch(error => {
     console.log('No se envio el correo')
@@ -216,16 +218,21 @@ guardar = () => {
     let textoPublicacion = document.getElementById("textoPublicacion").value;
     let f = new Date(); (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
     
-    var db = firebase.firestore();
+    var db = firebase.firestore(); 
 
     db.collection("users").doc(user.uid).set({ 
         email: user.email, 
         displayName: user.displayName
     });
 
-    db.collection("users").doc(user.uid).collection('post').add({ 
-            titulo : tituloPublicacion,
-            texto: textoPublicacion,
+    db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "POST"
+        titulo : tituloPublicacion,
+        texto: textoPublicacion,
+        fecha: f,
+        uid: user.uid,
+        email: user.email, 
+        displayName: user.displayName,
+
     })
     
     
