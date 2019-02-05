@@ -69,20 +69,61 @@ aparece = user => {
     let contenido = document.getElementById('contenido');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         var item = document.getElementById("first-view").style.display = "none"
-        contenido.innerHTML = `
-        <img class="imagen-perfil" src="${user.photoURL}" alt="">
+        contenido.innerHTML += `
+        <img class="imagen-perfil" src="" alt="">
         <button onclick="cerrar()">Cerrar Sesion</button>
         <p>Hola ${user.displayName} </p>
         <p>Bienvenidx a Medicina Natural</p> <br/>
 
             <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
             <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
-            <button id="botonGuardar" onclick="guardar()">Publicar</button>         
-          
-            
+            <button id="botonGuardar" onclick="guardar()">Publicar</button>
+        `
+
+        var db = firebase.firestore(); //la volvi a declarar por quE no medejaba continuaR, luego mirar con window
+            db.collection("users").get()
+            .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+            contenido.innerHTML += `
+        <br/><br/><br/>
+        <div class="w3-card-4">
+            <header class="w3-container w3-green">
+                <h4></h4>
+            </header>
+            <div class="w3-container">
+                <p></p>
+            </div>
+        </div>
+    
+            <div class="comments-container">
+            <ul id="comments-list" class="comments-list">
+                <li>
+                    <div class="comment-main-level">
+                        <!-- Avatar -->
+                        <div class="comment-avatar"><img src="${user.photoURL}" alt=""></div>
+                        <!-- Contenedor del Comentario -->
+                        <div class="comment-box">
+                            <div class="comment-head">
+                                <h6 class="comment-name by-author">${user.displayName}</a></h6>
+                                <span>hace 20 minutos</span>
+                                <i class="fa fa-reply"></i>
+                                <i class="fa fa-heart"></i>
+                            </div>
+                            <div class="comment-content">
+                            ${doc.data().titulo}${doc.data().texto} 
+                            </div>
+                        </div>
+                    </div> 
+                </li>
+            </ul>
+        </div>
+
         `;
-    }  
-}
+    });
+            });
+};
+};
+
 
 /*ESTO SE MUESTRA EN CASO DE NO ESTAR LOGUEADO
 apareceNousuario = () => {
@@ -196,18 +237,14 @@ guardar = () => {
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
-}
-     
-    });
+};
 
-
-//LEER DATOS EN CONSOLA
+/*LEER DATOS EN CONSOLA
 var db = firebase.firestore(); //la volvi a declarar por quE no medejaba continuaR, luego mirar con window
 db.collection("users").get()
     .then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
         contenido.innerHTML += `
-
         <br/><br/><br/>
         <div class="w3-card-4">
             <header class="w3-container w3-green">
@@ -220,5 +257,6 @@ db.collection("users").get()
 
         </div>
     `
-    });
-});
+ });
+});*/
+
