@@ -6,7 +6,7 @@ document.getElementById("registro").addEventListener("click",() => {
     let contrasena = document.getElementById('contrasena').value;
    
     firebase.auth().createUserWithEmailAndPassword(email, contrasena)
-    .then(function(){
+    .then(()=>{
         verificar()
     })
     .catch(error => {
@@ -66,64 +66,61 @@ observador();
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
 aparece = user => {
     //var user = user;
+
+    //DATOS DE LA CUENTA 
+    let db = firebase.firestore();
     let contenido = document.getElementById('contenido');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         var item = document.getElementById("first-view").style.display = "none"
-        contenido.innerHTML += `
-        <img class="imagen-perfil" src="" alt="">
+        contenido.innerHTML = `
+        <img class="imagen-perfil" src="${user.photoURL}" alt="">
         <button onclick="cerrar()">Cerrar Sesion</button>
         <p>Hola ${user.displayName} </p>
         <p>Bienvenidx a Medicina Natural</p> <br/>
 
             <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
             <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
-            <button id="botonGuardar" onclick="guardar()">Publicar</button>
-        `
+            <button id="botonGuardar" onclick="guardar()">Publicar</button>                   
+        `;
+    }  
 
-        var db = firebase.firestore(); //la volvi a declarar por quE no medejaba continuaR, luego mirar con window
-            db.collection("users").get()
-            .then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
+
+    //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
+    db.collection("post").onSnapshot(querySnapshot => {
+        querySnapshot.docs.forEach(doc => {
+            console.log(doc.data())
             contenido.innerHTML += `
-        <br/><br/><br/>
-        <div class="w3-card-4">
-            <header class="w3-container w3-green">
-                <h4></h4>
-            </header>
-            <div class="w3-container">
-                <p></p>
-            </div>
-        </div>
-    
+            
+            <br/><br/><br/>
             <div class="comments-container">
             <ul id="comments-list" class="comments-list">
-                <li>
-                    <div class="comment-main-level">
-                        <!-- Avatar -->
-                        <div class="comment-avatar"><img src="${user.photoURL}" alt=""></div>
-                        <!-- Contenedor del Comentario -->
-                        <div class="comment-box">
-                            <div class="comment-head">
-                                <h6 class="comment-name by-author">${user.displayName}</a></h6>
-                                <span>hace 20 minutos</span>
-                                <i class="fa fa-reply"></i>
-                                <i class="fa fa-heart"></i>
-                            </div>
-                            <div class="comment-content">
-                            ${doc.data().titulo}${doc.data().texto} 
-                            </div>
-                        </div>
-                    </div> 
-                </li>
-            </ul>
-        </div>
-
-        `;
+            <li>
+            <div class="comment-main-level"><div class="row">
+                    <img class="comment-avatar col-1" src="${user.photoURL}" alt=""> 
+            <div class="comment-box col-11">
+            <div class="comment-head">
+            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Name: ${doc.data().displayName} - Email: ${doc.data().email}</a></h6>
+            <span>hace 20 minutos</span>
+            <i class="fa fa-reply"></i>
+            <i class="fa fa-heart"></i>
+            </div>
+            <div class="comment-content">
+                    <p>Titulo: ${doc.data().titulo}</p> 
+                    <p>Texto: ${doc.data().texto} </p> 
+                    </div>
+                    </div>
+            </div></div>
+            
+        </li>
+    </ul>
+</div>
+        `
+        });
     });
-            });
-};
-};
 
+
+
+}
 
 /*ESTO SE MUESTRA EN CASO DE NO ESTAR LOGUEADO
 apareceNousuario = () => {
@@ -134,7 +131,6 @@ apareceNousuario = () => {
 //CERAR SESION USUARIOS LOG
 cerrar = () => {
     firebase.auth().signOut()
-    
         console.log('Saliendo...')
 }
 
@@ -143,9 +139,9 @@ verificar = () => {
     let user = firebase.auth().currentUser;
 user.sendEmailVerification()
     .then(function() {
-  // Email sent
-  alert('verifica la cuenta desde tu correo')
-  console.log('enviando correo')
+    // Email sent
+    alert('verifica la cuenta desde tu correo')
+    console.log('enviando correo')
 })
     .catch(error => {
     console.log('No se envio el correo')
@@ -216,16 +212,21 @@ guardar = () => {
     let textoPublicacion = document.getElementById("textoPublicacion").value;
     let f = new Date(); (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
     
-    var db = firebase.firestore();
+    var db = firebase.firestore(); 
 
     db.collection("users").doc(user.uid).set({ 
         email: user.email, 
         displayName: user.displayName
     });
 
-    db.collection("users").doc(user.uid).collection('post').add({ 
-            titulo : tituloPublicacion,
-            texto: textoPublicacion,
+    db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "POST"
+        titulo : tituloPublicacion,
+        texto: textoPublicacion,
+        fecha: f,
+        uid: user.uid,
+        email: user.email, 
+        displayName: user.displayName,
+
     })
     
     
@@ -237,27 +238,14 @@ guardar = () => {
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
-};
-})
+}
+     
+    });
 
-/*LEER DATOS EN CONSOLA
-var db = firebase.firestore(); //la volvi a declarar por quE no medejaba continuaR, luego mirar con window
-db.collection("users").get()
-    .then((querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-        contenido.innerHTML += `
-        <br/><br/><br/>
-        <div class="w3-card-4">
-            <header class="w3-container w3-green">
-                <h4>${doc.data().titulo}</h4>
-            </header>
 
-            <div class="w3-container">
-                <p>${doc.data().texto}</p>
-            </div>
+//LEER DATOS EN CONSOLA
 
-        </div>
-    `
- });
-});*/
 
+ //la volvi a declarar por quE no medejaba continuaR, luego mirar con window
+
+//db.collection('users').doc('user.uid').collection('post')
