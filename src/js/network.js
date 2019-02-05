@@ -238,6 +238,7 @@ guardar = () => {
         console.error("Error adding document: ", error);
     });
 };
+})
 
 /*LEER DATOS EN CONSOLA
 var db = firebase.firestore(); //la volvi a declarar por quE no medejaba continuaR, luego mirar con window
