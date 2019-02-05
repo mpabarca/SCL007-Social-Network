@@ -84,12 +84,12 @@ aparece = user => {
         `;
     }  
 
-
     //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
     db.collection("post").onSnapshot(querySnapshot => {
+        contenido2.innerHTML = "";
         querySnapshot.docs.forEach(doc => {
             console.log(doc.data())
-            contenido.innerHTML += `
+            contenido2.innerHTML = contenido2.innerHTML + `
             
             <br/><br/><br/>
             <div class="comments-container">
@@ -99,7 +99,7 @@ aparece = user => {
                     <img class="comment-avatar col-1" src="${user.photoURL}" alt=""> 
             <div class="comment-box col-11">
             <div class="comment-head">
-            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">Name: ${doc.data().displayName} - Email: ${doc.data().email}</a></h6>
+            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
             <span>hace 20 minutos</span>
             <i class="fa fa-reply"></i>
             <i class="fa fa-heart"></i>
@@ -110,16 +110,13 @@ aparece = user => {
                     </div>
                     </div>
             </div></div>
-            
         </li>
     </ul>
 </div>
         `
         });
+    contenido = "";
     });
-
-
-
 }
 
 /*ESTO SE MUESTRA EN CASO DE NO ESTAR LOGUEADO
