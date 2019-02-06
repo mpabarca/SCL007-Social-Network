@@ -100,7 +100,7 @@ aparece = user => {
             <div class="comment-box col-11">
             <div class="comment-head">
             <h6 class="comment-name by-author">${doc.data().displayName}, ${doc.data().email}</a></h6>
-            <span>${Date.f}</span>
+            <span>${doc.Date.f}</span>
             <i class="fa fa-reply"></i>
             <i class="fa fa-heart"></i>
             </div>
