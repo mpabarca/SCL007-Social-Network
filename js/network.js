@@ -91,28 +91,26 @@ aparece = user => {
             console.log(doc.data())
             contenido2.innerHTML = contenido2.innerHTML + `
             
-            <br/><br/><br/>
-            <div class="comments-container">
+            
             <ul id="comments-list" class="comments-list">
-            <li>
-            <div class="comment-main-level"><div class="row">
+                <li>
+                    <div class="comment-main-level"><div class="row">
                     <img class="comment-avatar col-1" src="${user.photoURL}" alt=""> 
-            <div class="comment-box col-11">
-            <div class="comment-head">
-            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
-            <span>hace 20 minutos</span>
-            <i class="fa fa-reply"></i>
-            <i class="fa fa-heart"></i>
-            </div>
-            <div class="comment-content">
-                    <p>Titulo: ${doc.data().titulo}</p> 
-                    <p>Texto: ${doc.data().texto} </p> 
+                    <div class="comment-box col-11">
+                    <div class="comment-head">
+                    <h6 class="comment-name"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
+                    <span>hace 20 minutos</span>
+                    <i class="fa fa-reply"></i>
+                    <i class="fa fa-heart"></i>
                     </div>
-                    </div>
-            </div></div>
-        </li>
-    </ul>
-</div>
+                    <div class="comment-content">
+                            <p>Titulo: ${doc.data().titulo}</p> 
+                            <p>Texto: ${doc.data().texto} </p> 
+                            </div>
+                            </div>
+                    </div></div>
+                </li>
+            </ul>
         `
         });
     contenido = "";
