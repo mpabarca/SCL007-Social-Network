@@ -63,10 +63,7 @@ observador();
 
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
 aparece = user => {
-    //var user = user;
-
-    //DATOS DE LA CUENTA 
-    let db = firebase.firestore();
+   // const user = user;
     let contenido = document.getElementById('contenido');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         var item = document.getElementById("first-view").style.display = "none"
@@ -141,9 +138,9 @@ verificar = () => {
     let user = firebase.auth().currentUser;
 user.sendEmailVerification()
     .then(function() {
-    // Email sent
-    alert('verifica la cuenta desde tu correo')
-    console.log('enviando correo')
+  // Email sent.
+     console.log('enviando correo')
+     alert("Revisa tu correo")
 })
     .catch(error => {
     console.log('No se envio el correo')
@@ -273,7 +270,7 @@ function editar(id, tituloPublicacion, textoPublicacion){
         var textoPublicacion = document.getElementById('textoPublicacion').value;
         
         return washingtonRef.update({
-            titulo : tituloPublicacion,
+            titulo: tituloPublicacion,
             texto: textoPublicacion,
         })
         .then(function() {
