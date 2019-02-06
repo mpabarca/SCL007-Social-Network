@@ -86,7 +86,7 @@ aparece = user => {
 //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
 let contenido2 = document.getElementById('contenido2');
 
-db.collection("post").onSnapshot(querySnapshot => {
+db.collection("post").limit(10).onSnapshot(querySnapshot => {
     contenido2.innerHTML = "";
     querySnapshot.docs.forEach(doc => {
         
