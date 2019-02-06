@@ -101,14 +101,17 @@ db.collection("post").onSnapshot(querySnapshot => {
         <div class="comment-head">
         <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
         <span>hace 20 minutos</span>
+        
+        <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
         <i class="fa fa-reply"></i>
         <i class="fa fa-heart"></i>
+               
         </div>
-        <div class="comment-content">
+            <div class="comment-content">
                 <p>Titulo: ${doc.data().titulo}</p>
-                <p>Texto: ${doc.data().texto} </p>
-                </div>
-                </div>
+                <p>Texto: ${doc.data().texto} </p>        
+             </div>
+         </div>
         </div></div>
 
     </li>
@@ -210,7 +213,7 @@ document.getElementById("forgot-pass").addEventListener("click",() => {
 
  //STORAGE GUARDAR DATOS EN FIRE
 
-firebase.auth().onAuthStateChanged(function(user) {
+firebase.auth().onAuthStateChanged( user => {
 guardar = () => {
     let tituloPublicacion = document.getElementById("tituloPublicacion").value;
     let textoPublicacion = document.getElementById("textoPublicacion").value;
@@ -223,7 +226,7 @@ guardar = () => {
         displayName: user.displayName
     });
 
-    db.collection('preguntas').add({ //AÑADIENDO EN FIRESTORE COLECCION: "PREGUNTAS"
+    db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "PREGUNTAS"
         titulo : tituloPublicacion,
         texto: textoPublicacion,
         fecha: f,
@@ -233,20 +236,7 @@ guardar = () => {
         comentarios : 0,
         like: 0, 
     })
-
-    db.collection('recomendacions').add({ //AÑADIENDO EN FIRESTORE COLECCION: "PREGUNTAS"
-        titulo : tituloPublicacion,
-        texto: textoPublicacion,
-        fecha: f,
-        uid: user.uid,
-        email: user.email, 
-        displayName: user.displayName,
-        comentarios : 0,
-        like: 0, 
-
-})
-    
-    
+   
     .then(function(docRef) {
         document.getElementById("tituloPublicacion").value = ''; //Limpiar
         document.getElementById("textoPublicacion").value = ''; // Limpiar
@@ -260,12 +250,17 @@ guardar = () => {
     });
 
 
-//LEER DATOS EN CONSOLA
+//BORRAR DATOS
+eliminar = (id) => {
+    var db = firebase.firestore(); 
+
+    db.collection("post").doc(id).delete()
+        .then(() => {
+        console.log("Post borrado");
+    }).catch(error => {
+        console.error("Error removing document: ", error);
+    });
+}
 
 
- //la volvi a declarar por quE no medejaba continuaR, luego mirar con window
 
-//db.collection('users').doc('user.uid').collection('post')
-
-
-//db.collection('users').doc('user.uid').collection('post')
