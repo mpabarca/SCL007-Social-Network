@@ -226,7 +226,7 @@ guardar = () => {
         displayName: user.displayName
     });
 
-    db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "PREGUNTAS"
+    db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "POST"
         titulo : tituloPublicacion,
         texto: textoPublicacion,
         fecha: f,
