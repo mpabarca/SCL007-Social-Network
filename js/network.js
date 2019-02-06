@@ -83,6 +83,7 @@ aparece = user => {
         <p>Bienvenidx a Medicina Natural</p> <br/>                  
         `;
         userPost.innerHTML = `
+            <div class="imagen-perfil"><img class="imagen-perfil" src="${user.photoURL}" alt=""></div>
             <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
             <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
             <button id="botonGuardar" onclick="guardar()">Publicar</button>                   
