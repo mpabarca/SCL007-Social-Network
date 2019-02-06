@@ -1,3 +1,4 @@
+document.getElementById("second-view").style.display="none";
 //REGISTRO USUARIO VIA MAIL Y CLAVE
 document.getElementById("registro").addEventListener("click",() => {
     let email = document.getElementById('email').value;
@@ -64,18 +65,24 @@ observador();
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
 aparece = user => {
     //var user = user;
-
+    document.getElementById("second-view").style.display="block";
     //DATOS DE LA CUENTA 
     let db = firebase.firestore();
     let contenido = document.getElementById('contenido');
+    let userMenu = document.getElementById('user-menu');
+    let outMenu = document.getElementById('out-menu');
+    let userPost = document.getElementById('user-post');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         var item = document.getElementById("first-view").style.display = "none"
+        userMenu.innerHTML = "";
+        outMenu.innerHTML = "";
+        userMenu.innerHTML = `<img class="imagen-perfil" src="${user.photoURL}" alt="">`;
+        outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
         contenido.innerHTML = `
-        <img class="imagen-perfil" src="${user.photoURL}" alt="">
-        <button onclick="cerrar()">Cerrar Sesion</button>
         <p>Hola ${user.displayName} </p>
-        <p>Bienvenidx a Medicina Natural</p> <br/>
-
+        <p>Bienvenidx a Medicina Natural</p> <br/>                  
+        `;
+        userPost.innerHTML = `
             <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
             <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
             <button id="botonGuardar" onclick="guardar()">Publicar</button>                   
