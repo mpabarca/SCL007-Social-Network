@@ -116,7 +116,10 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             </div>
                 <div class="comment-content">
                     <p>Titulo: ${doc.data().titulo}</p>
-                    <p>Texto: ${doc.data().texto} </p>        
+                    <p>Texto: ${doc.data().texto} </p>
+                    <p>Fecha: ${doc.data().fecha} </p>  
+  
+                         
                  </div>
              </div>
             </div></div>
@@ -234,8 +237,8 @@ firebase.auth().onAuthStateChanged( user => {
 guardar = () => {
     let tituloPublicacion = document.getElementById("tituloPublicacion").value;
     let textoPublicacion = document.getElementById("textoPublicacion").value;
-    let f = new Date(); (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
-    
+    let fechaPublicacion = new Date(); 
+
     var db = firebase.firestore(); 
 
     db.collection("users").doc(user.uid).set({ 
@@ -246,14 +249,14 @@ guardar = () => {
     db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "POST"
         titulo : tituloPublicacion,
         texto: textoPublicacion,
-        fecha: f,
+        fecha: fechaPublicacion,
         uid: user.uid,
         email: user.email, 
         displayName: user.displayName,
         comentarios : 0,
         like: 0, 
     })
-   
+
     .then(docRef => {
         document.getElementById("tituloPublicacion").value = ''; //Limpiar
         document.getElementById("textoPublicacion").value = ''; // Limpiar
@@ -266,6 +269,7 @@ guardar = () => {
      
     });
 
+    
 //BORRAR DATOS
 eliminar = (id) => {
     var db = firebase.firestore(); 
