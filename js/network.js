@@ -83,7 +83,6 @@ aparece = user => {
 //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
 let contenido2 = document.getElementById('contenido2');
 
-<<<<<<< HEAD
 db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapshot => {
     contenido2.innerHTML = "";
     querySnapshot.docs.forEach(doc => {
@@ -156,44 +155,6 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
         }
     });
 });
-=======
-db.collection("post").onSnapshot(querySnapshot => {
-    contenido2.innerHTML = "";
-    querySnapshot.docs.forEach(doc => {
-        
-        console.log(doc.data())
-        contenido2.innerHTML = contenido2.innerHTML + 
-        `<ul id="comments-list" class="comments-list">
-        <li>
-        <div class="comment-main-level"><div class="row">
-                <img class="comment-avatar col-1" src="${user.photoURL}" alt="">
-        <div class="comment-box col-11">
-        <div class="comment-head">
-        <h6 class="comment-name by-author">${doc.data().displayName}, ${doc.data().email}</a></h6>
-        <span>hace 20 minutos</span>
-        
-        <i class="fa fa-trash" onclick="eliminar('${doc.id}')"></i>
-        <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
-        <i class="fa fa-reply"></i>
-        <i class="fa fa-heart"></i>
-               
-        </div>
-            <div class="comment-content">
-                <p>Titulo: ${doc.data().titulo}</p>
-                <p>Texto: ${doc.data().texto} </p>        
-             </div>
-         </div>
-        </div></div>
-
-    </li>
-</ul>`
-
-    });
-    //contenido2 = "";
-
-});
-
->>>>>>> toTry
 }
 
 //CERAR SESION USUARIOS LOG
@@ -206,17 +167,10 @@ cerrar = () => {
 verificar = () => {
     let user = firebase.auth().currentUser;
 user.sendEmailVerification()
-<<<<<<< HEAD
-    .then( () => {
-    // Email sent
-    alert('verifica la cuenta desde tu correo')
-    console.log('enviando correo')
-=======
     .then(function() {
   // Email sent.
      console.log('enviando correo')
      alert("Revisa tu correo")
->>>>>>> toTry
 })
     .catch(error => {
     console.log('No se envio el correo')
@@ -274,10 +228,6 @@ document.getElementById("forgot-pass").addEventListener("click",() => {
 })
 
  //STORAGE GUARDAR DATOS EN FIRE
-<<<<<<< HEAD
-=======
-
->>>>>>> toTry
 firebase.auth().onAuthStateChanged( user => {
 guardar = () => {
     let tituloPublicacion = document.getElementById("tituloPublicacion").value;
@@ -302,11 +252,7 @@ guardar = () => {
         like: 0, 
     })
    
-<<<<<<< HEAD
-    .then(docRef => {
-=======
     .then(function(docRef) {
->>>>>>> toTry
         document.getElementById("tituloPublicacion").value = ''; //Limpiar
         document.getElementById("textoPublicacion").value = ''; // Limpiar
         console.log("Se subio a dataBase correctamente")
@@ -330,8 +276,6 @@ eliminar = (id) => {
     });
 }
 
-<<<<<<< HEAD
-=======
 //BORRAR DATOS
 eliminar = (id) => {
     var db = firebase.firestore(); 
@@ -344,7 +288,6 @@ eliminar = (id) => {
     });
 }
 
->>>>>>> toTry
 //EDITAR DATOS
 function editar(id, tituloPublicacion, textoPublicacion){
     document.getElementById('tituloPublicacion').value = tituloPublicacion;
@@ -361,11 +304,7 @@ function editar(id, tituloPublicacion, textoPublicacion){
         var textoPublicacion = document.getElementById('textoPublicacion').value;
         
         return washingtonRef.update({
-<<<<<<< HEAD
-            titulo : tituloPublicacion,
-=======
             titulo: tituloPublicacion,
->>>>>>> toTry
             texto: textoPublicacion,
         })
         .then(function() {
