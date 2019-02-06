@@ -68,11 +68,13 @@ aparece = user => {
     //DATOS DE LA CUENTA 
     let db = firebase.firestore();
     let contenido = document.getElementById('contenido');
+    let userMenu = document.getElementById('user-menu');
+    let outMenu = document.getElementById('out-menu');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         var item = document.getElementById("first-view").style.display = "none"
+        userMenu.innerHTML = `<img class="imagen-perfil" src="${user.photoURL}" alt="">`;
+        outMenu.innerHTML = `<button onclick="cerrar()">Cerrar Sesion</button>`;
         contenido.innerHTML = `
-        <img class="imagen-perfil" src="${user.photoURL}" alt="">
-        <button onclick="cerrar()">Cerrar Sesion</button>
         <p>Hola ${user.displayName} </p>
         <p>Bienvenidx a Medicina Natural</p> <br/>
 
