@@ -1,21 +1,29 @@
 /* Estilos globales */
-/* ABAJO SE AGREGAN MEDIA QUERIES */
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 html {
     min-height: 100%;
     position: relative;
+    background: #9fdfbf;
   }
-  .container {
-    width: 60%;
-    margin: 0 auto;
-    padding: 0 auto;
-    min-height: 100vh;
-  }
+  a {
+    color: #03658c;
+    text-decoration: none;
+ } 
+ ul {
+   list-style-type: none;
+ }
   [class*="col-"] {
     min-height: 7px;
     float: left;
     max-width: 100%;
   }
-  
+
   .row:before, .row:after {
     content: " ";
     display: table;
@@ -23,7 +31,7 @@ html {
   
   .row:after { /*Para que las columnas no colapsen*/
     clear: both;
-  }
+  } 
   
   .col-1 {
       /* (1 / 12) x 100 */
