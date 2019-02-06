@@ -44,7 +44,7 @@ observador = () => {
           // User is signed in.
           let displayName = user.displayName;
           let email = user.email;
-          console.log(user);
+          //console.log(user);
           let emailVerified = user.emailVerified;
           console.log(user.emailVerified)
           let photoURL = user.photoURL;
@@ -93,48 +93,78 @@ aparece = user => {
 //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
 let contenido2 = document.getElementById('contenido2');
 
-db.collection("post").onSnapshot(querySnapshot => {
+db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapshot => {
     contenido2.innerHTML = "";
     querySnapshot.docs.forEach(doc => {
         
-        console.log(doc.data())
-        contenido2.innerHTML = contenido2.innerHTML + 
-        `<ul id="comments-list" class="comments-list">
-        <li>
-        <div class="comment-main-level"><div class="row">
-                <img class="comment-avatar col-1" src="${user.photoURL}" alt="">
-        <div class="comment-box col-11">
-        <div class="comment-head">
-        <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
-        <span>hace 20 minutos</span>
-        
-        <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
-        <i class="fa fa-reply"></i>
-        <i class="fa fa-heart"></i>
-               
-        </div>
-            <div class="comment-content">
-                <p>Titulo: ${doc.data().titulo}</p>
-                <p>Texto: ${doc.data().texto} </p>        
+        //console.log(`uid USUARIO:  ${user.uid}`)// uid del usuario
+        //console.log(`uid de POST:  ${doc.data().uid}`)
+        //console.log("-----------------------------------------------------------")
+
+        if (user.uid === doc.data().uid) { //si el id del usuario registrado es igual al uid del post registrado entonces... 
+            //console.log ("Se muestre icono borrar")
+            //console.log ("Se muestre icono editar")
+
+            contenido2.innerHTML = contenido2.innerHTML + 
+            ` <div class="comments-container">
+            <ul id="comments-list" class="comments-list">
+            <li>
+            <div class="comment-main-level"><div class="row">
+                    <img class="comment-avatar col-1" src="${user.photoURL}" alt="">
+            <div class="comment-box col-11">
+            <div class="comment-head">
+            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
+            <span>hace 20 minutos</span>
+            
+            <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
+            <i class="fa fa-reply"></i>
+            <i class="fa fa-heart"></i>
+                   
+            </div>
+                <div class="comment-content">
+                    <p>Titulo: ${doc.data().titulo}</p>
+                    <p>Texto: ${doc.data().texto} </p>        
+                 </div>
              </div>
-         </div>
-        </div></div>
+            </div></div>
+    
+        </li>
+    </ul>
+    </div> `
 
-    </li>
-</ul>`
+        }else{
+           // console.log ("NO muestre icono borrar")
+           //console.log ("NO muestre icono Editar")
 
+            contenido2.innerHTML = contenido2.innerHTML + 
+            ` <div class="comments-container">
+            <ul id="comments-list" class="comments-list">
+            <li>
+            <div class="comment-main-level"><div class="row">
+                    <img class="comment-avatar col-1" src="${user.photoURL}" alt="">
+            <div class="comment-box col-11">
+            <div class="comment-head">
+            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
+            <span>hace 20 minutos</span>
+            
+            <i class="fa fa-reply"></i>
+            <i class="fa fa-heart"></i>
+                   
+            </div>
+                <div class="comment-content">
+                    <p>Titulo: ${doc.data().titulo}</p>
+                    <p>Texto: ${doc.data().texto} </p>        
+                 </div>
+             </div>
+            </div></div>
+    
+        </li>
+    </ul>
+    </div> `
+        }
     });
-    //contenido2 = "";
-
 });
-
 }
-
-/*ESTO SE MUESTRA EN CASO DE NO ESTAR LOGUEADO
-apareceNousuario = () => {
-    let contenido = document.getElementById('contenido');
-    contenido.innerHTML = "Ingresa tus datos para acceder";
-}*/
 
 //CERAR SESION USUARIOS LOG
 cerrar = () => {
@@ -146,7 +176,7 @@ cerrar = () => {
 verificar = () => {
     let user = firebase.auth().currentUser;
 user.sendEmailVerification()
-    .then(function() {
+    .then( () => {
     // Email sent
     alert('verifica la cuenta desde tu correo')
     console.log('enviando correo')
@@ -189,11 +219,6 @@ document.getElementById("button-facebook").addEventListener("click",() => {
             alert("Ya existe un usuario con el mismo email")
         }
     })
-
-
-    //enviar email para verificar
-    //verificar()
-
 })
 
 //RECUPERAR CONTRASEÑA
@@ -202,18 +227,16 @@ document.getElementById("forgot-pass").addEventListener("click",() => {
         let email = document.getElementById('email').value;
         alert("Ingresa tu mail para reestablecer")
     auth.sendPasswordResetEmail(email)
-    .then(function() {
+    .then( () => {
         alert("Revisa tu correo para cambiar tu contraseña")
       // Email sent.
-    }).catch(function(error) {
+    }).catch(error  => {
         console.log("No se a enviado mail")
       // An error happened.
     });
 })
 
-
  //STORAGE GUARDAR DATOS EN FIRE
-
 firebase.auth().onAuthStateChanged( user => {
 guardar = () => {
     let tituloPublicacion = document.getElementById("tituloPublicacion").value;
@@ -238,23 +261,22 @@ guardar = () => {
         like: 0, 
     })
    
-    .then(function(docRef) {
+    .then(docRef => {
         document.getElementById("tituloPublicacion").value = ''; //Limpiar
         document.getElementById("textoPublicacion").value = ''; // Limpiar
         console.log("Se subio a dataBase correctamente")
     })
-    .catch(function(error) {
+    .catch(error => {
         console.error("Error adding document: ", error);
     });
 }
      
     });
 
-
 //BORRAR DATOS
 eliminar = (id) => {
     var db = firebase.firestore(); 
-
+    confirm("Estas seguro que quieres eliminarlo?")
     db.collection("post").doc(id).delete()
         .then(() => {
         console.log("Post borrado");
@@ -262,6 +284,4 @@ eliminar = (id) => {
         console.error("Error removing document: ", error);
     });
 }
-
-
 
