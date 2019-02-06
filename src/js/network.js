@@ -78,8 +78,8 @@ aparece = user => {
 
             <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
             <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
-            <button id="botonGuardar" onclick="guardar()">Publicar</button>                   
-        `;
+            <button id="botonGuardar" onclick="guardar()">Publicar</button>
+             `;
     }  
 
 
@@ -110,6 +110,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <span>hace 20 minutos</span>
             
             <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
+            <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
             <i class="fa fa-reply"></i>
             <i class="fa fa-heart"></i>
                    
@@ -278,3 +279,36 @@ eliminar = (id) => {
     });
 }
 
+//EDITAR DATOS
+function editar(id, tituloPublicacion, textoPublicacion){
+    document.getElementById('tituloPublicacion').value = tituloPublicacion;
+    document.getElementById('textoPublicacion').value = textoPublicacion;
+    var boton = document.getElementById('botonGuardar');
+    boton.innerHTML = "Editar";
+
+    boton.onclick = function(){
+        var db = firebase.firestore(); 
+        let washingtonRef = db.collection("post").doc(id);
+        // Set the "capital" field of the city 'DC'
+
+        var tituloPublicacion = document.getElementById('tituloPublicacion').value;
+        var textoPublicacion = document.getElementById('textoPublicacion').value;
+        
+        return washingtonRef.update({
+            titulo : tituloPublicacion,
+            texto: textoPublicacion,
+        })
+        .then(function() {
+            console.log("Document successfully updated!");
+            boton.innerHTML = "Publicar"
+        })
+        .catch(function(error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+    
+    }
+    
+    }
+
+   
