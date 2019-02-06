@@ -100,7 +100,6 @@ nav{
 }
 nav #second-ul{
 	display: flex;
-	background: #FFF;
 	margin: 0;
 	padding: 0 50px;
 	float: right;
