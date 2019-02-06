@@ -60,7 +60,6 @@ observador = () => {
 }
 observador();
 
-
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
 aparece = user => {
     //var user = user;
@@ -184,8 +183,7 @@ user.sendEmailVerification()
 
 //GOOGLE
 document.getElementById("button-google").addEventListener("click",() => {
-
-    var provider = new firebase.auth.GoogleAuthProvider();
+    let provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithRedirect(provider)
     .then(result => {
         alert("Exito google")
@@ -237,9 +235,9 @@ firebase.auth().onAuthStateChanged( user => {
 guardar = () => {
     let tituloPublicacion = document.getElementById("tituloPublicacion").value;
     let textoPublicacion = document.getElementById("textoPublicacion").value;
-    let fechaPublicacion = new Date(); 
+    let fechaPublicacion = new Date();
 
-    var db = firebase.firestore(); 
+     var db = firebase.firestore(); 
 
     db.collection("users").doc(user.uid).set({ 
         email: user.email, 
@@ -281,4 +279,3 @@ eliminar = (id) => {
         console.error("Error removing document: ", error);
     });
 }
-
