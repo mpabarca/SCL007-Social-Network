@@ -92,8 +92,7 @@ db.collection("post").onSnapshot(querySnapshot => {
         
         console.log(doc.data())
         contenido2.innerHTML = contenido2.innerHTML + 
-        ` <div class="comments-container">
-        <ul id="comments-list" class="comments-list">
+        `<ul id="comments-list" class="comments-list">
         <li>
         <div class="comment-main-level"><div class="row">
                 <img class="comment-avatar col-1" src="${user.photoURL}" alt="">
@@ -115,8 +114,7 @@ db.collection("post").onSnapshot(querySnapshot => {
         </div></div>
 
     </li>
-</ul>
-</div> `
+</ul>`
 
     });
     //contenido2 = "";
@@ -124,10 +122,6 @@ db.collection("post").onSnapshot(querySnapshot => {
 });
 
 }
-
-   
-
-
 
 /*ESTO SE MUESTRA EN CASO DE NO ESTAR LOGUEADO
 apareceNousuario = () => {
