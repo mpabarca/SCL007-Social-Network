@@ -1,6 +1,4 @@
 //REGISTRO USUARIO VIA MAIL Y CLAVE
-
-
 document.getElementById("registro").addEventListener("click",() => {
     let email = document.getElementById('email').value;
     let contrasena = document.getElementById('contrasena').value;
@@ -80,43 +78,50 @@ aparece = user => {
 
             <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
             <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
-            <button id="botonGuardar" onclick="guardar()">Publicar</button>                   
-        `;
+            <button id="botonGuardar" onclick="guardar()">Publicar</button>
+             `;
     }  
 
-    //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
-    db.collection("post").onSnapshot(querySnapshot => {
-        contenido2.innerHTML = "";
-        querySnapshot.docs.forEach(doc => {
-            console.log(doc.data())
-            contenido2.innerHTML = contenido2.innerHTML + `
-            
-            <br/><br/><br/>
-            <div class="comments-container">
-            <ul id="comments-list" class="comments-list">
-            <li>
-            <div class="comment-main-level"><div class="row">
-                    <img class="comment-avatar col-1" src="${user.photoURL}" alt=""> 
-            <div class="comment-box col-11">
-            <div class="comment-head">
-            <h6 class="comment-name by-author">${doc.data().displayName}, ${doc.data().email}</a></h6>
-            <span>${doc.Date.f}</span>
-            <i class="fa fa-reply"></i>
-            <i class="fa fa-heart"></i>
-            </div>
+
+//MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
+let contenido2 = document.getElementById('contenido2');
+
+db.collection("post").onSnapshot(querySnapshot => {
+    contenido2.innerHTML = "";
+    querySnapshot.docs.forEach(doc => {
+        
+        console.log(doc.data())
+        contenido2.innerHTML = contenido2.innerHTML + 
+        `<ul id="comments-list" class="comments-list">
+        <li>
+        <div class="comment-main-level"><div class="row">
+                <img class="comment-avatar col-1" src="${user.photoURL}" alt="">
+        <div class="comment-box col-11">
+        <div class="comment-head">
+        <h6 class="comment-name by-author">${doc.data().displayName}, ${doc.data().email}</a></h6>
+        <span>hace 20 minutos</span>
+        
+        <i class="fa fa-trash" onclick="eliminar('${doc.id}')"></i>
+        <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
+        <i class="fa fa-reply"></i>
+        <i class="fa fa-heart"></i>
+               
+        </div>
             <div class="comment-content">
-                    <p>Titulo: ${doc.data().titulo}</p> 
-                    <p>Texto: ${doc.data().texto} </p> 
-                    </div>
-                    </div>
-            </div></div>
-        </li>
-    </ul>
-</div>
-        `
-        });
-    contenido = "";
+                <p>Titulo: ${doc.data().titulo}</p>
+                <p>Texto: ${doc.data().texto} </p>        
+             </div>
+         </div>
+        </div></div>
+
+    </li>
+</ul>`
+
     });
+    //contenido2 = "";
+
+});
+
 }
 
 /*ESTO SE MUESTRA EN CASO DE NO ESTAR LOGUEADO
@@ -203,7 +208,7 @@ document.getElementById("forgot-pass").addEventListener("click",() => {
 
  //STORAGE GUARDAR DATOS EN FIRE
 
-firebase.auth().onAuthStateChanged(function(user) {
+firebase.auth().onAuthStateChanged( user => {
 guardar = () => {
     let tituloPublicacion = document.getElementById("tituloPublicacion").value;
     let textoPublicacion = document.getElementById("textoPublicacion").value;
@@ -223,10 +228,10 @@ guardar = () => {
         uid: user.uid,
         email: user.email, 
         displayName: user.displayName,
-
+        comentarios : 0,
+        like: 0, 
     })
-    
-    
+   
     .then(function(docRef) {
         document.getElementById("tituloPublicacion").value = ''; //Limpiar
         document.getElementById("textoPublicacion").value = ''; // Limpiar
@@ -240,9 +245,48 @@ guardar = () => {
     });
 
 
-//LEER DATOS EN CONSOLA
+//BORRAR DATOS
+eliminar = (id) => {
+    var db = firebase.firestore(); 
 
+    db.collection("post").doc(id).delete()
+        .then(() => {
+        console.log("Post borrado");
+    }).catch(error => {
+        console.error("Error removing document: ", error);
+    });
+}
 
- //la volvi a declarar por quE no medejaba continuaR, luego mirar con window
+//EDITAR DATOS
+function editar(id, tituloPublicacion, textoPublicacion){
+    document.getElementById('tituloPublicacion').value = tituloPublicacion;
+    document.getElementById('textoPublicacion').value = textoPublicacion;
+    var boton = document.getElementById('botonGuardar');
+    boton.innerHTML = "Editar";
 
-//db.collection('users').doc('user.uid').collection('post')
+    boton.onclick = function(){
+        var db = firebase.firestore(); 
+        let washingtonRef = db.collection("post").doc(id);
+        // Set the "capital" field of the city 'DC'
+
+        var tituloPublicacion = document.getElementById('tituloPublicacion').value;
+        var textoPublicacion = document.getElementById('textoPublicacion').value;
+        
+        return washingtonRef.update({
+            titulo : tituloPublicacion,
+            texto: textoPublicacion,
+        })
+        .then(function() {
+            console.log("Document successfully updated!");
+            boton.innerHTML = "Publicar"
+        })
+        .catch(function(error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+    
+    }
+    
+    }
+
+   
