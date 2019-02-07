@@ -61,7 +61,6 @@ observador = () => {
 }
 observador();
 
-
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
 aparece = user => {
     //var user = user;
@@ -88,7 +87,13 @@ aparece = user => {
             <button id="botonGuardar" onclick="guardar()">Publicar</button>
              `;
     }  
-
+    
+    document.addEventListener('click', function(){
+        document.getElementById('log-out').style.display="block";
+        document.getElementById("first-view").style.display="block";
+    
+    });
+    
 
 //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
 let contenido2 = document.getElementById('contenido2');
@@ -115,16 +120,18 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <div class="comment-head">
             <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
             <span>hace 20 minutos</span>
-            
+                       
             <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
             <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
             <i class="fa fa-reply"></i>
-            <i class="fa fa-heart"></i>
+            <i value="+1" class="fa fa-heart" onclick="like('${doc.id}')"> ${doc.data().like}</i>           
                    
             </div>
                 <div class="comment-content">
                     <p>Titulo: ${doc.data().titulo}</p>
-                    <p>Texto: ${doc.data().texto} </p>        
+                    <p>Texto: ${doc.data().texto} </p> 
+                     
+                         
                  </div>
              </div>
             </div></div>
@@ -149,7 +156,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <span>hace 20 minutos</span>
             
             <i class="fa fa-reply"></i>
-            <i class="fa fa-heart">${doc.data().like}</i>
+            <i id"clickme" class="fa fa-heart"> ${doc.data().like}</i>           
                    
             </div>
                 <div class="comment-content">
@@ -165,6 +172,8 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
         }
     });
 });
+
+
 }
 
 //CERAR SESION USUARIOS LOG
@@ -189,8 +198,7 @@ user.sendEmailVerification()
 
 //GOOGLE
 document.getElementById("button-google").addEventListener("click",() => {
-
-    var provider = new firebase.auth.GoogleAuthProvider();
+    let provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithRedirect(provider)
     .then(result => {
         alert("Exito google")
@@ -242,9 +250,9 @@ firebase.auth().onAuthStateChanged( user => {
 guardar = () => {
     let tituloPublicacion = document.getElementById("tituloPublicacion").value;
     let textoPublicacion = document.getElementById("textoPublicacion").value;
-    let f = new Date(); (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
-    
-    var db = firebase.firestore(); 
+    let fechaPublicacion = new Date();
+
+     var db = firebase.firestore(); 
 
     db.collection("users").doc(user.uid).set({ 
         email: user.email, 
@@ -254,15 +262,15 @@ guardar = () => {
     db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "POST"
         titulo : tituloPublicacion,
         texto: textoPublicacion,
-        fecha: f,
+        fecha: fechaPublicacion,
         uid: user.uid,
         email: user.email, 
         displayName: user.displayName,
         comentarios : 0,
         like: 0, 
     })
-   
-    .then(function(docRef) {
+
+    .then(docRef => {
         document.getElementById("tituloPublicacion").value = ''; //Limpiar
         document.getElementById("textoPublicacion").value = ''; // Limpiar
         console.log("Se subio a dataBase correctamente")
@@ -274,22 +282,11 @@ guardar = () => {
      
     });
 
+    
 //BORRAR DATOS
 eliminar = (id) => {
     var db = firebase.firestore(); 
     confirm("Estas seguro que quieres eliminarlo?")
-    db.collection("post").doc(id).delete()
-        .then(() => {
-        console.log("Post borrado");
-    }).catch(error => {
-        console.error("Error removing document: ", error);
-    });
-}
-
-//BORRAR DATOS
-eliminar = (id) => {
-    var db = firebase.firestore(); 
-
     db.collection("post").doc(id).delete()
         .then(() => {
         console.log("Post borrado");
@@ -325,9 +322,5 @@ function editar(id, tituloPublicacion, textoPublicacion){
             // The document probably doesn't exist.
             console.error("Error updating document: ", error);
         });
-    
-    }
-    
-    }
-
-   
+    }    
+}
