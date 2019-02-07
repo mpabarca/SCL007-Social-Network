@@ -82,20 +82,51 @@ aparece = user => {
         <p>Bienvenidx a Medicina Natural</p> <br/>                  
         `;
         userPost.innerHTML = `
-            <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
-            <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
-            <button id="botonGuardar" onclick="guardar()">Publicar</button>
-             `;
-    }  
-    
-    let bntcerrar = document.getElementById('button-log-out')
-    bntcerrar.addEventListener('click', function(){
-        document.getElementById('log-out').style.display="block";
-        document.getElementById("first-view").style.display="block";
-        document.getElementById("second-view").style.display="none";
-    
-    });
-    
+        <div class="row">
+            <div class="row">
+                <img class="imagen-perfil col-2" src="${user.photoURL}" alt="">
+                <div class="col-10">
+                    <div class="row"><input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"></div>
+                    <div class="row"><input class="comment-content" type="text" id="textoPublicacion" placeholder="Ingresa texto"></div>
+                </div>
+            </div>
+            <div class="row">
+                <select  id="select-what"class="col-6">
+                    <option value="">Qué es?</option> 
+                    <option value="dude">Consulta</option>
+                    <option value="solution">Solución</option>
+                </select>
+                <select  id="select-social" class="col-6">
+                    <option value="">Quién lo verá?</option> 
+                    <option value="public">Público</option>
+                    <option value="friends">Amigos</option>
+                </select>
+            </div>   
+            <div class="row">
+                <button id="botonGuardar" onclick="guardar()">Publicar</button>
+            </div>
+        </div>          
+        `;
+    } 
+let bntcerrar = document.getElementById('button-log-out')
+bntcerrar.addEventListener('click', function(){
+    document.getElementById('log-out').style.display="block";
+    document.getElementById("first-view").style.display="block";
+    document.getElementById("second-view").style.display="none";
+
+}); 
+//FUNCION PARA CONVERTIR TIMESTRAMP A FECHA HUMANA
+function timeConverter(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp * 1000);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min ;
+    return time;
+  }
 
 //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
 let contenido2 = document.getElementById('contenido2');
@@ -111,7 +142,10 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
         if (user.uid === doc.data().uid) { //si el id del usuario registrado es igual al uid del post registrado entonces... 
             //console.log ("Se muestre icono borrar")
             //console.log ("Se muestre icono editar")
-
+            
+            let timestamp=doc.data().fecha;
+            let dateTimestamp= timestamp.seconds;
+            let date = timeConverter(dateTimestamp);
             contenido2.innerHTML = contenido2.innerHTML + 
             ` <div class="comments-container">
             <ul id="comments-list" class="comments-list">
@@ -121,7 +155,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <div class="comment-box col-11">
             <div class="comment-head">
             <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
-            <span>hace 20 minutos</span>
+            <span>${date}</span>
                        
             <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
             <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
@@ -138,9 +172,9 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
              </div>
             </div></div>
     
-        </li>
-    </ul>
-    </div> `
+            </li>
+        </ul>
+        </div> `
 
         }else{
            // console.log ("NO muestre icono borrar")
