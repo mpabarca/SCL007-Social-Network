@@ -114,18 +114,16 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <div class="comment-head">
             <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
             <span>hace 20 minutos</span>
-            
+                       
             <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
             <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
             <i class="fa fa-reply"></i>
-            <i class="fa fa-heart"></i>
+            <i value="+1" class="fa fa-heart" onclick="like('${doc.id}')"> ${doc.data().like}</i>           
                    
             </div>
                 <div class="comment-content">
                     <p>Titulo: ${doc.data().titulo}</p>
-                    <p>Texto: ${doc.data().texto} </p>
-                    <p>Fecha: ${doc.data().fecha} </p>  
-  
+                    <p>Texto: ${doc.data().texto} </p> 
                          
                  </div>
              </div>
@@ -151,7 +149,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <span>hace 20 minutos</span>
             
             <i class="fa fa-reply"></i>
-            <i class="fa fa-heart"></i>
+            <i id"clickme" class="fa fa-heart"> ${doc.data().like}</i>           
                    
             </div>
                 <div class="comment-content">
@@ -167,6 +165,8 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
         }
     });
 });
+
+
 }
 
 //CERAR SESION USUARIOS LOG
@@ -315,7 +315,5 @@ function editar(id, tituloPublicacion, textoPublicacion){
             // The document probably doesn't exist.
             console.error("Error updating document: ", error);
         });
-    
-    }
-    
-    }
+    }    
+}
