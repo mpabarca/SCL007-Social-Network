@@ -86,6 +86,51 @@ footer{
 }
 */
 
+/* ---- NAVBAR ---- */
+nav{
+	width: 100%;
+	height: 60px;
+	margin-bottom: 5%;
+	border-top: 1px solid rgba(255,255,255,.2);
+	border-bottom: 1px solid rgba(255,255,255,.2);
+	/*position: sticky;
+	top: 0;*/
+	
+}
+nav #second-ul{
+	display: flex;
+	margin: 0;
+	padding: 0 50px;
+	float: right;
+}
+nav ul li{
+	list-style: none;
+	text-align: center;
+	display: block;
+	padding: 2%;
+}
+nav ul li a{
+	text-decoration: none;
+	padding: 0 20px;
+	display: block;
+	line-height: 50px;
+}
+#button-log-out{
+	background: none;
+	border: none;
+	position: relative;
+}
+#log-out{
+	font-size:25px;
+	line-height: 50px;
+	margin-left: 60%;
+	color: #999;
+	cursor: pointer;
+}
+
+
+
+
 /* ---- DISEÑO TIMELINE MOBILE FIRST ---- */
 /* MENU USUARIO */
 .imagen-perfil{
@@ -96,7 +141,7 @@ footer{
 /* Lista de Comentarios */
 .comments-container {
 	margin: 60px auto 15px;
-  width: 250px;
+  width: 90%;
   margin-bottom: 10%;
 }
 
@@ -114,8 +159,8 @@ footer{
 
 /* Avatar */
 .comments-list .comment-avatar {
-	width: 65px;
-	height: 65px;
+	width: 50px;
+	height: 50px;
 	position: relative;
 	z-index: 99;
 	float: left;
@@ -149,7 +194,7 @@ footer{
 	position: relative;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
-	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 }
 
 .comments-list .comment-box:before, .comments-list .comment-box:after {
@@ -229,16 +274,22 @@ footer{
 
 	.comments-list .comment-box {
 		width: 390px;
-	}
+  }
+  
 } 
 @media only screen and (min-width: 767px) {
 	.comments-container {
-		width:767px ;
+		width:90% ;
 	}
 
 	.comments-list .comment-box {
-		width:623px ;
-	}
+		width:85% ;
+  }
+  .imagen-perfil{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+  }
 }
 @media only screen and (min-width: 950px) {
   .comments-container {
@@ -247,5 +298,10 @@ footer{
 
 	.comments-list .comment-box {
 		width: 680px;
-	}
+  }
+  .imagen-perfil{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+  }
 } 
