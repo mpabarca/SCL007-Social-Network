@@ -149,7 +149,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <span>hace 20 minutos</span>
             
             <i class="fa fa-reply"></i>
-            <i class="fa fa-heart"></i>
+            <i class="fa fa-heart">${doc.data().like}</i>
                    
             </div>
                 <div class="comment-content">
