@@ -141,7 +141,7 @@ nav ul li a{
 /* Lista de Comentarios */
 .comments-container {
 	margin: 60px auto 15px;
-  width: 250px;
+  width: 90%;
   margin-bottom: 10%;
 }
 
@@ -159,8 +159,8 @@ nav ul li a{
 
 /* Avatar */
 .comments-list .comment-avatar {
-	width: 65px;
-	height: 65px;
+	width: 50px;
+	height: 50px;
 	position: relative;
 	z-index: 99;
 	float: left;
@@ -274,16 +274,22 @@ nav ul li a{
 
 	.comments-list .comment-box {
 		width: 390px;
-	}
+  }
+  
 } 
 @media only screen and (min-width: 767px) {
 	.comments-container {
-		width:767px ;
+		width:90% ;
 	}
 
 	.comments-list .comment-box {
-		width:623px ;
-	}
+		width:85% ;
+  }
+  .imagen-perfil{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+  }
 }
 @media only screen and (min-width: 950px) {
   .comments-container {
@@ -292,5 +298,10 @@ nav ul li a{
 
 	.comments-list .comment-box {
 		width: 680px;
-	}
+  }
+  .imagen-perfil{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+  }
 } 
