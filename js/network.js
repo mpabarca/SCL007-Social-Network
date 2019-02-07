@@ -84,10 +84,16 @@ aparece = user => {
         userPost.innerHTML = `
             <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
             <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
-            <button id="botonGuardar" onclick="guardar()">Publicar</button>                   
-        `;
+            <button id="botonGuardar" onclick="guardar()">Publicar</button>
+             `;
     }  
-
+    
+    document.addEventListener('click', function(){
+        document.getElementById('log-out').style.display="block";
+        document.getElementById("first-view").style.display="block";
+    
+    });
+    
 
 //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
 let contenido2 = document.getElementById('contenido2');
@@ -124,6 +130,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                 <div class="comment-content">
                     <p>Titulo: ${doc.data().titulo}</p>
                     <p>Texto: ${doc.data().texto} </p> 
+                     
                          
                  </div>
              </div>
@@ -179,10 +186,10 @@ cerrar = () => {
 verificar = () => {
     let user = firebase.auth().currentUser;
 user.sendEmailVerification()
-    .then( () => {
-    // Email sent
-    alert('verifica la cuenta desde tu correo')
-    console.log('enviando correo')
+    .then(function() {
+  // Email sent.
+     console.log('enviando correo')
+     alert("Revisa tu correo")
 })
     .catch(error => {
     console.log('No se envio el correo')
