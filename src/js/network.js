@@ -72,7 +72,7 @@ aparece = user => {
     let outMenu = document.getElementById('out-menu');
     let userPost = document.getElementById('user-post');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
-        var item = document.getElementById("first-view").style.display = "none"
+        document.getElementById("first-view").style.display = "none"
         userMenu.innerHTML = "";
         outMenu.innerHTML = "";
         userMenu.innerHTML = `<img class="imagen-perfil" src="${user.photoURL}" alt="">`;
@@ -91,6 +91,7 @@ aparece = user => {
     document.addEventListener('click', function(){
         document.getElementById('log-out').style.display="block";
         document.getElementById("first-view").style.display="block";
+        document.getElementById("second-view").style.display="none";
     
     });
     
