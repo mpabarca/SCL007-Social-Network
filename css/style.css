@@ -127,6 +127,13 @@ nav ul li a{
 	color: #999;
 	cursor: pointer;
 }
+/* ---- DISEÑO POSTING MOBILE FIRST ---- */
+.posting-container{
+  margin: 60px auto 15px;
+  width: 90%;
+  margin-bottom: 10%;
+  margin-top: 5%;
+}
 /* ---- DISEÑO TIMELINE MOBILE FIRST ---- */
 /* MENU USUARIO */
 .imagen-perfil{
