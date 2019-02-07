@@ -61,7 +61,6 @@ observador = () => {
 }
 observador();
 
-
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
 aparece = user => {
     //var user = user;
@@ -117,13 +116,17 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <span>hace 20 minutos</span>
             
             <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
+            <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
             <i class="fa fa-reply"></i>
             <i class="fa fa-heart"></i>
                    
             </div>
                 <div class="comment-content">
                     <p>Titulo: ${doc.data().titulo}</p>
-                    <p>Texto: ${doc.data().texto} </p>        
+                    <p>Texto: ${doc.data().texto} </p>
+                    <p>Fecha: ${doc.data().fecha} </p>  
+  
+                         
                  </div>
              </div>
             </div></div>
@@ -188,8 +191,7 @@ user.sendEmailVerification()
 
 //GOOGLE
 document.getElementById("button-google").addEventListener("click",() => {
-
-    var provider = new firebase.auth.GoogleAuthProvider();
+    let provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithRedirect(provider)
     .then(result => {
         alert("Exito google")
@@ -241,9 +243,9 @@ firebase.auth().onAuthStateChanged( user => {
 guardar = () => {
     let tituloPublicacion = document.getElementById("tituloPublicacion").value;
     let textoPublicacion = document.getElementById("textoPublicacion").value;
-    let f = new Date(); (f.getDate() + "/" + (f.getMonth() +1) + "/" + f.getFullYear());
-    
-    var db = firebase.firestore(); 
+    let fechaPublicacion = new Date();
+
+     var db = firebase.firestore(); 
 
     db.collection("users").doc(user.uid).set({ 
         email: user.email, 
@@ -253,14 +255,14 @@ guardar = () => {
     db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "POST"
         titulo : tituloPublicacion,
         texto: textoPublicacion,
-        fecha: f,
+        fecha: fechaPublicacion,
         uid: user.uid,
         email: user.email, 
         displayName: user.displayName,
         comentarios : 0,
         like: 0, 
     })
-   
+
     .then(docRef => {
         document.getElementById("tituloPublicacion").value = ''; //Limpiar
         document.getElementById("textoPublicacion").value = ''; // Limpiar
@@ -273,6 +275,7 @@ guardar = () => {
      
     });
 
+    
 //BORRAR DATOS
 eliminar = (id) => {
     var db = firebase.firestore(); 
@@ -285,3 +288,34 @@ eliminar = (id) => {
     });
 }
 
+//EDITAR DATOS
+function editar(id, tituloPublicacion, textoPublicacion){
+    document.getElementById('tituloPublicacion').value = tituloPublicacion;
+    document.getElementById('textoPublicacion').value = textoPublicacion;
+    var boton = document.getElementById('botonGuardar');
+    boton.innerHTML = "Editar";
+
+    boton.onclick = function(){
+        var db = firebase.firestore(); 
+        let washingtonRef = db.collection("post").doc(id);
+        // Set the "capital" field of the city 'DC'
+
+        var tituloPublicacion = document.getElementById('tituloPublicacion').value;
+        var textoPublicacion = document.getElementById('textoPublicacion').value;
+        
+        return washingtonRef.update({
+            titulo: tituloPublicacion,
+            texto: textoPublicacion,
+        })
+        .then(function() {
+            console.log("Document successfully updated!");
+            boton.innerHTML = "Publicar"
+        })
+        .catch(function(error) {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+    
+    }
+    
+    }
