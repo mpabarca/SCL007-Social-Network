@@ -1,4 +1,3 @@
-document.getElementById("second-view").style.display="none";
 //REGISTRO USUARIO VIA MAIL Y CLAVE
 document.getElementById("registro").addEventListener("click",() => {
     let email = document.getElementById('email').value;
@@ -64,36 +63,24 @@ observador();
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
 aparece = user => {
     //var user = user;
-    document.getElementById("second-view").style.display="block";
+
     //DATOS DE LA CUENTA 
     let db = firebase.firestore();
     let contenido = document.getElementById('contenido');
-    let userMenu = document.getElementById('user-menu');
-    let outMenu = document.getElementById('out-menu');
-    let userPost = document.getElementById('user-post');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         var item = document.getElementById("first-view").style.display = "none"
-        userMenu.innerHTML = "";
-        outMenu.innerHTML = "";
-        userMenu.innerHTML = `<img class="imagen-perfil" src="${user.photoURL}" alt="">`;
-        outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
         contenido.innerHTML = `
+        <img class="imagen-perfil" src="${user.photoURL}" alt="">
+        <button onclick="cerrar()">Cerrar Sesion</button>
         <p>Hola ${user.displayName} </p>
-        <p>Bienvenidx a Medicina Natural</p> <br/>                  
-        `;
-        userPost.innerHTML = `
+        <p>Bienvenidx a Medicina Natural</p> <br/>
+
             <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
             <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
-            <button id="botonGuardar" onclick="guardar()">Publicar</button>
-             `;
+            <button id="botonGuardar" onclick="guardar()">Publicar</button>                   
+        `;
     }  
-    
-    document.addEventListener('click', function(){
-        document.getElementById('log-out').style.display="block";
-        document.getElementById("first-view").style.display="block";
-    
-    });
-    
+
 
 //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
 let contenido2 = document.getElementById('contenido2');
@@ -120,17 +107,17 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <div class="comment-head">
             <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
             <span>hace 20 minutos</span>
-                       
+            
             <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
-            <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
             <i class="fa fa-reply"></i>
-            <i value="+1" class="fa fa-heart" onclick="like('${doc.id}')"> ${doc.data().like}</i>           
+            <i class="fa fa-heart"></i>
                    
             </div>
                 <div class="comment-content">
                     <p>Titulo: ${doc.data().titulo}</p>
-                    <p>Texto: ${doc.data().texto} </p> 
-                     
+                    <p>Texto: ${doc.data().texto} </p>
+                    <p>Fecha: ${doc.data().fecha} </p>  
+  
                          
                  </div>
              </div>
@@ -156,7 +143,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <span>hace 20 minutos</span>
             
             <i class="fa fa-reply"></i>
-            <i id"clickme" class="fa fa-heart"> ${doc.data().like}</i>           
+            <i class="fa fa-heart"></i>
                    
             </div>
                 <div class="comment-content">
@@ -172,8 +159,6 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
         }
     });
 });
-
-
 }
 
 //CERAR SESION USUARIOS LOG
@@ -186,10 +171,10 @@ cerrar = () => {
 verificar = () => {
     let user = firebase.auth().currentUser;
 user.sendEmailVerification()
-    .then(function() {
-  // Email sent.
-     console.log('enviando correo')
-     alert("Revisa tu correo")
+    .then( () => {
+    // Email sent
+    alert('verifica la cuenta desde tu correo')
+    console.log('enviando correo')
 })
     .catch(error => {
     console.log('No se envio el correo')
@@ -293,34 +278,4 @@ eliminar = (id) => {
     }).catch(error => {
         console.error("Error removing document: ", error);
     });
-}
-
-//EDITAR DATOS
-function editar(id, tituloPublicacion, textoPublicacion){
-    document.getElementById('tituloPublicacion').value = tituloPublicacion;
-    document.getElementById('textoPublicacion').value = textoPublicacion;
-    var boton = document.getElementById('botonGuardar');
-    boton.innerHTML = "Editar";
-
-    boton.onclick = function(){
-        var db = firebase.firestore(); 
-        let washingtonRef = db.collection("post").doc(id);
-        // Set the "capital" field of the city 'DC'
-
-        var tituloPublicacion = document.getElementById('tituloPublicacion').value;
-        var textoPublicacion = document.getElementById('textoPublicacion').value;
-        
-        return washingtonRef.update({
-            titulo: tituloPublicacion,
-            texto: textoPublicacion,
-        })
-        .then(function() {
-            console.log("Document successfully updated!");
-            boton.innerHTML = "Publicar"
-        })
-        .catch(function(error) {
-            // The document probably doesn't exist.
-            console.error("Error updating document: ", error);
-        });
-    }    
 }
