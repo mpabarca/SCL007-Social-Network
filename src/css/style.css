@@ -293,6 +293,11 @@ nav ul li a{
     height: 50px;
     border-radius: 30px;
   }
+  .imagen-perfil{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+  }
 }
 @media only screen and (min-width: 950px) {
   .comments-container {
@@ -301,6 +306,11 @@ nav ul li a{
 
 	.comments-list .comment-box {
 		width: 680px;
+  }
+  .imagen-perfil{
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
   }
   .imagen-perfil{
     width: 50px;
