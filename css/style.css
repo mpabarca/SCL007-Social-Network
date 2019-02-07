@@ -1,6 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-
-/* ---- DISEÑO LOGIN MOBILE-FIRST ---- */    
+html {
+    background-image: url("http://subirimagen.me/uploads/20190207144004.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(1);
+    background-blend-mode: soft-light;
+    margin: 0;
+    padding: 0;
+    
+  }
+/* ---- DISEÑO LOGIN MOBILE-FIRST  
 .container {
   width: 60%;
   margin: 0 auto;
@@ -55,6 +66,11 @@
    background-color: white;
    color:  #AFAFAF;
 }
+#description{
+   text-align: center;
+   font-family: 'Roboto', sans-serif;
+} ---- */  
+
 #button-facebook, #button-google{
    width: 44px;
    height: 44px;
@@ -68,10 +84,7 @@
    width: 44px;
    height: 44px;
 }
-#description{
-   text-align: center;
-   font-family: 'Roboto', sans-serif;
-}
+
 /* 
 footer{
    font-family: 'Roboto', sans-serif;
@@ -303,7 +316,6 @@ nav ul li a{
   .comments-container {
 		width:768px ;
 	}
-
 	.comments-list .comment-box {
 		width: 680px;
   }
@@ -316,5 +328,12 @@ nav ul li a{
     width: 50px;
     height: 50px;
     border-radius: 30px;
+  }
+  html {
+	background-image: url("../nature.jpeg");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
   }
 } 
