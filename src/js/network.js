@@ -84,22 +84,6 @@ aparece = user => {
         </div>                 
         `;
         userPost.innerHTML = `
-<<<<<<< HEAD
-            <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
-            <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
-            <button id="botonGuardar" onclick="guardar()">Publicar</button>
-             `;
-    }  
-    
-    let bntcerrar = document.getElementById('button-log-out');
-    bntcerrar.addEventListener('click', function(){
-        document.getElementById('log-out').style.display="block";
-        document.getElementById("first-view").style.display="block";
-        document.getElementById("second-view").style.display="none";
-    
-    });
-    
-=======
         <div class="row">
             <div class="row" id="posting">
                 <div class="row"><input class="post-tittle" type="text" id="tituloPublicacion" placeholder="Ingresa titulo"></div>
@@ -142,7 +126,6 @@ function timeConverter(UNIX_timestamp){
     var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min ;
     return time;
   }
->>>>>>> 4318865c34d57fa4361fa10bdf849e85149cad9d
 
 //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
 let contenido2 = document.getElementById('contenido2');
