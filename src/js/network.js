@@ -91,9 +91,9 @@ aparece = user => {
             </div>
             <div class="row" id="select">
                 <select  id="select-what"class="col-6">
-                    <option value="">Qué es?</option> 
-                    <option value="dude">Consulta</option>
-                    <option value="solution">Solución</option>
+                    <option value="">Elige una categoría</option> 
+                    <option value="dude">Pregunta</option>
+                    <option value="solution">Recomendación</option>
                 </select>
                 <select  id="select-social" class="col-6">
                     <option value="">Quién lo verá?</option> 
