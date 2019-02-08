@@ -88,7 +88,7 @@ aparece = user => {
              `;
     }  
     
-    let bntcerrar = document.getElementById('button-log-out')
+    let bntcerrar = document.getElementById('button-log-out');
     bntcerrar.addEventListener('click', function(){
         document.getElementById('log-out').style.display="block";
         document.getElementById("first-view").style.display="block";
