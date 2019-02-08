@@ -1,60 +1,137 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-
-/* ---- DISEÑO LOGIN MOBILE-FIRST ---- */    
-.container {
-  width: 60%;
-  margin: 0 auto;
-  margin-bottom: 5%;
-  padding: 0 auto;
-  min-height: 100vh;
-}
-#container-logo{
-   width: 80%;
-   float: none;
-   margin-left: 40%;
-}
-#logo{
-   font-size: 50px;
-}
-#datos {
-   width: 80%;
-   margin: 11%;
-   font-family: 'Roboto', sans-serif;
-}
-#botones{
-   width: 80%;
-   margin: 0 auto;
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:700');
+html {
+    background-image: url("http://subirimagen.me/uploads/20190207144004.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(1);
+    background-blend-mode: soft-light;
+    margin: 0;
+	padding: 0;
+	font-family: Roboto;    
+  }
+  /* ---- LOGIN MOBILE FIRST ---- */
+  .loginBox{
+    position:absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80%;
+    height: 50%;
+    padding: 30px 40px;
+    box-sizing: border-box;
+	border-radius: 30px;
+	background: white;
 } 
-#email, #contrasena{
-   margin-top: 5%;
-   width: 100%;
+/* IMAGEN USUARIO CENTRADO ARRIBA DE CAJA LOGIN */
+.logo{
+	width: 231px;
+	height: 106px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: calc(-150px/2);
+    left: calc(30% - 40px);
 }
-#redes{
-   width: 91%;
-   margin: 0 auto;
-   float: none;
-   text-align: center;
+h2 , h3{
+    margin: 0;
+    padding: 0;
+	text-align: center;
+	margin-bottom: 5%;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
 }
-#acceder, #registro, #forgot-pass{
-   padding: 2%;
-   margin: 2%; 
-   width: 100%;
-   height: 5%;
-   text-align: center;
-   border-radius: 10px;
-   border: none;
-   font-family: 'Roboto', sans-serif;
-   font-size: 13px;
-   background: #AFAFAF;
-   
+h2{
+	margin-top: 10%;
+	font-family: Roboto;
+	color: #949494;
 }
-#acceder, #registro{
-   color:white;
+h3{
+	margin-top: 3%;
+	font-family: Roboto;
+	color: #797979;
 }
-#forgot-pass{
-   background-color: white;
-   color:  #AFAFAF;
+.loginBox p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #949494;;
 }
+.loginBox input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+#button-facebook, #button-google{
+    width: 44px;
+    height: 44px;
+    opacity: 0.95;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 150px;
+    border: none;
+    background: none;
+    cursor: pointer;
+ }
+ #icon-facebook, #icon-google{
+    width: 44px;
+    height: 44px;
+ }
+ #redes{
+	 text-align: center;
+ }
+/*SOLO LINEA ABAJO EN RELLENADO */
+.loginBox input[type="text"],
+.loginBox input[type="password"]{
+	width: 60%;
+    border:none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 30px;
+    font-family: Roboto;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 14px;
+	color: rgba(107, 107, 107, 0.5);
+}
+::placeholder{
+    color: rgba(255,255,255,.5);
+}
+#icon-placeholder{
+	padding-top: 2%;
+	color: gray;
+}
+.loginBox input[type="submit"]{
+    border:none;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+	margin-bottom: 5%;
+	background: #3B9463;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+}
+.loginBox input[type="submit"]:hover{
+    background: #efed40;
+    color: #262626;    
+}
+.loginBox a{
+	text-decoration: none;
+	font-style: normal;
+	font-weight: normal;
+	line-height: normal;
+	font-size: 13px;
+	color: #8D8D8D;
+	opacity: 0.6;
+	padding-left: 15%;
+}  
+
 #button-facebook, #button-google{
    width: 44px;
    height: 44px;
@@ -68,10 +145,7 @@
    width: 44px;
    height: 44px;
 }
-#description{
-   text-align: center;
-   font-family: 'Roboto', sans-serif;
-}
+
 /* 
 footer{
    font-family: 'Roboto', sans-serif;
@@ -86,7 +160,7 @@ footer{
 }
 */
 
-/* ---- NAVBAR ---- */
+/* ---- NAVBAR MOBILE FIRST ---- */
 nav{
 	width: 100%;
 	height: 60px;
@@ -127,6 +201,97 @@ nav ul li a{
 	color: #999;
 	cursor: pointer;
 }
+/* ---- DISEÑO POSTING MOBILE FIRST ---- */
+.container-welcome{
+	font-family: 'Amatic SC', cursive;
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 5%;
+	margin-bottom: 0;
+	padding-bottom: 0%;
+	font-size: 35px;
+	text-align: center;
+}
+.posting-container{
+  margin: 60px auto 15px;
+  width: 90%;
+  margin-bottom: 10%;
+  margin-top: 5%;
+}
+#posting{
+	width: 90%;
+	margin: 2%;
+	position: relative;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+}
+#posting:before, #posting:after {
+	content: '';
+	height: 0;
+	width: 0;
+	position: absolute;
+	display: block;
+	border-width: 10px 12px 10px 0;
+	border-style: solid;
+	border-color: transparent #C3FF9F;
+	top: 8px;
+	left: -11px;
+}
+.post-tittle{
+	width: 100%;
+	border:none;
+	outline: none;
+	background: #C3FF9F;
+	padding: 10px 12px;
+	border-bottom: 1px solid #E5E5E5;
+	overflow: hidden;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+}
+.post-content{
+	width: 100%;
+	border:none;
+	outline: none;
+	background: #FFF;
+	padding: 12px;
+	font-size: 15px;
+	color: #595959;
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+::placeholder{
+    color: gray;
+}
+#select{
+	width: 90%;
+	margin-left: 2%;
+}
+#botonGuardar{
+	border:none;
+    outline: none;
+	height: 40px;
+	width: 60%;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+	margin-bottom: 5%;
+	background: #3B9463;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+
+}
+#botonGuardar:hover{
+    background: #efed40;
+    color: #262626;    
+}
+#save{
+	margin-top: 5%;
+	text-align: center;
+}
+
 /* ---- DISEÑO TIMELINE MOBILE FIRST ---- */
 /* MENU USUARIO */
 .imagen-perfil{
@@ -190,7 +355,7 @@ nav ul li a{
 	position: relative;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
-  box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 }
 
 .comments-list .comment-box:before, .comments-list .comment-box:after {
@@ -252,7 +417,7 @@ nav ul li a{
 	top: 1px;
 }
 
-.comment-box .comment-content {
+.comment-content {
 	background: #FFF;
 	padding: 12px;
 	font-size: 15px;
@@ -286,18 +451,77 @@ nav ul li a{
     height: 50px;
     border-radius: 30px;
   }
+  .loginBox{
+    position:absolute;
+    top: 55%;
+    width: 350px;
+    height: 80%;
+	padding: 30px 40px;
+  }
+  h2 , h3{
+	margin-bottom: 5%;
+}
+h2{
+	font-size: 20px;
+}
+h3{
+	margin-top: 3%;
+	font-size: 17px;
+}
+.loginBox input[type="text"],
+.loginBox input[type="password"]{
+    height: 30px;
+    font-size: 14px;
+}
 }
 @media only screen and (min-width: 950px) {
-  .comments-container {
-		width:768px ;
-	}
+.comments-container {
+	width:768px ;
+}
+.comments-list .comment-box {
+	width: 680px;
+}
+.imagen-perfil{
+	width: 50px;
+	height: 50px;
+	border-radius: 30px;
+}
+  html {
+	background-image: url("../img/nature.jpeg");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+  }
+  .loginBox{
+    width: 350px;
+    height: 500px;
+    padding: 50px 40px;
+} 
+.logo{
+    top: calc(-250px/2);
+}
+h2 , h3{
+	font-family: Roboto;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+	margin-bottom: 5%;
+}
+h2{
+	font-size: 23px;
+}
+h3{
+	margin-top: 10%;
+	font-size: 19px;
+}
+.loginBox input[type="text"],
+.loginBox input[type="password"]{
+    height: 40px;
+    font-size: 16px;
+}
+.loginBox a{
+	padding-left: 25%;
+}  
 
-	.comments-list .comment-box {
-		width: 680px;
-  }
-  .imagen-perfil{
-    width: 50px;
-    height: 50px;
-    border-radius: 30px;
-  }
 } 
