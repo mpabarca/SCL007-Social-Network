@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:700');
 html {
     background-image: url("http://subirimagen.me/uploads/20190207144004.png");
     background-size: cover;
@@ -8,8 +9,8 @@ html {
     filter: blur(1);
     background-blend-mode: soft-light;
     margin: 0;
-    padding: 0;
-    
+	padding: 0;
+	font-family: Roboto;    
   }
   /* ---- LOGIN MOBILE FIRST ---- */
   .loginBox{
@@ -117,7 +118,6 @@ h3{
 }
 .loginBox a{
 	text-decoration: none;
-	font-family: Roboto;
 	font-style: normal;
 	font-weight: normal;
 	line-height: normal;
@@ -197,12 +197,96 @@ nav ul li a{
 	cursor: pointer;
 }
 /* ---- DISEÑO POSTING MOBILE FIRST ---- */
+.container-welcome{
+	font-family: 'Amatic SC', cursive;
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 5%;
+	margin-bottom: 0;
+	padding-bottom: 0%;
+	font-size: 35px;
+	text-align: center;
+}
 .posting-container{
   margin: 60px auto 15px;
   width: 90%;
   margin-bottom: 10%;
   margin-top: 5%;
 }
+#posting{
+	width: 90%;
+	margin: 2%;
+	position: relative;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+}
+#posting:before, #posting:after {
+	content: '';
+	height: 0;
+	width: 0;
+	position: absolute;
+	display: block;
+	border-width: 10px 12px 10px 0;
+	border-style: solid;
+	border-color: transparent #C3FF9F;
+	top: 8px;
+	left: -11px;
+}
+.post-tittle{
+	width: 100%;
+	border:none;
+	outline: none;
+	background: #C3FF9F;
+	padding: 10px 12px;
+	border-bottom: 1px solid #E5E5E5;
+	overflow: hidden;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+}
+.post-content{
+	width: 100%;
+	border:none;
+	outline: none;
+	background: #FFF;
+	padding: 12px;
+	font-size: 15px;
+	color: #595959;
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+::placeholder{
+    color: gray;
+}
+#select{
+	width: 90%;
+	margin-left: 2%;
+}
+#botonGuardar{
+	border:none;
+    outline: none;
+	height: 40px;
+	width: 60%;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+	margin-bottom: 5%;
+	background: #3B9463;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+
+}
+#botonGuardar:hover{
+    background: #efed40;
+    color: #262626;    
+}
+#save{
+	margin-top: 5%;
+	text-align: center;
+}
+
 /* ---- DISEÑO TIMELINE MOBILE FIRST ---- */
 /* MENU USUARIO */
 .imagen-perfil{
@@ -266,7 +350,7 @@ nav ul li a{
 	position: relative;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
-  box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 }
 
 .comments-list .comment-box:before, .comments-list .comment-box:after {
