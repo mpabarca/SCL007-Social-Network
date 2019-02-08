@@ -109,7 +109,7 @@ _"Como usuario quiero ver los estrenos de películas entre 2018 y 2019 para sabe
 
 ### Prototipo Media Fidelidad
 
-(AQUÍ IMAGEN PROTOTIPO MEDIA)
+![enter image description here](http://subirimagen.me/uploads/20190207205501.png)
 
 ### Prototipo Alta Fidelidad
 
