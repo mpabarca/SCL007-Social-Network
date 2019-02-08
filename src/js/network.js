@@ -48,6 +48,7 @@ observador = () => {
           let emailVerified = user.emailVerified;
           console.log(user.emailVerified)
           let photoURL = user.photoURL;
+          console.log (user.photoURL)
           let isAnonymous = user.isAnonymous;
           let uid = user.uid;
           console.log(user.uid)
@@ -293,7 +294,8 @@ guardar = () => {
 
     db.collection("users").doc(user.uid).set({ 
         email: user.email, 
-        displayName: user.displayName
+        displayName: user.displayName,
+        photo: user.photoURL
     });
 
     db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "POST"
@@ -305,6 +307,8 @@ guardar = () => {
         displayName: user.displayName,
         comentarios : 0,
         like: 0, 
+        photo: user.photoURL
+
     })
 
     .then(docRef => {
