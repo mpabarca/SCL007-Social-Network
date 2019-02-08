@@ -101,6 +101,10 @@ h3{
 ::placeholder{
     color: rgba(255,255,255,.5);
 }
+#icon-placeholder{
+	padding-top: 2%;
+	color: gray;
+}
 .loginBox input[type="submit"]{
     border:none;
     outline: none;
