@@ -78,19 +78,18 @@ aparece = user => {
         userMenu.innerHTML = `<img class="imagen-perfil" src="${user.photoURL}" alt="">`;
         outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
         contenido.innerHTML = `
+        <div class="container-welcome">
         <p>Hola ${user.displayName} </p>
-        <p>Bienvenidx a Medicina Natural</p> <br/>                  
+        <p>Bienvenidx a Medicina Natural</p> <br/> 
+        </div>                 
         `;
         userPost.innerHTML = `
         <div class="row">
-            <div class="row">
-                <img class="imagen-perfil col-2" src="${user.photoURL}" alt="">
-                <div class="col-10">
-                    <div class="row"><input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"></div>
-                    <div class="row"><input class="comment-content" type="text" id="textoPublicacion" placeholder="Ingresa texto"></div>
-                </div>
+            <div class="row" id="posting">
+                <div class="row"><input class="post-tittle" type="text" id="tituloPublicacion" placeholder="Ingresa titulo"></div>
+                <div class="row"><input class="post-content" type="text" id="textoPublicacion" placeholder="Ingresa texto"></div>
             </div>
-            <div class="row">
+            <div class="row" id="select">
                 <select  id="select-what"class="col-6">
                     <option value="">Qué es?</option> 
                     <option value="dude">Consulta</option>
@@ -102,7 +101,7 @@ aparece = user => {
                     <option value="friends">Amigos</option>
                 </select>
             </div>   
-            <div class="row">
+            <div class="row" id="save">
                 <button id="botonGuardar" onclick="guardar()">Publicar</button>
             </div>
         </div>          
