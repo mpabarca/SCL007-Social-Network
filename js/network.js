@@ -79,10 +79,7 @@ aparece = user => {
         userMenu.innerHTML = `<img class="imagen-perfil" src="${user.photoURL}" alt="">`;
         outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
         contenido.innerHTML = `
-        <div class="container-welcome">
-        <p>Hola ${user.displayName} </p>
-        <p>Bienvenidx a Medicina Natural</p> <br/> 
-        </div>                 
+        <div class="container-welcome"><p>Hola ${user.displayName} </p></div>                 
         `;
         userPost.innerHTML = `
         <div class="row">
@@ -154,7 +151,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                     <img class="comment-avatar col-1" src="${user.photoURL}" alt="">
             <div class="comment-box col-11">
             <div class="comment-head">
-            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
+            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}</a></h6>
             <span>${date}</span>
                        
             <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
