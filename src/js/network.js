@@ -178,7 +178,9 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
         }else{
            // console.log ("NO muestre icono borrar")
            //console.log ("NO muestre icono Editar")
-
+           let timestamp=doc.data().fecha;
+           let dateTimestamp= timestamp.seconds;
+           let date = timeConverter(dateTimestamp);
             contenido2.innerHTML = contenido2.innerHTML + 
             ` <div class="comments-container">
             <ul id="comments-list" class="comments-list">
@@ -188,7 +190,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <div class="comment-box col-11">
             <div class="comment-head">
             <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
-            <span>hace 20 minutos</span>
+            <span>${date}</span>
             
             <i class="fa fa-reply"></i>
             <i id"clickme" class="fa fa-heart"> ${doc.data().like}</i>           
