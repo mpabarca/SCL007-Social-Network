@@ -313,7 +313,7 @@ guardar = () => {
 //BORRAR DATOS
 eliminar = (id) => {
     var db = firebase.firestore(); 
-    confirm("Estas seguro que quieres eliminarlo?")
+    confirm("¿Estas seguro que quieres eliminarlo?")
     db.collection("post").doc(id).delete()
         .then(() => {
         console.log("Post borrado");
