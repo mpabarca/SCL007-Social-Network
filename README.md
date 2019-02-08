@@ -99,11 +99,10 @@ _"Como usuario quiero ver los estrenos de películas entre 2018 y 2019 para sabe
 
   
 
-### Diagrama de Flujo Inicial + Prototipo Baja Fidelidad
+### Prototipo Baja Fidelidad +  Diagrama de Flujo Inicial 
 
   
-
-(AQUÍ IMAGEN DIAGRAMA FLUJO Y SKETCH INICIAL)
+![enter image description here](http://subirimagen.me/uploads/20190208105025.png)
 
   
 
