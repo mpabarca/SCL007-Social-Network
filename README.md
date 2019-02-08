@@ -113,9 +113,12 @@ _"Como usuario quiero ver los estrenos de películas entre 2018 y 2019 para sabe
 
 ### Prototipo Alta Fidelidad
 
-(AQUÍ IMAGEN PROTOTIPO DE ALTA)
+Se crearon diferentes prototipos del Login de la aplicacion y se testearon con diferentes potenciales usuarios para la eleccion del diseño final.
+![enter image description here](http://subirimagen.me/uploads/20190207210304.png)
 
-  
+Finalmente el resultado final del prototipo fue el siguiente:
+
+(IMAGEN PORTOTIPO FINAL)
 
 ### Fundamentos Prototipo
 
