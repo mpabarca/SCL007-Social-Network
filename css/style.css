@@ -13,7 +13,7 @@ html {
   }
   /* ---- LOGIN MOBILE FIRST ---- */
   .loginBox{
-    position:fixed;
+    position:absolute;
     top: 40%;
     left: 50%;
     transform: translate(-50%,-50%);
@@ -21,7 +21,7 @@ html {
     height: 50%;
     padding: 30px 40px;
     box-sizing: border-box;
-	border-radius: 10%;
+	border-radius: 30px;
 	background: white;
 } 
 /* IMAGEN USUARIO CENTRADO ARRIBA DE CAJA LOGIN */
@@ -431,5 +431,8 @@ h3{
     height: 40px;
     font-size: 16px;
 }
+.loginBox a{
+	padding-left: 25%;
+}  
 
 } 
