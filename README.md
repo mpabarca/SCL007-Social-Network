@@ -1,4 +1,4 @@
-![enter image description here](http://subirimagen.me/uploads/20190207184509.png)
+![enter image description here](http://subirimagen.me/uploads/20190207185555.png)
 
 (AQUÍ DESCRIPCIÓN GENERAL)
 
