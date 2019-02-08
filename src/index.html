@@ -73,18 +73,25 @@
         </div> 
     </main>
     -->
-    <div class="loginBox">
-        <img src="user.png" class="user">
-        <h2>Log In Here</h2>
+    <div class="loginBox" id="first-view">
+        <img src="logo.png" class="logo">
+        <h2>Ingresa o Registrate</h2>
         <form>
             <p>Email</p>
-            <input type="text" name="" placeholder="Enter Email">
-            <p>Password</p>
-            <input type="password" name="" placeholder="•••••••••">
-            <input type="submit" name="" value="Sign In">
-            <input type="submit" name="" value="Register">
-            <a href="#">Forget Password</a>
+            <input id="email" type="text" name="" placeholder="Ingresa tu email">
+            <p>Contraseña</p>
+            <input id="contrasena" type="password" name="" placeholder="•••••••••">
+            <input id="acceder" type="submit" name="" value="Ingresar">
+            <input id="registro" type="submit" name="" value="Registrarse">
+            <a id="forgot-pass" href="#">¿Olvidaste tu contraseña?</a>
         </form>
+        <div class="row" id="fb-google">
+            <div class="row" id="description"><h3>Ingresa con tus redes sociales</h3></div>
+            <div class="row" id="redes">
+                <div class="col-6"><button id="button-facebook"><img src="img/icon-facebook.png" alt="icon-facebook" id="icon-facebook"></button></div>
+                <div class="col-6"><button id="button-google"><img src="img/icon-google.png" alt="icon-google" id="icon-google"></button></div>
+            </div>
+        </div> 
     </div>
 
 

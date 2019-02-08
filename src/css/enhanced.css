@@ -4,7 +4,7 @@
     left: 50%;
     transform: translate(-50%,-50%);
     width: 350px;
-    height: 420px;
+    height: 500px;
     padding: 50px 40px;
     box-sizing: border-box;
     /*TRANSPARENTE GRIS*/
@@ -12,20 +12,24 @@
     border-radius: 10%;
 } 
 /* IMAGEN USUARIO CENTRADO ARRIBA DE CAJA LOGIN */
-.user{
-    width: 100px;
+.logo{
+    width: 200px;
     height: 100px;
     border-radius: 50%;
     overflow: hidden;
     position: absolute;
     top: calc(-150px/2);
-    left: calc(50% - 50px);
+    left: calc(40% - 40px);
 }
-h2{
+h2 , h3{
     margin: 0;
     padding: 0;
     color: #efed40;
     text-align: center;
+    margin-bottom: 5%;
+}
+h3{
+    margin-top: 5%;
 }
 .loginBox p{
     margin: 0;
@@ -37,6 +41,21 @@ h2{
     width: 100%;
     margin-bottom: 20px;
 }
+#button-facebook, #button-google{
+    width: 44px;
+    height: 44px;
+    opacity: 0.95;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 150px;
+    border: none;
+    background: none;
+    padding-left: 32%;
+    cursor: pointer;
+ }
+ #icon-facebook, #icon-google{
+    width: 44px;
+    height: 44px;
+ }
 /*SOLO LINEA ABAJO EN RELLENADO */
 .loginBox input[type="text"],
 .loginBox input[type="password"]{

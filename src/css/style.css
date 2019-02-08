@@ -336,4 +336,9 @@ nav ul li a{
 	background-repeat: no-repeat;
 	background-attachment: fixed;
   }
+  .loginBox{
+    width: 350px;
+    height: 500px;
+    padding: 50px 40px;
+} 
 } 
