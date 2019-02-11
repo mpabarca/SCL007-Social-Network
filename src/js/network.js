@@ -148,7 +148,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <ul id="comments-list" class="comments-list">
             <li>
             <div class="comment-main-level"><div class="row">
-                    <img class="comment-avatar col-1" src="${user.photoURL}" alt="">
+                    <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
             <div class="comment-box col-11">
             <div class="comment-head">
             <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}</a></h6>
@@ -292,7 +292,6 @@ guardar = () => {
     db.collection("users").doc(user.uid).set({ 
         email: user.email, 
         displayName: user.displayName,
-        photo: user.photoURL
     });
 
     db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "POST"
