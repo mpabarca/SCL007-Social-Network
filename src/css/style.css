@@ -454,7 +454,7 @@ nav ul li a{
   }
   .loginBox{
     position:absolute;
-    top: 55%;
+    top: 60%;
     width: 350px;
     height: 80%;
 	padding: 30px 40px;
@@ -500,7 +500,7 @@ h3{
     padding: 50px 40px;
 } 
 .logo{
-    top: calc(-250px/2);
+	top: calc(-200px/2);
 }
 h2 , h3{
 	font-family: Roboto;

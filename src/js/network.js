@@ -48,6 +48,7 @@ observador = () => {
           let emailVerified = user.emailVerified;
           console.log(user.emailVerified)
           let photoURL = user.photoURL;
+          console.log (user.photoURL)
           let isAnonymous = user.isAnonymous;
           let uid = user.uid;
           console.log(user.uid)
@@ -91,9 +92,9 @@ aparece = user => {
             </div>
             <div class="row" id="select">
                 <select  id="select-what"class="col-6">
-                    <option value="">Qué es?</option> 
-                    <option value="dude">Consulta</option>
-                    <option value="solution">Solución</option>
+                    <option value="">Elige una categoría</option> 
+                    <option value="dude">Pregunta</option>
+                    <option value="solution">Recomendación</option>
                 </select>
                 <select  id="select-social" class="col-6">
                     <option value="">Quién lo verá?</option> 
@@ -210,7 +211,6 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
     });
 });
 
-
 }
 
 //CERAR SESION USUARIOS LOG
@@ -293,7 +293,8 @@ guardar = () => {
 
     db.collection("users").doc(user.uid).set({ 
         email: user.email, 
-        displayName: user.displayName
+        displayName: user.displayName,
+        photo: user.photoURL
     });
 
     db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "POST"
@@ -305,6 +306,8 @@ guardar = () => {
         displayName: user.displayName,
         comentarios : 0,
         like: 0, 
+        photo: user.photoURL
+
     })
 
     .then(docRef => {
@@ -318,8 +321,7 @@ guardar = () => {
 }
      
     });
-
-    
+  
 //BORRAR DATOS
 eliminar = (id) => {
     var db = firebase.firestore(); 
