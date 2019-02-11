@@ -87,11 +87,11 @@ aparece = user => {
                 <div class="row"><input class="post-tittle" type="text" id="tituloPublicacion" placeholder="Ingresa titulo"></div>
                 <div class="row"><input class="post-content" type="text" id="textoPublicacion" placeholder="Ingresa texto"></div>
             </div>
-            <div class="row" id="select">
+            <div class="row" id="selectCategoria">
                 <select  id="select-what"class="col-6">
                     <option value="">Elige una categoría</option> 
-                    <option value="dude">Pregunta</option>
-                    <option value="solution">Recomendación</option>
+                    <option value="Pregunta">Pregunta</option>
+                    <option value="Recomendacion">Recomendación</option>
                 </select>
                 <select  id="select-social" class="col-6">
                     <option value="">Quién lo verá?</option> 
@@ -163,7 +163,8 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                 <div class="comment-content">
                     <p>Titulo: ${doc.data().titulo}</p>
                     <p>Texto: ${doc.data().texto} </p> 
-                     
+                    <p>Texto: ${doc.data().categoria} </p>        
+
                          
                  </div>
              </div>
@@ -184,7 +185,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <ul id="comments-list" class="comments-list">
             <li>
             <div class="comment-main-level"><div class="row">
-                    <img class="comment-avatar col-1" src="${user.photoURL}" alt="">
+                    <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
             <div class="comment-box col-11">
             <div class="comment-head">
             <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
@@ -196,7 +197,9 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             </div>
                 <div class="comment-content">
                     <p>Titulo: ${doc.data().titulo}</p>
-                    <p>Texto: ${doc.data().texto} </p>        
+                    <p>Texto: ${doc.data().texto} </p>   
+                    <p>Texto: ${doc.data().categoria} </p>        
+     
                  </div>
              </div>
             </div></div>
@@ -286,6 +289,8 @@ guardar = () => {
     let tituloPublicacion = document.getElementById("tituloPublicacion").value;
     let textoPublicacion = document.getElementById("textoPublicacion").value;
     let fechaPublicacion = new Date();
+    let categoriaPublicacion = document.getElementById("select-what").value;
+
 
      var db = firebase.firestore(); 
 
@@ -303,11 +308,13 @@ guardar = () => {
         displayName: user.displayName,
         comentarios : 0,
         like: 0, 
-        photo: user.photoURL
+        photo: user.photoURL,
+        categoria: categoriaPublicacion ,
 
     })
 
     .then(docRef => {
+        document.getElementById("selectCategoria").value = ''; //Limpiar
         document.getElementById("tituloPublicacion").value = ''; //Limpiar
         document.getElementById("textoPublicacion").value = ''; // Limpiar
         console.log("Se subio a dataBase correctamente")
