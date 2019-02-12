@@ -9,7 +9,7 @@ html {
 	footer{
 		margin: auto;
 		background: #00844C;
-		padding: 5% 0;
+		padding: 3% 0;
 		position: fixed;
     left: 0;
     bottom: 0;
@@ -31,7 +31,7 @@ html {
 	footer ul li a{
 		text-decoration: none;
 		color: #fff;
-		font-size: 200%;
+		font-size: 180%;
 		margin: 7%;
 		
 	}
@@ -188,10 +188,8 @@ nav{
 	height: 60px;
 	margin-bottom: 5%;
 	border-top: 1px solid rgba(255,255,255,.2);
-	border-bottom: 1px solid rgba(255,255,255,.2);
-	/*position: sticky;
-	top: 0;*/
-	
+	border-bottom: 1px solid rgba(255,255,255,.2);	
+	background: #00844C;
 }
 nav #second-ul{
 	display: flex;
@@ -220,18 +218,18 @@ nav ul li a{
 	font-size:25px;
 	line-height: 50px;
 	margin-left: 60%;
-	color: #3B9463;
+	color: #fff;
 	cursor: pointer;
 }
 .container-welcome{
 	font-family: Roboto;
-	width: 70%;
 	margin-left: 15%;
 	margin-top: 5%;
 	margin-bottom: 0;
 	padding-bottom: 0%;
 	font-size: 10px;
 	text-align: center;
+	color: #fff;
 }
 /* ---- DISEÑO POSTING MOBILE FIRST ---- */
 .posting-container{
