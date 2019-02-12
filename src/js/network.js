@@ -86,17 +86,25 @@ aparece = user => {
         `;
         userPost.innerHTML = `
         <div class="row">
+            <h3>¿Qué deseas publicar?</h3>
+            <div class="cntr">
+                <label for="rdo-1" class="btn-radio">
+                    <input type="radio" id="rdo-1" name="radio-grp">
+                    
+                    <span>Recomendación</span>
+                </label>
+                <label for="rdo-2" class="btn-radio">
+                    <input type="radio" id="rdo-2" name="radio-grp">
+                    
+                    <span>Pregunta</span>
+                </label>
+            </div>
             <div class="row" id="posting">
                 <div class="row"><input class="post-tittle" type="text" id="tituloPublicacion" placeholder="Ingresa titulo"></div>
                 <div class="row"><input class="post-content" type="text" id="textoPublicacion" placeholder="Ingresa texto"></div>
             </div>
-            <div class="row" id="selectCategoria">
-                <select  id="select-what"class="col-6">
-                    <option value="">Elige una categoría</option> 
-                    <option value="Pregunta">Pregunta</option>
-                    <option value="Recomendacion">Recomendación</option>
-                </select>
-                <select  id="select-social" class="col-6">
+            <div class="row">
+                <select>
                     <option value="">Quién lo verá?</option> 
                     <option value="public">Público</option>
                     <option value="friends">Amigos</option>
