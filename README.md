@@ -82,6 +82,7 @@ Juanita, mujer de 24 años, siempre ha tenido problemas con su cabello, ya que e
 
 **Historia Usuario 1**
 _"Yo como usuario de la aplicación, Quiero registrarme  en la App, Para ser parte de la red social"_
+  
   Criterios de aceptación:
 * [x]  Quiero poder registrarme con mis redes sociales.
 * [x]  Quiero poder registrarme con mail y clave.
@@ -90,6 +91,7 @@ _"Yo como usuario de la aplicación, Quiero registrarme  en la App, Para ser par
 **Historia Usuario 2**
 
 _"Yo como usuario de la aplicación, Quiero ver publicaciones de los demás usuarios (públicos y de amigos), Para conocer sus problemas, soluciones y recomendaciones naturales."_
+  
   Criterios de aceptación:
 * [x]  Quiero ver las publicaciones publicas.
 * [ ]  Quiero ver las publicaciones de amigos.
@@ -97,6 +99,7 @@ _"Yo como usuario de la aplicación, Quiero ver publicaciones de los demás usua
 **Historia Usuario 3**
 
 _"Yo como usuario de la aplicación, Quiero publicar mis dudas en la red social, Para obtener consejos de los usuarios y aclarar mis dudas."_
+  
   Criterios de aceptación:
 * [x]  Quiero poder publicar mis dudas en un post.
 * [ ]  Quiero ver los comentarios de los demás usuarios en mi post.
@@ -104,6 +107,7 @@ _"Yo como usuario de la aplicación, Quiero publicar mis dudas en la red social,
 **Historia Usuario 4**
 
 _"Yo como usuario de la aplicación, Quiero publicar Recomendaciones naturales en la red social, Para que los usuarios que pasen por los mismos problemas puedan usar lo que a mi me ha funcionado, o lugares donde conseguir los productos naturales."_
+  
   Criterios de aceptación:
 * [x]  Quiero poder publicar en un post con mis recomendaciones.
 * [ ]  Quiero ver los comentarios acerca de mis post de recomendaciones.
@@ -111,12 +115,14 @@ _"Yo como usuario de la aplicación, Quiero publicar Recomendaciones naturales e
 **Historia Usuario 5**
 
 _"Yo como usuario de la aplicación, Quiero editar mis publicaciones, Para poder editar faltas de ortografía, mala redacción, o para agregar información."_
+  
   Criterios de aceptación:
 * [x]  Quiero poder editar las publicaciones  todas las veces que lo requiera.
 
 **Historia Usuario 6**
 
 _"Yo como usuario de la aplicación, * Quiero borrar mis publicaciones, Para poder borrar post repetidos, o por si me arrepiento de hacer el post."_
+  
   Criterios de aceptación:
 * [x]  Quiero poder borrar mis publicaciones.
 * [ ]  Quiero que exista una alerta en caso que presione borrar sin querer.
@@ -124,6 +130,7 @@ _"Yo como usuario de la aplicación, * Quiero borrar mis publicaciones, Para pod
 **Historia Usuario 7**
 
 _"Yo como usuario de la aplicación, Quiero filtrar publicaciones segun categoria, Para ver solamente las recomendacion o para ver solo las dudas de los demas usuarios."_
+  
   Criterios de aceptación:
 * [ ] Quiero poder filtrar las publicacion y ver solo las dudas de los usuarios.
 * [ ] Quiero poder filtrar las publicacion y ver solo las recomendacion de los usuarios.
