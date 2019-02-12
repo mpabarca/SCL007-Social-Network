@@ -1,37 +1,44 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC:700');
 html {
-		background-image: url("http://subirimagen.me/uploads/20190207144004.png");
-		background-size: cover;
-		background-attachment: fixed;
-		background-position: center;
-		background-repeat: no-repeat;
-		filter: blur(1);
-		background-blend-mode: soft-light;
     margin: 0;
 		padding: 0;
 		font-family: Roboto;    
 	}
 	/* ---- FOOTER ----*/
 	footer{
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		padding: 1rem;
-		background-color: #efefef;
-		text-align: center;
+		margin: auto;
+		background: #00844C;
+		padding: 5% 0;
+		position: fixed;
+    left: 0;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+
 	}
 	footer ul{
-		position: absolute;
 		margin: 0;
-		padding: 20px 0;
+		padding: 0;
+		text-align: center;
 		display: flex;
 	}
 	footer ul li{
 		list-style: none;
 		text-align: center;
+		width: 100%;
+}
+	footer ul li a{
+		text-decoration: none;
+		color: #fff;
+		font-size: 200%;
+		margin: 7%;
+		
 	}
+	footer ul li a:hover{
+		color:#F65C75;
+	}
+
   /* ---- LOGIN MOBILE FIRST ---- */
   .loginBox{
     position:absolute;
@@ -44,6 +51,15 @@ html {
     box-sizing: border-box;
 		border-radius: 30px;
 		background: white;
+		/*
+		background-image: url("http://subirimagen.me/uploads/20190207144004.png");
+		background-size: cover;
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		filter: blur(1);
+		background-blend-mode: soft-light;
+		*/
 } 
 /* IMAGEN USUARIO CENTRADO ARRIBA DE CAJA LOGIN */
 .logo{
@@ -166,21 +182,6 @@ h3{
    width: 44px;
    height: 44px;
 }
-
-/* 
-footer{
-   font-family: 'Roboto', sans-serif;
-   align-self: flex-end;
-   background: #1B250F;
-   line-height: 3;
-   text-align: center;
-   width: 100%;
-   margin-top: 5%;
-   position: relative;
-   bottom: 0;
-}
-*/
-
 /* ---- NAVBAR MOBILE FIRST ---- */
 nav{
 	width: 100%;
@@ -343,7 +344,6 @@ nav ul li a{
 .comments-list .comment-avatar {
 	width: 50px;
 	height: 50px;
-	position: relative;
 	z-index: 99;
 	float: left;
 	border: 3px solid #FFF;
