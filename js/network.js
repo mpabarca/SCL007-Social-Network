@@ -78,7 +78,7 @@ aparece = user => {
         userInfo.innerHTML = "";
         userMenu.innerHTML = "";
         outMenu.innerHTML = "";
-        userInfo.innerHTML = `<div class="container-welcome"><p>Hola ${user.displayName} </p></div>`;
+        userInfo.innerHTML = `<div class="container-welcome"><p>Hola ${user.displayName}</p></div>`;
         userMenu.innerHTML = `<img class="imagen-perfil" src="${user.photoURL}" alt="">`;
         outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
         contenido.innerHTML = `
