@@ -235,24 +235,11 @@ nav ul li a{
   margin-top: 5%;
 }
 #posting{
-	width: 90%;
 	margin: 2%;
 	position: relative;
 	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
 	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
-}
-#posting:before, #posting:after {
-	content: '';
-	height: 0;
-	width: 0;
-	position: absolute;
-	display: block;
-	border-width: 10px 12px 10px 0;
-	border-style: solid;
-	border-color: transparent #C3FF9F;
-	top: 8px;
-	left: -11px;
 }
 .post-tittle{
 	width: 100%;
@@ -281,10 +268,6 @@ nav ul li a{
 ::placeholder{
     color: gray;
 }
-#select{
-	width: 90%;
-	margin-left: 2%;
-}
 #botonGuardar{
 	border:none;
     outline: none;
@@ -307,6 +290,7 @@ nav ul li a{
 	margin-top: 5%;
 	text-align: center;
 }
+/* Seleccionar categoria */
 
 /* ---- DISEÑO TIMELINE MOBILE FIRST ---- */
 /* MENU USUARIO */
