@@ -1,17 +1,38 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC:700');
 html {
-    background-image: url("http://subirimagen.me/uploads/20190207144004.png");
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(1);
-    background-blend-mode: soft-light;
+		background-image: url("http://subirimagen.me/uploads/20190207144004.png");
+		background-size: cover;
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		filter: blur(1);
+		background-blend-mode: soft-light;
     margin: 0;
 		padding: 0;
 		font-family: Roboto;    
 	}
+	/* ---- FOOTER ----*/
+	/*
+	footer{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		padding: 1rem;
+		background-color: #efefef;
+		text-align: center;
+	}
+	footer ul{
+		position: absolute;
+		margin: 0;
+		padding: 20px 0;
+		display: flex;
+	}
+	footer ul li{
+		list-style: none;
+		text-align: center;
+	}*/
   /* ---- LOGIN MOBILE FIRST ---- */
   .loginBox{
     position:absolute;
