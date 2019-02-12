@@ -69,17 +69,20 @@ aparece = user => {
     //DATOS DE LA CUENTA 
     let db = firebase.firestore();
     let contenido = document.getElementById('contenido');
+    let userInfo = document.getElementById('user-info');
     let userMenu = document.getElementById('user-menu');
     let outMenu = document.getElementById('out-menu');
     let userPost = document.getElementById('user-post');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         document.getElementById("first-view").style.display = "none"
+        userInfo.innerHTML = "";
         userMenu.innerHTML = "";
         outMenu.innerHTML = "";
+        userInfo.innerHTML = `<div class="container-welcome"><p>Hola ${user.displayName} </p></div>`;
         userMenu.innerHTML = `<img class="imagen-perfil" src="${user.photoURL}" alt="">`;
         outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
         contenido.innerHTML = `
-        <div class="container-welcome"><p>Hola ${user.displayName} </p></div>                 
+                        
         `;
         userPost.innerHTML = `
         <div class="row">

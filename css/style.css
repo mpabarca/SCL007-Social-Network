@@ -202,17 +202,17 @@ nav ul li a{
 	color: #3B9463;
 	cursor: pointer;
 }
-/* ---- DISEÑO POSTING MOBILE FIRST ---- */
 .container-welcome{
-	font-family: 'Amatic SC', cursive;
+	font-family: Roboto;
 	width: 70%;
 	margin-left: 15%;
 	margin-top: 5%;
 	margin-bottom: 0;
 	padding-bottom: 0%;
-	font-size: 35px;
+	font-size: 10px;
 	text-align: center;
 }
+/* ---- DISEÑO POSTING MOBILE FIRST ---- */
 .posting-container{
   margin: 60px auto 15px;
   width: 90%;
