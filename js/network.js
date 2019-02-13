@@ -354,6 +354,7 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
         });
     }    
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 //PROFILE
@@ -378,3 +379,12 @@ profile = user => {
 =======
 }
 >>>>>>> Para traer cambios
+=======
+}
+
+// Create a reference to the cities collection
+var citiesRef = db.collection("post");
+
+// Create a query against the collection.
+var query = citiesRef.where("categoria", "==", "Pregunta");
+>>>>>>> Actualizando para traer cambios
