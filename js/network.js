@@ -66,22 +66,13 @@ observador();
 aparece = user => {
     //var user = user;
     document.getElementById("second-view").style.display="block";
+    document.getElementById("profile").style.display="none";
     //DATOS DE LA CUENTA 
     let db = firebase.firestore();
     let contenido = document.getElementById('contenido');
-    let userInfo = document.getElementById('user-info');
-    let userMenu = document.getElementById('user-menu');
-    let outMenu = document.getElementById('out-menu');
     let userPost = document.getElementById('user-post');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         document.getElementById("first-view").style.display = "none"
-        userInfo.innerHTML = "";
-        userMenu.innerHTML = "";
-        outMenu.innerHTML = "";
-        userInfo.innerHTML = `<div class="container-welcome"><p>Hola ${user.displayName}</p></div>`;
-        userMenu.innerHTML = `<img class="imagen-perfil" src="${user.photoURL}" alt="">`;
-        outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
-        
         userPost.innerHTML = `
         <div class="row">
             <h3>¿Qué deseas publicar?</h3>
@@ -99,13 +90,6 @@ aparece = user => {
         </div>          
         `;
     } 
-let bntcerrar = document.getElementById('button-log-out')
-bntcerrar.addEventListener('click', function(){
-    document.getElementById('log-out').style.display="block";
-    document.getElementById("first-view").style.display="block";
-    document.getElementById("second-view").style.display="none";
-
-}); 
 //FUNCION PARA CONVERTIR TIMESTRAMP A FECHA HUMANA
 function timeConverter(UNIX_timestamp){
     var a = new Date(UNIX_timestamp * 1000);
@@ -121,6 +105,7 @@ function timeConverter(UNIX_timestamp){
 
 //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
 let contenido2 = document.getElementById('contenido2');
+document.getElementById("profile").style.display="none";
 
 db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapshot => {
     contenido2.innerHTML = "";
@@ -356,3 +341,32 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
         });
     }    
 }
+
+//CERRAR SESION
+let bntcerrar = document.getElementById('button-log-out')
+bntcerrar.addEventListener('click', function(){
+    document.getElementById('log-out').style.display="block";
+    document.getElementById("first-view").style.display="block";
+    document.getElementById("second-view").style.display="none";
+
+}); 
+
+//PROFILE
+document.getElementById("profile").addEventListener("click",() => {
+    profile(user);
+})
+profile = user => {
+    //var user = user;
+    document.getElementById("first-view").style.display="none";
+    document.getElementById("second-view").style.display="none";
+    document.getElementById("profile").style.display="block";
+    //DATOS DE LA CUENTA 
+    let db = firebase.firestore();
+    let contenido = document.getElementById('contenido');
+    let userInfo = document.getElementById('user-info');
+    let userMenu = document.getElementById('user-menu');
+    let outMenu = document.getElementById('out-menu');
+    let userPost = document.getElementById('user-post');
+ 
+}
+;
