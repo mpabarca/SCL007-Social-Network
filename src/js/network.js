@@ -352,6 +352,7 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
             console.error("Error updating document: ", error);
         });
     }    
+
 }
 
 //PROFILE
