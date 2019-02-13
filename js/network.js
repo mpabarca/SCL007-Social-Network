@@ -134,32 +134,6 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             let dateTimestamp= timestamp.seconds;
             let date = timeConverter(dateTimestamp);
             contenido2.innerHTML = contenido2.innerHTML + 
-<<<<<<< HEAD
-            ` 
-                <ul id="comments-list" class="comments-list">
-                    <li>
-                        <div class="comment-box">
-                            <div class="row" id="comment-head">
-                                <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
-                                <h6 class="comment-name by-author col-8"><a>${doc.data().displayName}</a></h6>
-                                <i id="icon-post" class="fa fa-trash col-1" onclick="eliminar('${doc.id}')"> </i>
-                                <i id="icon-post" class="fa fa-edit col-1" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
-                            </div>
-                            <div class="comment-content">
-                                <div class="row">
-                                    <p id="text-post">${doc.data().texto}</p>
-                                    <p id="category-post">${doc.data().categoria}</p>
-                                    <p id="label-post"># ${doc.data().etiqueta} </p> 
-                                </div>
-                                <div class="row" id="last">
-                                    <span class="col-10">${date}</span>
-                                    <i value="+1" class="fa fa-heart col-2" onclick="like('${doc.id}')"> ${doc.data().like}</i>
-                                </div>
-                            </div>
-                        </div>  
-                    </li>
-                </ul> `
-=======
             ` <div class="comments-container">
             <ul id="comments-list" class="comments-list">
             <li>
@@ -188,7 +162,6 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             </li>
         </ul>
         </div> `
->>>>>>> Para traer cambios
 
         }else{
            // console.log ("NO muestre icono borrar")
@@ -301,19 +274,10 @@ guardar = () => {
     let textoPublicacion = document.getElementById("textoPublicacion").value;
     let etiquetaPublicacion = document.getElementById("etiquetaPublicacion").value;
     let fechaPublicacion = new Date();
-<<<<<<< HEAD
-    let categoryValue;
-    if (document.getElementById('r1').checked) {
-        categoryValue = document.getElementById('r1').value;
-    }else if(document.getElementById('r2').checked){
-        categoryValue = document.getElementById('r2').value;
-    }
-=======
     let categoriaPublicacion = document.getElementById("select-what").value;
     let like = document.getElementById("like").value;
 
 
->>>>>>> Para traer cambios
      var db = firebase.firestore(); 
 
     db.collection("users").doc(user.uid).set({ 
