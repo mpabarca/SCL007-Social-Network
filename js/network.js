@@ -332,7 +332,6 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
     boton.innerHTML = "Editar";
 
     boton.onclick = function(){
-        var db = firebase.firestore(); 
         let washingtonRef = db.collection("post").doc(id);
         // Set the "capital" field of the city 'DC'
 
@@ -387,3 +386,5 @@ profile = user => {
     `
 }
 ;
+
+
