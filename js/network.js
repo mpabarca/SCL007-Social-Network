@@ -81,22 +81,14 @@ aparece = user => {
         userInfo.innerHTML = `<div class="container-welcome"><p>Hola ${user.displayName}</p></div>`;
         userMenu.innerHTML = `<img class="imagen-perfil" src="${user.photoURL}" alt="">`;
         outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
-        contenido.innerHTML = `
-                        
-        `;
+        
         userPost.innerHTML = `
         <div class="row">
             <h3>¿Qué deseas publicar?</h3>
-            <form class="row" id="select-what">
-                <label class="col-6">
-                    <input type="radio" name="radio-grp" value="recomendacion">                    
-                    <span>Recomendación</span>
-                </label>
-                <label class="col-6">
-                    <input type="radio" name="radio-grp" value="pregunta">
-                    <span>Pregunta</span>
-                </label>
-            </form>
+            <div class="row" id="select-what">
+                <label class="col-6"><input id="r1" type="radio" name="rate" value="recomendacion">Recomendación</label>
+                <label class="col-6"><input id="r2" type="radio" name="rate" value="pregunta">Pregunta</label>
+            </div>
             <div class="row" id="posting">
                 <div class="row"><input class="post-content" type="text" id="textoPublicacion" placeholder="Escribe aquí tu publicación"></div>
                 <div class="row"><input class="post-label" type="text" id="etiquetaPublicacion" placeholder="Añade tus etiquetas"></div>
@@ -147,7 +139,6 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             let date = timeConverter(dateTimestamp);
             contenido2.innerHTML = contenido2.innerHTML + 
             ` 
-            <div class="comments-container">
                 <ul id="comments-list" class="comments-list">
                     <li>
                         <div class="comment-box">
@@ -170,8 +161,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                             </div>
                         </div>  
                     </li>
-                </ul>
-            </div> `
+                </ul> `
 
         }else{
            // console.log ("NO muestre icono borrar")
@@ -181,7 +171,6 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
            let date = timeConverter(dateTimestamp);
             contenido2.innerHTML = contenido2.innerHTML + 
             ` 
-            <div class="comments-container">
                 <ul id="comments-list" class="comments-list">
                     <li>
                         <div class="comment-box">
@@ -202,8 +191,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                             </div>
                         </div>  
                     </li>
-                </ul>
-            </div>`
+                </ul>`
         }
     });
 });
@@ -286,9 +274,12 @@ guardar = () => {
     let textoPublicacion = document.getElementById("textoPublicacion").value;
     let etiquetaPublicacion = document.getElementById("etiquetaPublicacion").value;
     let fechaPublicacion = new Date();
-    let categoriaPublicacion = document.getElementById("select-what").value;
-
-
+    let categoryValue;
+    if (document.getElementById('r1').checked) {
+        categoryValue = document.getElementById('r1').value;
+    }else if(document.getElementById('r2').checked){
+        categoryValue = document.getElementById('r2').value;
+    }
      var db = firebase.firestore(); 
 
     db.collection("users").doc(user.uid).set({ 
@@ -306,7 +297,7 @@ guardar = () => {
         comentarios : 0,
         like: 0, 
         photo: user.photoURL,
-        categoria: categoriaPublicacion ,
+        categoria: categoryValue,
 
     })
 
