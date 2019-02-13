@@ -88,14 +88,12 @@ aparece = user => {
         <div class="row">
             <h3>¿Qué deseas publicar?</h3>
             <div class="cntr">
-                <label for="rdo-1" class="btn-radio">
-                    <input type="radio" id="rdo-1" name="radio-grp">
-                    
+                <label for="rdo-1" class="btn-radio col-6">
+                    <input type="radio" id="rdo-1" name="radio-grp">                    
                     <span>Recomendación</span>
                 </label>
-                <label for="rdo-2" class="btn-radio">
+                <label for="rdo-2" class="btn-radio col-6">
                     <input type="radio" id="rdo-2" name="radio-grp">
-                    
                     <span>Pregunta</span>
                 </label>
             </div>
@@ -103,13 +101,6 @@ aparece = user => {
                 <div class="row"><input class="post-tittle" type="text" id="tituloPublicacion" placeholder="Ingresa titulo"></div>
                 <div class="row"><input class="post-content" type="text" id="textoPublicacion" placeholder="Ingresa texto"></div>
             </div>
-            <div class="row">
-                <select>
-                    <option value="">Quién lo verá?</option> 
-                    <option value="public">Público</option>
-                    <option value="friends">Amigos</option>
-                </select>
-            </div>   
             <div class="row" id="save">
                 <button id="botonGuardar" onclick="guardar()">Publicar</button>
             </div>
@@ -167,7 +158,6 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                        
             <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
             <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
-            <i class="fa fa-reply"></i>
             <i value="+1" class="fa fa-heart" onclick="like('${doc.id}')"> ${doc.data().like}</i>           
                    
             </div>
