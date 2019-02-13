@@ -153,7 +153,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                 <div class="comment-content">
                     <p>Titulo: ${doc.data().titulo}</p>
                     <p>Texto: ${doc.data().texto} </p> 
-                    <p>Texto: ${doc.data().categoria} </p>        
+                    <p>Texto: ${doc.data().categoria} </p>     
                  </div>
              </div>
              
@@ -333,7 +333,6 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
     boton.innerHTML = "Editar";
 
     boton.onclick = function(){
-        var db = firebase.firestore(); 
         let washingtonRef = db.collection("post").doc(id);
         // Set the "capital" field of the city 'DC'
 
@@ -353,6 +352,7 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
             console.error("Error updating document: ", error);
         });
     }    
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 }
@@ -388,3 +388,6 @@ var citiesRef = db.collection("post");
 // Create a query against the collection.
 var query = citiesRef.where("categoria", "==", "Pregunta");
 >>>>>>> Actualizando para traer cambios
+=======
+}
+>>>>>>> subiendo
