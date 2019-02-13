@@ -290,8 +290,9 @@ nav ul li a{
 	text-align: center;
 }
 /* Seleccionar categoria */
-#select{
-	margin: 2%;
+#select-what{
+	margin-left: 3%;
+	text-align: center;
 }
 /* ---- DISEÑO TIMELINE MOBILE FIRST ---- */
 /* MENU USUARIO */
