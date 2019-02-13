@@ -81,9 +81,11 @@ Juanita, mujer de 24 años, siempre ha tenido problemas con su cabello, ya que e
  
 
 **Historia Usuario 1**
+
 _"Yo como usuario de la aplicación, Quiero registrarme  en la App, Para ser parte de la red social"_
   
   Criterios de aceptación:
+  
 * [x]  Quiero poder registrarme con mis redes sociales.
 * [x]  Quiero poder registrarme con mail y clave.
 * [x]  Quiero poder recuperar la Constraseña.
