@@ -134,34 +134,30 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             let dateTimestamp= timestamp.seconds;
             let date = timeConverter(dateTimestamp);
             contenido2.innerHTML = contenido2.innerHTML + 
-            ` <div class="comments-container">
-            <ul id="comments-list" class="comments-list">
-            <li>
-            <div class="comment-main-level"><div class="row">
-                    <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
-            <div class="comment-box col-11">
-            <div class="comment-head">
-            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}</a></h6>
-            <span>${date}</span>
-                       
-            <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
-            <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
-            <i class="fa fa-reply"></i>
-            <i id="like"class="fa fa-heart">${doc.data().like}</i>     
-      
-            </div>
-                <div class="comment-content">
-                    <p>Titulo: ${doc.data().titulo}</p>
-                    <p>Texto: ${doc.data().texto} </p> 
-                    <p>Texto: ${doc.data().categoria} </p>     
-                 </div>
-             </div>
-             
-            </div></div>
-    
-            </li>
-        </ul>
-        </div> `
+            ` 
+                <ul id="comments-list" class="comments-list">
+                    <li>
+                        <div class="comment-box">
+                            <div class="row" id="comment-head">
+                                <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
+                                <h6 class="comment-name by-author col-8"><a>${doc.data().displayName}</a></h6>
+                                <i id="icon-post" class="fa fa-trash col-1" onclick="eliminar('${doc.id}')"> </i>
+                                <i id="icon-post" class="fa fa-edit col-1" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
+                            </div>
+                            <div class="comment-content">
+                                <div class="row">
+                                    <p id="text-post">${doc.data().texto}</p>
+                                    <p id="category-post">${doc.data().categoria}</p>
+                                    <p id="label-post"># ${doc.data().etiqueta} </p> 
+                                </div>
+                                <div class="row" id="last">
+                                    <span class="col-10">${date}</span>
+                                    <i value="+1" class="fa fa-heart col-2" onclick="like('${doc.id}')"> ${doc.data().like}</i>
+                                </div>
+                            </div>
+                        </div>  
+                    </li>
+                </ul> `
 
         }else{
            // console.log ("NO muestre icono borrar")
@@ -274,10 +270,12 @@ guardar = () => {
     let textoPublicacion = document.getElementById("textoPublicacion").value;
     let etiquetaPublicacion = document.getElementById("etiquetaPublicacion").value;
     let fechaPublicacion = new Date();
-    let categoriaPublicacion = document.getElementById("select-what").value;
-    let like = document.getElementById("like").value;
-
-
+    let categoryValue;
+    if (document.getElementById('r1').checked) {
+        categoryValue = document.getElementById('r1').value;
+    }else if(document.getElementById('r2').checked){
+        categoryValue = document.getElementById('r2').value;
+    }
      var db = firebase.firestore(); 
 
     db.collection("users").doc(user.uid).set({ 
@@ -333,6 +331,7 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
     boton.innerHTML = "Editar";
 
     boton.onclick = function(){
+        var db = firebase.firestore(); 
         let washingtonRef = db.collection("post").doc(id);
         // Set the "capital" field of the city 'DC'
 
@@ -352,9 +351,6 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
             console.error("Error updating document: ", error);
         });
     }    
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
 
 //PROFILE
@@ -376,18 +372,3 @@ profile = user => {
  
 }
 ;
-=======
-}
->>>>>>> Para traer cambios
-=======
-}
-
-// Create a reference to the cities collection
-var citiesRef = db.collection("post");
-
-// Create a query against the collection.
-var query = citiesRef.where("categoria", "==", "Pregunta");
->>>>>>> Actualizando para traer cambios
-=======
-}
->>>>>>> subiendo
