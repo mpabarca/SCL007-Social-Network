@@ -1,0 +1,29 @@
+<div class="comments-container">
+    <ul id="comments-list" class="comments-list">
+        <li>
+            <div class="comment-box">
+                <div class="row" id="comment-head">
+                    <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
+                    <h6 class="comment-name by-author"><a>${doc.data().displayName}</a></h6>
+                    <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
+                    <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
+                </div>
+                <div class="comment-content">
+                    <p>Titulo: ${doc.data().titulo}</p>
+                    <p>Texto: ${doc.data().texto} </p> 
+                    <p>Texto: ${doc.data().categoria} </p>
+                </div>
+            </div>    
+                
+                    
+                        
+                        <span>${date}</span>
+                        
+                        <i value="+1" class="fa fa-heart" onclick="like('${doc.id}')"> ${doc.data().like}</i>   
+                    
+                    
+                
+            
+        </li>
+    </ul>
+</div>
