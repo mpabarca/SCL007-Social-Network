@@ -153,17 +153,17 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                         <div class="comment-box">
                             <div class="row" id="comment-head">
                                 <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
-                                <h6 class="comment-name by-author col-9"><a>${doc.data().displayName}</a></h6>
+                                <h6 class="comment-name by-author col-8"><a>${doc.data().displayName}</a></h6>
                                 <i class="fa fa-trash col-1" onclick="eliminar('${doc.id}')"> </i>
                                 <i class="fa fa-edit col-1" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
                             </div>
                             <div class="comment-content">
                                 <div class="row">
-                                    <p>${doc.data().categoria} </p>
-                                    <p>${doc.data().texto}</p>
-                                    <p>Etiqueta: ${doc.data().etiqueta} </p> 
+                                    <p id="text-post">${doc.data().texto}</p>
+                                    <p id="category-post">${doc.data().categoria}</p>
+                                    <p id="label-post"># ${doc.data().etiqueta} </p> 
                                 </div>
-                                <div class="row">
+                                <div class="row" id="last">
                                     <span class="col-11">${date}</span>
                                     <i value="+1" class="fa fa-heart col-1" onclick="like('${doc.id}')"> ${doc.data().like}</i>
                                 </div>
@@ -187,17 +187,17 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                         <div class="comment-box">
                             <div class="row" id="comment-head">
                                 <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
-                                <h6 class="comment-name by-author col-11"><a>${doc.data().displayName}</a></h6>
+                                <h6 class="comment-name by-author col-8"><a>${doc.data().displayName}</a></h6>
                             </div>
                             <div class="comment-content">
                                 <div class="row">
-                                    <p>${doc.data().categoria} </p>
-                                    <p>${doc.data().texto}</p>
-                                    <p>Etiqueta: ${doc.data().etiqueta} </p> 
+                                    <p id="text-post">${doc.data().texto}</p>
+                                    <p id="category-post">${doc.data().categoria}</p>
+                                    <p id="label-post"># ${doc.data().etiqueta} </p> 
                                 </div>
-                                <div class="row">
-                                    <span class="col-11">${date}</span>
-                                    <i value="+1" class="fa fa-heart col-1" onclick="like('${doc.id}')"> ${doc.data().like}</i>
+                                <div class="row" id="last">
+                                    <span class="col-10">${date}</span>
+                                    <i value="+1" class="fa fa-heart col-2" onclick="like('${doc.id}')"> ${doc.data().like}</i>
                                 </div>
                             </div>
                         </div>  
