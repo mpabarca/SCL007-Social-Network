@@ -137,7 +137,6 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             let dateTimestamp= timestamp.seconds;
             let date = timeConverter(dateTimestamp);
             contenido2.innerHTML = contenido2.innerHTML + 
-<<<<<<< HEAD
             ` 
                 <ul id="comments-list" class="comments-list">
                     <li>
@@ -161,36 +160,6 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                         </div>  
                     </li>
                 </ul> `
-=======
-            ` <div class="comments-container">
-            <ul id="comments-list" class="comments-list">
-            <li>
-            <div class="comment-main-level"><div class="row">
-                    <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
-            <div class="comment-box col-11">
-            <div class="comment-head">
-            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}</a></h6>
-            <span>${date}</span>
-                       
-            <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
-            <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
-            <i class="fa fa-reply"></i>
-            <i id="like"class="fa fa-heart">${doc.data().like}</i>     
-      
-            </div>
-                <div class="comment-content">
-                    <p>Titulo: ${doc.data().titulo}</p>
-                    <p>Texto: ${doc.data().texto} </p> 
-                    <p>Texto: ${doc.data().categoria} </p>        
-                 </div>
-             </div>
-             
-            </div></div>
-    
-            </li>
-        </ul>
-        </div> `
->>>>>>> Cambios actulizados
 
         }else{
            // console.log ("NO muestre icono borrar")
@@ -302,19 +271,12 @@ guardar = () => {
     let textoPublicacion = document.getElementById("textoPublicacion").value;
     let etiquetaPublicacion = document.getElementById("etiquetaPublicacion").value;
     let fechaPublicacion = new Date();
-<<<<<<< HEAD
     let categoryValue;
     if (document.getElementById('r1').checked) {
         categoryValue = document.getElementById('r1').value;
     }else if(document.getElementById('r2').checked){
         categoryValue = document.getElementById('r2').value;
     }
-=======
-    let categoriaPublicacion = document.getElementById("select-what").value;
-    let like = document.getElementById("like").value;
-
-
->>>>>>> Cambios actulizados
      var db = firebase.firestore(); 
 
     db.collection("users").doc(user.uid).set({ 
