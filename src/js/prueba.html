@@ -4,26 +4,46 @@
             <div class="comment-box">
                 <div class="row" id="comment-head">
                     <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
-                    <h6 class="comment-name by-author"><a>${doc.data().displayName}</a></h6>
-                    <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
-                    <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
+                    <h6 class="comment-name by-author col-9"><a>${doc.data().displayName}</a></h6>
+                    <i class="fa fa-trash col-1" onclick="eliminar('${doc.id}')"> </i>
+                    <i class="fa fa-edit col-1" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
                 </div>
                 <div class="comment-content">
-                    <p>Titulo: ${doc.data().titulo}</p>
-                    <p>Texto: ${doc.data().texto} </p> 
-                    <p>Texto: ${doc.data().categoria} </p>
+                    <div class="row">
+                        <p>${doc.data().categoria} </p>
+                        <p>${doc.data().texto}</p>
+                        <p>Etiqueta: ${doc.data().etiqueta} </p> 
+                    </div>
+                    <div class="row">
+                        <span class="col-11">${date}</span>
+                        <i value="+1" class="fa fa-heart col-1" onclick="like('${doc.id}')"> ${doc.data().like}</i>
+                    </div>
                 </div>
-            </div>    
-                
-                    
-                        
-                        <span>${date}</span>
-                        
-                        <i value="+1" class="fa fa-heart" onclick="like('${doc.id}')"> ${doc.data().like}</i>   
-                    
-                    
-                
-            
+            </div>  
         </li>
     </ul>
 </div>
+
+<div class="comments-container">
+        <ul id="comments-list" class="comments-list">
+            <li>
+                <div class="comment-box">
+                    <div class="row" id="comment-head">
+                        <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
+                        <h6 class="comment-name by-author col-11"><a>${doc.data().displayName}</a></h6>
+                    </div>
+                    <div class="comment-content">
+                        <div class="row">
+                            <p>${doc.data().categoria} </p>
+                            <p>${doc.data().texto}</p>
+                            <p>Etiqueta: ${doc.data().etiqueta} </p> 
+                        </div>
+                        <div class="row">
+                            <span class="col-11">${date}</span>
+                            <i value="+1" class="fa fa-heart col-1" onclick="like('${doc.id}')"> ${doc.data().like}</i>
+                        </div>
+                    </div>
+                </div>  
+            </li>
+        </ul>
+    </div>
