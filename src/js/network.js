@@ -160,17 +160,16 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
             <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
             <i class="fa fa-reply"></i>
-            <i value="+1" class="fa fa-heart" onclick="like('${doc.id}')"> ${doc.data().like}</i>           
-                   
+            <i id="like"class="fa fa-heart">${doc.data().like}</i>     
+      
             </div>
                 <div class="comment-content">
                     <p>Titulo: ${doc.data().titulo}</p>
                     <p>Texto: ${doc.data().texto} </p> 
                     <p>Texto: ${doc.data().categoria} </p>        
-
-                         
                  </div>
              </div>
+             
             </div></div>
     
             </li>
@@ -293,6 +292,7 @@ guardar = () => {
     let textoPublicacion = document.getElementById("textoPublicacion").value;
     let fechaPublicacion = new Date();
     let categoriaPublicacion = document.getElementById("select-what").value;
+    let like = document.getElementById("like").value;
 
 
      var db = firebase.firestore(); 
@@ -310,7 +310,7 @@ guardar = () => {
         email: user.email, 
         displayName: user.displayName,
         comentarios : 0,
-        like: 0, 
+        likes: 0, 
         photo: user.photoURL,
         categoria: categoriaPublicacion ,
 
