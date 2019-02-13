@@ -81,27 +81,18 @@ aparece = user => {
         userInfo.innerHTML = `<div class="container-welcome"><p>Hola ${user.displayName}</p></div>`;
         userMenu.innerHTML = `<img class="imagen-perfil" src="${user.photoURL}" alt="">`;
         outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
-        contenido.innerHTML = `
-                        
-        `;
+        
         userPost.innerHTML = `
         <div class="row">
-            <div class="row" id="posting">
-                <div class="row"><input class="post-tittle" type="text" id="tituloPublicacion" placeholder="Ingresa titulo"></div>
-                <div class="row"><input class="post-content" type="text" id="textoPublicacion" placeholder="Ingresa texto"></div>
+            <h3>¿Qué deseas publicar?</h3>
+            <div class="row" id="select-what">
+                <label class="col-6"><input id="r1" type="radio" name="rate" value="recomendacion"> Recomendación</label>
+                <label class="col-6"><input id="r2" type="radio" name="rate" value="pregunta"> Pregunta</label>
             </div>
-            <div class="row" id="selectCategoria">
-                <select  id="select-what"class="col-6">
-                    <option value="">Elige una categoría</option> 
-                    <option value="Pregunta">Pregunta</option>
-                    <option value="Recomendacion">Recomendación</option>
-                </select>
-                <select  id="select-social" class="col-6">
-                    <option value="">Quién lo verá?</option> 
-                    <option value="public">Público</option>
-                    <option value="friends">Amigos</option>
-                </select>
-            </div>   
+            <div class="row" id="posting">
+                <div class="row"><input class="post-content" type="text" id="textoPublicacion" placeholder="Escribe aquí tu publicación"></div>
+                <div class="row"><input class="post-label" type="text" id="etiquetaPublicacion" placeholder="Añade tus etiquetas"></div>
+            </div>
             <div class="row" id="save">
                 <button id="botonGuardar" onclick="guardar()">Publicar</button>
             </div>
@@ -118,7 +109,7 @@ bntcerrar.addEventListener('click', function(){
 //FUNCION PARA CONVERTIR TIMESTRAMP A FECHA HUMANA
 function timeConverter(UNIX_timestamp){
     var a = new Date(UNIX_timestamp * 1000);
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
     var year = a.getFullYear();
     var month = months[a.getMonth()];
     var date = a.getDate();
@@ -147,34 +138,30 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             let dateTimestamp= timestamp.seconds;
             let date = timeConverter(dateTimestamp);
             contenido2.innerHTML = contenido2.innerHTML + 
-            ` <div class="comments-container">
-            <ul id="comments-list" class="comments-list">
-            <li>
-            <div class="comment-main-level"><div class="row">
-                    <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
-            <div class="comment-box col-11">
-            <div class="comment-head">
-            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}</a></h6>
-            <span>${date}</span>
-                       
-            <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
-            <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
-            <i class="fa fa-reply"></i>
-            <i id="like"class="fa fa-heart">${doc.data().like}</i>     
-      
-            </div>
-                <div class="comment-content">
-                    <p>Titulo: ${doc.data().titulo}</p>
-                    <p>Texto: ${doc.data().texto} </p> 
-                    <p>Texto: ${doc.data().categoria} </p>        
-                 </div>
-             </div>
-             
-            </div></div>
-    
-            </li>
-        </ul>
-        </div> `
+            ` 
+                <ul id="comments-list" class="comments-list">
+                    <li>
+                        <div class="comment-box">
+                            <div class="row" id="comment-head">
+                                <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
+                                <h6 class="comment-name by-author col-8"><a>${doc.data().displayName}</a></h6>
+                                <i id="icon-post" class="fa fa-trash col-1" onclick="eliminar('${doc.id}')"> </i>
+                                <i id="icon-post" class="fa fa-edit col-1" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
+                            </div>
+                            <div class="comment-content">
+                                <div class="row">
+                                    <p id="text-post">${doc.data().texto}</p>
+                                    <p id="category-post">${doc.data().categoria}</p>
+                                    <p id="label-post"># ${doc.data().etiqueta} </p> 
+                                </div>
+                                <div class="row" id="last">
+                                    <span class="col-10">${date}</span>
+                                    <i value="+1" class="fa fa-heart col-2" onclick="like('${doc.id}')"> ${doc.data().like}</i>
+                                </div>
+                            </div>
+                        </div>  
+                    </li>
+                </ul> `
 
         }else{
            // console.log ("NO muestre icono borrar")
@@ -183,32 +170,28 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
            let dateTimestamp= timestamp.seconds;
            let date = timeConverter(dateTimestamp);
             contenido2.innerHTML = contenido2.innerHTML + 
-            ` <div class="comments-container">
-            <ul id="comments-list" class="comments-list">
-            <li>
-            <div class="comment-main-level"><div class="row">
-                    <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
-            <div class="comment-box col-11">
-            <div class="comment-head">
-            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
-            <span>${date}</span>
-            
-            <i class="fa fa-reply"></i>
-            <i id"clickme" class="fa fa-heart"> ${doc.data().like}</i>           
-                   
-            </div>
-                <div class="comment-content">
-                    <p>Titulo: ${doc.data().titulo}</p>
-                    <p>Texto: ${doc.data().texto} </p>   
-                    <p>Texto: ${doc.data().categoria} </p>        
-     
-                 </div>
-             </div>
-            </div></div>
-    
-        </li>
-    </ul>
-    </div> `
+            ` 
+                <ul id="comments-list" class="comments-list">
+                    <li>
+                        <div class="comment-box">
+                            <div class="row" id="comment-head">
+                                <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
+                                <h6 class="comment-name by-author col-8"><a>${doc.data().displayName}</a></h6>
+                            </div>
+                            <div class="comment-content">
+                                <div class="row">
+                                    <p id="text-post">${doc.data().texto}</p>
+                                    <p id="category-post">${doc.data().categoria}</p>
+                                    <p id="label-post"># ${doc.data().etiqueta} </p> 
+                                </div>
+                                <div class="row" id="last">
+                                    <span class="col-10">${date}</span>
+                                    <i value="+1" class="fa fa-heart col-2" onclick="like('${doc.id}')"> ${doc.data().like}</i>
+                                </div>
+                            </div>
+                        </div>  
+                    </li>
+                </ul>`
         }
     });
 });
@@ -288,13 +271,15 @@ document.getElementById("forgot-pass").addEventListener("click",() => {
  //STORAGE GUARDAR DATOS EN FIRE
 firebase.auth().onAuthStateChanged( user => {
 guardar = () => {
-    let tituloPublicacion = document.getElementById("tituloPublicacion").value;
     let textoPublicacion = document.getElementById("textoPublicacion").value;
+    let etiquetaPublicacion = document.getElementById("etiquetaPublicacion").value;
     let fechaPublicacion = new Date();
-    let categoriaPublicacion = document.getElementById("select-what").value;
-    let like = document.getElementById("like").value;
-
-
+    let categoryValue;
+    if (document.getElementById('r1').checked) {
+        categoryValue = document.getElementById('r1').value;
+    }else if(document.getElementById('r2').checked){
+        categoryValue = document.getElementById('r2').value;
+    }
      var db = firebase.firestore(); 
 
     db.collection("users").doc(user.uid).set({ 
@@ -303,8 +288,8 @@ guardar = () => {
     });
 
     db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "POST"
-        titulo : tituloPublicacion,
-        texto: textoPublicacion,
+        texto : textoPublicacion,
+        etiqueta: etiquetaPublicacion,
         fecha: fechaPublicacion,
         uid: user.uid,
         email: user.email, 
@@ -312,14 +297,14 @@ guardar = () => {
         comentarios : 0,
         likes: 0, 
         photo: user.photoURL,
-        categoria: categoriaPublicacion ,
+        categoria: categoryValue,
 
     })
 
     .then(docRef => {
-        document.getElementById("selectCategoria").value = ''; //Limpiar
-        document.getElementById("tituloPublicacion").value = ''; //Limpiar
-        document.getElementById("textoPublicacion").value = ''; // Limpiar
+        document.getElementById("select-what").value = ''; //Limpiar
+        document.getElementById("textoPublicacion").value = ''; //Limpiar
+        document.getElementById("etiquetaPublicacion").value = ''; // Limpiar
         console.log("Se subio a dataBase correctamente")
     })
     .catch(error => {
@@ -343,9 +328,9 @@ eliminar = (id) => {
 }
 
 //EDITAR DATOS
-function editar(id, tituloPublicacion, textoPublicacion){
-    document.getElementById('tituloPublicacion').value = tituloPublicacion;
+function editar(id, textoPublicacion, etiquetaPublicacion){
     document.getElementById('textoPublicacion').value = textoPublicacion;
+    document.getElementById('etiquetaPublicacion').value = etiquetaPublicacion;
     var boton = document.getElementById('botonGuardar');
     boton.innerHTML = "Editar";
 
@@ -354,12 +339,12 @@ function editar(id, tituloPublicacion, textoPublicacion){
         let washingtonRef = db.collection("post").doc(id);
         // Set the "capital" field of the city 'DC'
 
-        var tituloPublicacion = document.getElementById('tituloPublicacion').value;
         var textoPublicacion = document.getElementById('textoPublicacion').value;
+        var etiquetaPublicacion = document.getElementById('etiquetaPublicacion').value;
         
         return washingtonRef.update({
-            titulo: tituloPublicacion,
             texto: textoPublicacion,
+            etiqueta: etiquetaPublicacion,
         })
         .then(function() {
             console.log("Document successfully updated!");
