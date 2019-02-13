@@ -150,23 +150,25 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             <div class="comments-container">
                 <ul id="comments-list" class="comments-list">
                     <li>
-                        <div class="comment-main-level"><div class="row">
-                            <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
-                            <div class="comment-box col-11">
-                                <div class="comment-head">
-                                    <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}</a></h6>
-                                    <span>${date}</span>
-                                    <i class="fa fa-trash" onclick="eliminar('${doc.id}')"> </i>
-                                    <i class="fa fa-edit" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
-                                    <i value="+1" class="fa fa-heart" onclick="like('${doc.id}')"> ${doc.data().like}</i>   
+                        <div class="comment-box">
+                            <div class="row" id="comment-head">
+                                <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
+                                <h6 class="comment-name by-author col-9"><a>${doc.data().displayName}</a></h6>
+                                <i class="fa fa-trash col-1" onclick="eliminar('${doc.id}')"> </i>
+                                <i class="fa fa-edit col-1" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
+                            </div>
+                            <div class="comment-content">
+                                <div class="row">
+                                    <p>${doc.data().categoria} </p>
+                                    <p>${doc.data().texto}</p>
+                                    <p>Etiqueta: ${doc.data().etiqueta} </p> 
                                 </div>
-                                <div class="comment-content">
-                                    <p>Titulo: ${doc.data().titulo}</p>
-                                    <p>Texto: ${doc.data().texto} </p> 
-                                    <p>Texto: ${doc.data().categoria} </p>
+                                <div class="row">
+                                    <span class="col-11">${date}</span>
+                                    <i value="+1" class="fa fa-heart col-1" onclick="like('${doc.id}')"> ${doc.data().like}</i>
                                 </div>
                             </div>
-                        </div></div>
+                        </div>  
                     </li>
                 </ul>
             </div> `
@@ -178,32 +180,30 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
            let dateTimestamp= timestamp.seconds;
            let date = timeConverter(dateTimestamp);
             contenido2.innerHTML = contenido2.innerHTML + 
-            ` <div class="comments-container">
-            <ul id="comments-list" class="comments-list">
-            <li>
-            <div class="comment-main-level"><div class="row">
-                    <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
-            <div class="comment-box col-11">
-            <div class="comment-head">
-            <h6 class="comment-name by-author"><a href="http://creaticode.com/blog">${doc.data().displayName}, ${doc.data().email}</a></h6>
-            <span>${date}</span>
-            
-            <i class="fa fa-reply"></i>
-            <i id"clickme" class="fa fa-heart"> ${doc.data().like}</i>           
-                   
-            </div>
-                <div class="comment-content">
-                    <p>Titulo: ${doc.data().titulo}</p>
-                    <p>Texto: ${doc.data().texto} </p>   
-                    <p>Texto: ${doc.data().categoria} </p>        
-     
-                 </div>
-             </div>
-            </div></div>
-    
-        </li>
-    </ul>
-    </div> `
+            ` 
+            <div class="comments-container">
+                <ul id="comments-list" class="comments-list">
+                    <li>
+                        <div class="comment-box">
+                            <div class="row" id="comment-head">
+                                <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
+                                <h6 class="comment-name by-author col-11"><a>${doc.data().displayName}</a></h6>
+                            </div>
+                            <div class="comment-content">
+                                <div class="row">
+                                    <p>${doc.data().categoria} </p>
+                                    <p>${doc.data().texto}</p>
+                                    <p>Etiqueta: ${doc.data().etiqueta} </p> 
+                                </div>
+                                <div class="row">
+                                    <span class="col-11">${date}</span>
+                                    <i value="+1" class="fa fa-heart col-1" onclick="like('${doc.id}')"> ${doc.data().like}</i>
+                                </div>
+                            </div>
+                        </div>  
+                    </li>
+                </ul>
+            </div>`
         }
     });
 });
@@ -297,8 +297,8 @@ guardar = () => {
     });
 
     db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "POST"
-        titulo : textoPublicacion,
-        texto: etiquetaPublicacion,
+        texto : textoPublicacion,
+        etiqueta: etiquetaPublicacion,
         fecha: fechaPublicacion,
         uid: user.uid,
         email: user.email, 
@@ -352,8 +352,8 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
         var etiquetaPublicacion = document.getElementById('etiquetaPublicacion').value;
         
         return washingtonRef.update({
-            titulo: textoublicacion,
-            texto: etiquetaPublicacion,
+            texto: textoublicacion,
+            etiqueta: etiquetaPublicacion,
         })
         .then(function() {
             console.log("Document successfully updated!");
