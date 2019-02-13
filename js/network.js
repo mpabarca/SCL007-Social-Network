@@ -71,8 +71,11 @@ aparece = user => {
     let db = firebase.firestore();
     let contenido = document.getElementById('contenido');
     let userPost = document.getElementById('user-post');
+    let outMenu = document.getElementById('out-menu');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         document.getElementById("first-view").style.display = "none"
+        outMenu.innerHTML = "";
+        outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
         userPost.innerHTML = `
         <div class="row">
             <h3>¿Qué deseas publicar?</h3>
@@ -90,6 +93,14 @@ aparece = user => {
         </div>          
         `;
     } 
+//CERRAR SESION
+let bntcerrar = document.getElementById('button-log-out')
+bntcerrar.addEventListener('click', function(){
+    document.getElementById('log-out').style.display="block";
+    document.getElementById("first-view").style.display="block";
+    document.getElementById("second-view").style.display="none";
+
+}); 
 //FUNCION PARA CONVERTIR TIMESTRAMP A FECHA HUMANA
 function timeConverter(UNIX_timestamp){
     var a = new Date(UNIX_timestamp * 1000);
@@ -341,15 +352,6 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
         });
     }    
 }
-
-//CERRAR SESION
-let bntcerrar = document.getElementById('button-log-out')
-bntcerrar.addEventListener('click', function(){
-    document.getElementById('log-out').style.display="block";
-    document.getElementById("first-view").style.display="block";
-    document.getElementById("second-view").style.display="none";
-
-}); 
 
 //PROFILE
 document.getElementById("profile").addEventListener("click",() => {
