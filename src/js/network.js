@@ -351,7 +351,6 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
             console.error("Error updating document: ", error);
         });
     }    
-<<<<<<< HEAD
 }
 
 //PROFILE
@@ -373,6 +372,3 @@ profile = user => {
  
 }
 ;
-=======
-}
->>>>>>> ee0b744d7e50cf451182a02187d20a5d5ea892b4
