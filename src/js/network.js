@@ -83,7 +83,7 @@ aparece = user => {
             <h3>¿Qué deseas publicar?</h3>
             <div class="row" id="select-what">
                 <label class="col-6"><input id="r1" type="radio" name="rate" value="recomendacion"> Recomendación</label>
-                <label class="col-6"><input id="r2" type="radio" name="rate" value="pregunta"> Pregunta</label>
+                <label class="col-6"><input id="r2" type="radio" name="rate" value="pregunta"> <label>Pregunta</label></label>
             </div>
             <div class="row" id="posting">
                 <div class="row"><input class="post-content" type="text" id="textoPublicacion" placeholder="Escribe aquí tu publicación"></div>
