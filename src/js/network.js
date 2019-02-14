@@ -286,11 +286,42 @@ guardar = () => {
     .catch(error => {
         console.error("Error adding document: ", error);
     });
-}
+    }
      
     });
+}
 
-    
+//FUNCION PARA CONVERTIR TIMESTRAMP A FECHA HUMANA
+function timeConverter(UNIX_timestamp){
+    var a = new Date(UNIX_timestamp * 1000);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var year = a.getFullYear();
+    var month = months[a.getMonth()];
+    var date = a.getDate();
+    var hour = a.getHours();
+    var min = a.getMinutes();
+    var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min ;
+    return time;
+  }
+
+
+
+
+//RECUPERAR CONTRASEÑA
+document.getElementById("forgot-pass").addEventListener("click",() => {
+        var auth = firebase.auth();
+        let email = document.getElementById('email').value;
+        alert("Ingresa tu mail para reestablecer")
+    auth.sendPasswordResetEmail(email)
+    .then( () => {
+        alert("Revisa tu correo para cambiar tu contraseña")
+      // Email sent.
+    }).catch(error  => {
+        console.log("No se a enviado mail")
+      // An error happened.
+    });
+})
+
 //BORRAR DATOS
 var eliminar ="";
 eliminar = (id) => {
@@ -334,6 +365,50 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
     }    
 }
 
+
+
+/*/CERAR SESION USUARIOS LOG
+
+cerrar = () => {
+    firebase.auth().signOut()
+        console.log('Saliendo...')
+}*/
+
+//LIKES
+var postDivs = document.querySelectorAll('.post');
+
+function getLikeCount(postID) {
+    var thisPostRef = new Firebase(firebaseURL + postID + '/like-count/');
+    thisPostRef.once('value', function(snapshot) {
+        if ( snapshot.val() ) {
+            document.querySelector('#' + postID + ' .like-count').innerHTML = snapshot.val() + ' likes';
+        } else {
+            return false;
+        }
+    });
+}
+for (var i = 0; i < postDivs.length; i++) {
+    var postID = postDivs[i].id;
+    var numLikes = getLikeCount(postID);
+}
+function likePost(uid) {
+    var postRef = new Firebase(firebaseURL + uid);
+    postRef.child('like-count').once('value', function(snapshot) {
+        var currentLikes = snapshot.val() ? snapshot.val() : 0;
+        postRef.update({
+            'postID': id,
+            'like-count': currentLikes + 1
+            }, function(error) {
+              if (error) {
+                console.log('Data could not be saved:' + error);
+              } else {
+                console.log('Data saved successfully');
+              }
+            });
+        getLikeCount(uid);
+    });   
+}
+
 //PROFILE
 document.getElementById("profile").addEventListener("click",() => {
     firebase.auth().onAuthStateChanged(user => {
@@ -366,3 +441,4 @@ profile = user => {
     `
 }
 ;
+
