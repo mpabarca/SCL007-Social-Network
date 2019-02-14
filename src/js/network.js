@@ -315,7 +315,7 @@ guardar = () => {
 //BORRAR DATOS
 eliminar = (id) => {
     var db = firebase.firestore(); 
-    confirm("Estas seguro que quieres eliminarlo?")
+    confirm("¿Estas seguro que quieres eliminarlo?")
     db.collection("post").doc(id).delete()
         .then(() => {
         console.log("Post borrado");
@@ -330,19 +330,20 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
     document.getElementById('etiquetaPublicacion').value = etiquetaPublicacion;
     var boton = document.getElementById('botonGuardar');
     boton.innerHTML = "Editar";
-
+//console.log(editar);
     boton.onclick = function(){
         var db = firebase.firestore(); 
         let washingtonRef = db.collection("post").doc(id);
-        // Set the "capital" field of the city 'DC'
 
         var textoPublicacion = document.getElementById('textoPublicacion').value;
         var etiquetaPublicacion = document.getElementById('etiquetaPublicacion').value;
-        
+       // console.log('textoPublicacion');
         return washingtonRef.update({
             texto: textoPublicacion,
             etiqueta: etiquetaPublicacion,
+            
         })
+
         .then(function() {
             console.log("Document successfully updated!");
             boton.innerHTML = "Publicar"
