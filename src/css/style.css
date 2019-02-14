@@ -1,33 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC:700');
 html {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 90dc17bafcf55c749e195d5aa2af986a0eb302cf
-    background-image: url("http://subirimagen.me/uploads/20190207144004.png");
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(1);
-    background-blend-mode: soft-light;
-<<<<<<< HEAD
->>>>>>> tratando de separar el DOM
-=======
-=======
->>>>>>> 20e502cc45fadb820591e86f7c281b22fc043cfb
->>>>>>> 90dc17bafcf55c749e195d5aa2af986a0eb302cf
     margin: 0;
 		padding: 0;
 		font-family: Roboto;    
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 90dc17bafcf55c749e195d5aa2af986a0eb302cf
 	/* ---- FOOTER ----*/
 	footer{
 		margin: auto;
@@ -62,12 +39,6 @@ html {
 		color:#F65C75;
 	}
 
-<<<<<<< HEAD
-=======
->>>>>>> tratando de separar el DOM
-=======
->>>>>>> 20e502cc45fadb820591e86f7c281b22fc043cfb
->>>>>>> 90dc17bafcf55c749e195d5aa2af986a0eb302cf
   /* ---- LOGIN MOBILE FIRST ---- */
   .loginBox{
     position:absolute;
@@ -171,7 +142,7 @@ h3{
 	margin-right: 3%;
 	color: gray;
 }
-.loginBox input[type="button"]{
+.loginBox input[type="submit"]{
     border:none;
     outline: none;
     height: 40px;
@@ -183,18 +154,7 @@ h3{
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 .loginBox input[type="submit"]:hover{
-=======
-.loginBox input[type="button"]:hover{
->>>>>>> tratando de separar el DOM
-=======
-.loginBox input[type="button"]:hover{
-=======
-.loginBox input[type="submit"]:hover{
->>>>>>> 20e502cc45fadb820591e86f7c281b22fc043cfb
->>>>>>> 90dc17bafcf55c749e195d5aa2af986a0eb302cf
     background: #F65C75;
     color: #262626;    
 }
@@ -535,7 +495,7 @@ nav ul li a{
   }
   .loginBox{
     position:absolute;
-    top: 60%;
+    top: 55%;
     width: 350px;
     height: 80%;
 	padding: 30px 40px;
@@ -581,7 +541,7 @@ h3{
     padding: 50px 40px;
 } 
 .logo{
-	top: calc(-200px/2);
+    top: calc(-250px/2);
 }
 h2 , h3{
 	font-family: Roboto;
