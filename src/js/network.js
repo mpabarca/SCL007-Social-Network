@@ -386,5 +386,8 @@ profile = user => {
     `
 }
 ;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> commit para hacer merge
