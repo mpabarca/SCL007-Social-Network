@@ -74,10 +74,13 @@ aparece = user => {
     let contenido = document.getElementById('contenido');
     let userPost = document.getElementById('user-post');
     let outMenu = document.getElementById('out-menu');
+    let profileFooter = document.getElementById('profile-footer');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         document.getElementById("first-view").style.display = "none"
         outMenu.innerHTML = "";
+        profileFooter.innerHTML = "";
         outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
+        profileFooter.innerHTML = `<button id="button-profile" onclick="profile()"><i id="log-out" class="fas fa-user"></i></button>`; 
         userPost.innerHTML = `
         <div class="row">
             <h3>¿Qué deseas publicar?</h3>
