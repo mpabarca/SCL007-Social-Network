@@ -18,46 +18,50 @@ document.getElementById("registro").addEventListener("click",() => {
       });
 })
 
- //STORAGE GUARDAR DATOS EN FIRE
- window.onload = () => { 
-    firebase.auth().onAuthStateChanged = ( user => {
-    guardar = () => {
-    let tituloPublicacion = document.getElementById("tituloPublicacion").value;
-    let textoPublicacion = document.getElementById("textoPublicacion").value;
-    let fechaPublicacion = new Date();
+//INGRESO USUARIO VIA MAIL Y CLAVE
+document.getElementById("acceder").addEventListener("click",() => {
+    let email2 = document.getElementById('email').value;
+    let contrasena2 = document.getElementById('contrasena').value;
 
-     var db = firebase.firestore(); 
-
-    db.collection("users").doc(user.uid).set({ 
-        email: user.email, 
-        displayName: user.displayName,
-    });
-
-    db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "POST"
-        titulo : tituloPublicacion,
-        texto: textoPublicacion,
-        fecha: fechaPublicacion,
-        uid: user.uid,
-        email: user.email, 
-        displayName: user.displayName,
-        comentarios : 0,
-        like: 0, 
-        photo: user.photoURL
-
-    })
-
-    .then(docRef => {
-        document.getElementById("tituloPublicacion").value = ''; //Limpiar
-        document.getElementById("textoPublicacion").value = ''; // Limpiar
-        console.log("Se subio a dataBase correctamente")
+    firebase.auth().signInWithEmailAndPassword(email2, contrasena2)
+    .then(function(){        
     })
     .catch(error => {
-        console.error("Error adding document: ", error);
-    });
-    }
-     
-    });
+        // Handle Errors here.
+        if(contrasena2.length <= 5) {
+            alert("Ingrese contraseña de 6 dígitos o más");
+        }else if (email2.indexOf("@"));
+            alert("Ingrese email válido");
+        // var errorCode = error.code;
+        // var errorMessage = error.message;
+      });
+})
+
+//OBSERVA SI ES UN USUARIO REGISTRADO
+observador = () => {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            aparece(user);
+          // User is signed in.
+          let displayName = user.displayName;
+          let email = user.email;
+          //console.log(user);
+          let emailVerified = user.emailVerified;
+          console.log(user.emailVerified)
+          let photoURL = user.photoURL;
+          console.log (user.photoURL)
+          let isAnonymous = user.isAnonymous;
+          let uid = user.uid;
+          console.log(user.uid)
+          let providerData = user.providerData;
+          console.log (user.providerData[0].providerId)
+        } else {
+            console.log("No existe usuario activo")
+            //apareceNousuario(); //ingresa tus datos para acceder
+            }
+      });
 }
+observador();
 
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
 aparece = user => {
@@ -114,6 +118,16 @@ function timeConverter(UNIX_timestamp){
     return time;
   }
 
+//MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
+let contenido2 = document.getElementById('contenido2');
+
+db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapshot => {
+    contenido2.innerHTML = "";
+    querySnapshot.docs.forEach(doc => {
+        
+        //console.log(`uid USUARIO:  ${user.uid}`)// uid del usuario
+        //console.log(`uid de POST:  ${doc.data().uid}`)
+        //console.log("-----------------------------------------------------------")
 
         if (user.uid === doc.data().uid) { //si el id del usuario registrado es igual al uid del post registrado entonces... 
             //console.log ("Se muestre icono borrar")
@@ -176,6 +190,11 @@ function timeConverter(UNIX_timestamp){
                     </li>
                 </ul>`
         }
+    });
+});
+
+
+}
 
 //CERAR SESION USUARIOS LOG
 cerrar = () => {
@@ -294,10 +313,9 @@ guardar = () => {
 
     
 //BORRAR DATOS
-var eliminar ="";
 eliminar = (id) => {
     var db = firebase.firestore(); 
-    confirm("¿Estas seguro que quieres eliminarlo?")
+    confirm("Estas seguro que quieres eliminarlo?")
     db.collection("post").doc(id).delete()
         .then(() => {
         console.log("Post borrado");
@@ -335,3 +353,39 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
         });
     }    
 }
+<<<<<<< HEAD
+=======
+
+//PROFILE
+document.getElementById("profile").addEventListener("click",() => {
+    firebase.auth().onAuthStateChanged(user => {
+        profile(user);
+    })
+})
+profile = user => {
+    //var user = user;
+    document.getElementById("footer").style.display="block";
+    document.getElementById("first-view").style.display="none";
+    document.getElementById("second-view").style.display="none";
+    document.getElementById("profile").style.display="block";
+    //DATOS DE LA CUENTA 
+    let db = firebase.firestore();
+    let outMenu = document.getElementById('out-menu');
+    outMenu.innerHTML = "";
+    profile.innerHTML = "";
+    outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
+    outMenu.innerHTML = `
+    <div class="card">
+        <div class="box">
+            <div class="img">
+                <img src="" alt="">
+            </div>
+            <h2>Nombre usuario</h2>
+            <span>Profesión usuario</span>
+            <p>Descripción breve usuario</p>
+        </div>
+    </div>
+    `
+}
+;
+>>>>>>> actualizando
