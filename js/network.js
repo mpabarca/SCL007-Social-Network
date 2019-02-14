@@ -143,7 +143,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                         <div class="comment-box">
                             <div class="row" id="comment-head">
                                 <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
-                                <h6 class="comment-name by-author col-8"><a>${doc.data().displayName}</a></h6>
+                                <h6 class="comment-name by-author col-9"><a>${doc.data().displayName}</a></h6>
                                 <i id="icon-post" class="fa fa-trash col-1" onclick="eliminar('${doc.id}')"> </i>
                                 <i id="icon-post" class="fa fa-edit col-1" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
                             </div>
