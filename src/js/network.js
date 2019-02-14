@@ -79,6 +79,7 @@ aparece = user => {
         outMenu.innerHTML = "";
         outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
         userPost.innerHTML = `
+<<<<<<< HEAD
         <div class="row">
             <h3>¿Qué deseas publicar?</h3>
             <div class="row" id="select-what">
@@ -117,6 +118,22 @@ function timeConverter(UNIX_timestamp){
     var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min ;
     return time;
   }
+=======
+            <input type="text" id="tituloPublicacion" placeholder="Ingresa titulo"> 
+            <input type="text" id="textoPublicacion" placeholder="Ingresa texto"> 
+            <button id="botonGuardar" onclick="guardar()">Publicar</button>
+             `;
+    }  
+    
+    let bntcerrar = document.getElementById('button-log-out');
+    bntcerrar.addEventListener('click', function(){
+        document.getElementById('log-out').style.display="block";
+        document.getElementById("first-view").style.display="block";
+        document.getElementById("second-view").style.display="none";
+    
+    });
+    
+>>>>>>> actualizando
 
 //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
 let contenido2 = document.getElementById('contenido2');
