@@ -521,9 +521,6 @@ footer{
     height: 500px;
     padding: 50px 40px;
 } 
-.logo{
-    top: calc(-250px/2);
-}
 h2 , h3{
 	font-family: Roboto;
     margin: 0;
