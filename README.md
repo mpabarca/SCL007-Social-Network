@@ -5,12 +5,10 @@
   
 
 ## Investigación
- 
+En el ultimo tiempo la medicina natural a estado muy presente para poder mejorar dolencias y aspectos fisicos, y muchos lo prefieren por costo y efectividad  es por eso que realizamos una encuesta para conocer realmente que tan interesados es
 
 ### Encuesta
- 
-Realizamos una encuesta de 9 preguntas mediante formulario de Google con la intención de...
-
+Escogimos el tema de salud y luego realizamos una encuesta de 9 preguntas mediante formulario de Google con la intención de identificar 
   
 
 ### Resultados y Análisis de la Encuesta
