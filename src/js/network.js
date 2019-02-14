@@ -330,7 +330,7 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
     document.getElementById('etiquetaPublicacion').value = etiquetaPublicacion;
     var boton = document.getElementById('botonGuardar');
     boton.innerHTML = "Editar";
-//console.log(editar);
+console.log('etiquetaPublicacion');
     boton.onclick = function(){
         var db = firebase.firestore(); 
         let washingtonRef = db.collection("post").doc(id);
