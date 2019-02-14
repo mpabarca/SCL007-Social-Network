@@ -38,7 +38,15 @@ html {
 	footer ul li a:hover{
 		color:#F65C75;
 	}
-
+.container-fluid{
+	background-image: url("http://subirimagen.me/uploads/20190214152602.jpg");
+	background-size: cover;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	filter: blur(1);
+	background-blend-mode: soft-light;
+}
   /* ---- LOGIN MOBILE FIRST ---- */
   .loginBox{
     position:absolute;
