@@ -1,3 +1,22 @@
+
+input[type="radio"]:checked {
+	box-shadow: 0 0 0 3px orange;
+	border-radius: 100%;
+	width: 30px;
+	height: 30px;
+	border: 2px solid RED;
+
+}
+input:checked + label {
+	color: green;
+}
+
+input:checked {
+	border: 6px solid rgb(241, 44, 44);
+	color: blue;
+	background: red;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC:700');
 html {
