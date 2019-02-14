@@ -292,7 +292,7 @@ guardar = () => {
         email: user.email, 
         displayName: user.displayName,
         comentarios : 0,
-        like: 0, 
+        likes: 0, 
         photo: user.photoURL,
         categoria: categoryValue,
 
