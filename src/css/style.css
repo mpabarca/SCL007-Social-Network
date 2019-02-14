@@ -502,6 +502,9 @@ h3{
     height: 30px;
     font-size: 14px;
 }
+footer{
+	padding: 1% 0%;
+}
 }
 @media only screen and (min-width: 950px) {
 .comments-container {
@@ -513,13 +516,6 @@ h3{
 	height: 50px;
 	border-radius: 30px;
 }
-  html {
-	background-image: url("../img/nature.jpeg");
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-  }
   .loginBox{
     width: 350px;
     height: 500px;
@@ -549,6 +545,9 @@ h3{
 }
 .loginBox a{
 	padding-left: 25%;
-}  
+} 
+footer{
+	padding: 1% 0%;
+}
 
 } 
