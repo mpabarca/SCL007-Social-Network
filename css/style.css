@@ -229,7 +229,7 @@ nav ul li a{
 .posting-container{
   margin: 60px auto 15px;
   width: 90%;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
   margin-top: 5%;
 }
 #posting{
@@ -303,9 +303,8 @@ nav ul li a{
 }
 /* Lista de Comentarios */
 .comments-container {
-	margin: 60px auto 15px;
-  width: 90%;
-  margin-bottom: 16%;
+	margin: 5% 10% 15% 10%;
+  width: 80%;
 }
 
 .comments-list {
@@ -470,23 +469,13 @@ nav ul li a{
 	font-family: Roboto;
 }
 /*Responsive*/
-@media only screen and (min-width: 480px) {
-  .comments-container {
-		width:480px;
-	}
-
-	.comments-list .comment-box {
-		width: 390px;
-  }
-  
-} 
 @media only screen and (min-width: 767px) {
 	.comments-container {
-		width:90% ;
+		width:80% ;
 	}
 
 	.comments-list .comment-box {
-		width:85% ;
+		width:100% ;
   }
   .imagen-perfil{
     width: 50px;
@@ -518,10 +507,8 @@ h3{
 }
 @media only screen and (min-width: 950px) {
 .comments-container {
-	width:768px ;
-}
-.comments-list .comment-box {
-	width: 680px;
+	margin: 5% 15% 15% 15%;
+	width:70% ;
 }
 .imagen-perfil{
 	width: 50px;
