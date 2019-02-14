@@ -437,22 +437,37 @@ nav ul li a{
 .card .box{
 	position: absolute;
 	left: 0;
-	top: 50%;
-	transform: translateY(-50%);
 	text-align: center;
 	padding: 5%;
 	box-sizing: border-box;
 	width: 100%;
 }
 .card .box .img{
-	width: 120px;
-	height: 120px;
+	width: 500px;
+	height:500px;
 	margin: 0 auto;
 	border-radius: 50%;
 	overflow: hidden;
 }
 .card .box .img img{
 	width: 100%;
+	height: 100%;
+}
+.card .box h2{
+	font-size: 80px;
+	color: #262626;
+	font-family: Roboto;
+}
+.card .box span{
+	font-size: 60px;
+	color: #262626;
+	font-family: Roboto;
+}
+.card .box p{
+	font-size: 40px;
+	color: #262626; 
+	margin-top: 10%;
+	font-family: Roboto;
 }
 /*Responsive*/
 @media only screen and (min-width: 480px) {
