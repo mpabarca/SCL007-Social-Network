@@ -324,7 +324,6 @@ nav ul li a{
 .comments-list .comment-avatar {
 	width: 30px;
 	height: 30px;
-	z-index: 99;
 	border: 2px solid #FFF;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
