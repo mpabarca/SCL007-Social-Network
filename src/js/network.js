@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 document.getElementById("second-view").style.display="none";
 document.getElementById("footer").style.display="none";
 //REGISTRO USUARIO VIA MAIL Y CLAVE
@@ -18,8 +17,6 @@ document.getElementById("registro").addEventListener("click",() => {
             alert("Ingrese email válido")
       });
 })
-=======
->>>>>>> tratando de separar el DOM
 
  //STORAGE GUARDAR DATOS EN FIRE
  window.onload = () => { 
@@ -179,11 +176,6 @@ function timeConverter(UNIX_timestamp){
                     </li>
                 </ul>`
         }
-    });
-});
-
-
-}
 
 //CERAR SESION USUARIOS LOG
 cerrar = () => {
