@@ -97,6 +97,8 @@ bntcerrar.addEventListener('click', function(){
     document.getElementById('log-out').style.display="block";
     document.getElementById("first-view").style.display="block";
     document.getElementById("second-view").style.display="none";
+    document.getElementById("footer").style.display="none";
+
 
 }); 
 //FUNCION PARA CONVERTIR TIMESTRAMP A FECHA HUMANA
