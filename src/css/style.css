@@ -1,10 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC:700');
 html {
+<<<<<<< HEAD
+=======
+    background-image: url("http://subirimagen.me/uploads/20190207144004.png");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(1);
+    background-blend-mode: soft-light;
+>>>>>>> tratando de separar el DOM
     margin: 0;
 		padding: 0;
 		font-family: Roboto;    
 	}
+<<<<<<< HEAD
 	/* ---- FOOTER ----*/
 	footer{
 		margin: auto;
@@ -39,6 +50,8 @@ html {
 		color:#F65C75;
 	}
 
+=======
+>>>>>>> tratando de separar el DOM
   /* ---- LOGIN MOBILE FIRST ---- */
   .loginBox{
     position:absolute;
@@ -142,7 +155,7 @@ h3{
 	margin-right: 3%;
 	color: gray;
 }
-.loginBox input[type="submit"]{
+.loginBox input[type="button"]{
     border:none;
     outline: none;
     height: 40px;
@@ -154,7 +167,11 @@ h3{
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
 }
+<<<<<<< HEAD
 .loginBox input[type="submit"]:hover{
+=======
+.loginBox input[type="button"]:hover{
+>>>>>>> tratando de separar el DOM
     background: #F65C75;
     color: #262626;    
 }
