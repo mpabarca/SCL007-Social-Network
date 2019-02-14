@@ -153,7 +153,6 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                                 </div>
                                 <div class="row" id="last">
                                     <span class="col-10">${date}</span>
-                                    <i value="+1" class="fa fa-heart col-2" onclick="like('${doc.id}')"> ${doc.data().like}</i>
                                 </div>
                             </div>
                         </div>  
@@ -183,7 +182,6 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                                 </div>
                                 <div class="row" id="last">
                                     <span class="col-10">${date}</span>
-                                    <i value="+1" class="fa fa-heart col-2" onclick="like('${doc.id}')"> ${doc.data().like}</i>
                                 </div>
                             </div>
                         </div>  
