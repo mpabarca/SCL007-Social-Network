@@ -1,4 +1,5 @@
 document.getElementById("second-view").style.display="none";
+document.getElementById("footer").style.display="none";
 //REGISTRO USUARIO VIA MAIL Y CLAVE
 document.getElementById("registro").addEventListener("click",() => {
     let email = document.getElementById('email').value;
@@ -66,6 +67,7 @@ observador();
 aparece = user => {
     //var user = user;
     document.getElementById("second-view").style.display="block";
+    document.getElementById("footer").style.display="block";
     document.getElementById("profile").style.display="none";
     //DATOS DE LA CUENTA 
     let db = firebase.firestore();
@@ -359,16 +361,17 @@ document.getElementById("profile").addEventListener("click",() => {
 })
 profile = user => {
     //var user = user;
+    document.getElementById("footer").style.display="block";
     document.getElementById("first-view").style.display="none";
     document.getElementById("second-view").style.display="none";
     document.getElementById("profile").style.display="block";
     //DATOS DE LA CUENTA 
     let db = firebase.firestore();
-    let contenido = document.getElementById('contenido');
     let userInfo = document.getElementById('user-info');
     let userMenu = document.getElementById('user-menu');
     let outMenu = document.getElementById('out-menu');
-    let userPost = document.getElementById('user-post');
+    outMenu.innerHTML = "";
+    outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
  
 }
 ;
