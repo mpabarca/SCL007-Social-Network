@@ -353,8 +353,6 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
         });
     }    
 }
-<<<<<<< HEAD
-=======
 
 //PROFILE
 document.getElementById("profile").addEventListener("click",() => {
@@ -388,4 +386,3 @@ profile = user => {
     `
 }
 ;
->>>>>>> actualizando
