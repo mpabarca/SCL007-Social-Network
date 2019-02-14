@@ -353,36 +353,3 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
         });
     }    
 }
-
-//PROFILE
-document.getElementById("profile").addEventListener("click",() => {
-    firebase.auth().onAuthStateChanged(user => {
-        profile(user);
-    })
-})
-profile = user => {
-    //var user = user;
-    document.getElementById("footer").style.display="block";
-    document.getElementById("first-view").style.display="none";
-    document.getElementById("second-view").style.display="none";
-    document.getElementById("profile").style.display="block";
-    //DATOS DE LA CUENTA 
-    let db = firebase.firestore();
-    let outMenu = document.getElementById('out-menu');
-    outMenu.innerHTML = "";
-    profile.innerHTML = "";
-    outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
-    outMenu.innerHTML = `
-    <div class="card">
-        <div class="box">
-            <div class="img">
-                <img src="" alt="">
-            </div>
-            <h2>Nombre usuario</h2>
-            <span>Profesión usuario</span>
-            <p>Descripción breve usuario</p>
-        </div>
-    </div>
-    `
-}
-;
