@@ -24,6 +24,7 @@
     "npm": "^6.8.0"
   },
   "devDependencies": {
+    "eslint": "^5.13.0",
     "htmlhint": "^0.10.1"
   }
 }
