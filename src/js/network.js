@@ -1,17 +1,17 @@
 document.getElementById("second-view").style.display="none";
 document.getElementById("footer").style.display="none";
 //REGISTRO USUARIO VIA MAIL Y CLAVE
-document.getElementById("registro").addEventListener("click",() => {
+document.getElementById("register").addEventListener("click",() => {
     let email = document.getElementById('email').value;
-    let contrasena = document.getElementById('contrasena').value;
+    let password = document.getElementById('password').value;
    
-    firebase.auth().createUserWithEmailAndPassword(email, contrasena)
+    firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(()=>{
         verificar()
     })
     .catch(error => {
         // Handle Errors here.
-        if(contrasena.length <= 5) {
+        if(password.length <= 5) {
             alert("Ingrese contraseña de 6 dígitos o más");
         }else if (email.indexOf("@")); 
             alert("Ingrese email válido")
@@ -19,16 +19,16 @@ document.getElementById("registro").addEventListener("click",() => {
 })
 
 //INGRESO USUARIO VIA MAIL Y CLAVE
-document.getElementById("acceder").addEventListener("click",() => {
+document.getElementById("sign").addEventListener("click",() => {
     let email2 = document.getElementById('email').value;
-    let contrasena2 = document.getElementById('contrasena').value;
+    let passwordSign = document.getElementById('password').value;
 
-    firebase.auth().signInWithEmailAndPassword(email2, contrasena2)
+    firebase.auth().signInWithEmailAndPassword(email2, passwordSign)
     .then(function(){        
     })
     .catch(error => {
         // Handle Errors here.
-        if(contrasena2.length <= 5) {
+        if(passwordSign.length <= 5) {
             alert("Ingrese contraseña de 6 dígitos o más");
         }else if (email2.indexOf("@"));
             alert("Ingrese email válido");
@@ -119,10 +119,10 @@ function timeConverter(UNIX_timestamp){
   }
 
 //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
-let contenido2 = document.getElementById('contenido2');
+let contentComment = document.getElementById('content-comment');
 
 db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapshot => {
-    contenido2.innerHTML = "";
+    contentComment.innerHTML = "";
     querySnapshot.docs.forEach(doc => {
         
         //console.log(`uid USUARIO:  ${user.uid}`)// uid del usuario
@@ -136,7 +136,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
             let timestamp=doc.data().fecha;
             let dateTimestamp= timestamp.seconds;
             let date = timeConverter(dateTimestamp);
-            contenido2.innerHTML = contenido2.innerHTML + 
+            contentComment.innerHTML =contentComment.innerHTML + 
             ` 
                 <ul id="comments-list" class="comments-list">
                     <li>
@@ -167,7 +167,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
            let timestamp=doc.data().fecha;
            let dateTimestamp= timestamp.seconds;
            let date = timeConverter(dateTimestamp);
-            contenido2.innerHTML = contenido2.innerHTML + 
+           contentComment.innerHTML = contentComment.innerHTML + 
             ` 
                 <ul id="comments-list" class="comments-list">
                     <li>
