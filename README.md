@@ -143,7 +143,6 @@ _"Yo como usuario de la aplicación, Quiero filtrar publicaciones segun categori
 
 ## Diseño de Interfaz de Usuario
 
-  Diseño de la interfaz...
 
 ### Prototipo Baja Fidelidad +  Diagrama de Flujo Inicial 
 
