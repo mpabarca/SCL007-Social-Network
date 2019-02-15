@@ -5,6 +5,15 @@ html {
 		padding: 0;
 		font-family: Roboto;    
 	}
+#post-desktop, #login-desktop{
+ display:block;
+ width: 100%;
+}
+#login-desktop{
+	bottom: 0;
+	position: fixed;
+	height: auto;
+}
 	/* ---- FOOTER ----*/
 	footer{
 		margin: auto;
@@ -38,15 +47,6 @@ html {
 	footer ul li a:hover{
 		color:#F65C75;
 	}
-.container-fluid{
-	background-image: url("http://subirimagen.me/uploads/20190214152602.jpg");
-	background-size: cover;
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	filter: blur(1);
-	background-blend-mode: soft-light;
-}
   /* ---- LOGIN MOBILE FIRST ---- */
   .loginBox{
     position:absolute;
@@ -59,18 +59,9 @@ html {
     box-sizing: border-box;
 		border-radius: 30px;
 		background: white;
-		/*
-		background-image: url("http://subirimagen.me/uploads/20190207144004.png");
-		background-size: cover;
-		background-attachment: fixed;
-		background-position: center;
-		background-repeat: no-repeat;
-		filter: blur(1);
-		background-blend-mode: soft-light;
-		*/
 } 
 /* IMAGEN USUARIO CENTRADO ARRIBA DE CAJA LOGIN */
-.logo{
+#logo{
 	width: 231px;
 	height: 106px;
     border-radius: 50%;
@@ -95,7 +86,6 @@ h2{
 	color: #949494;
 }
 h3{
-	margin-top: 3%;
 	font-family: Roboto;
 	color: #797979;
 }
@@ -502,7 +492,6 @@ h2{
 	font-size: 20px;
 }
 h3{
-	margin-top: 3%;
 	font-size: 17px;
 }
 .loginBox input[type="text"],
@@ -540,7 +529,6 @@ h2{
 	font-size: 23px;
 }
 h3{
-	margin-top: 10%;
 	font-size: 19px;
 }
 .loginBox input[type="text"],
@@ -554,5 +542,7 @@ h3{
 footer{
 	padding: 1% 0%;
 }
-
+#login-desktop{
+	max-height: 160px;
+}
 } 
