@@ -135,7 +135,7 @@ h3{
 ::placeholder{
     color: rgba(255,255,255,.5);
 }
-#icon-placeholder{
+#email-placeholder , #pass-placeholder{
 	padding-top: 3%;
 	margin-right: 3%;
 	color: gray;

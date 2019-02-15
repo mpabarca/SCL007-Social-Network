@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="utf-8" lang="es">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
+    <title>Medicina Natural</title>
     <!-- SEPARAR HOJAS DE ESTILO POR TAMAÑO DE PANTALLA
     <link rel="stylesheet" href="../src/css/style.css" type="text/css" media="screen,handheld" />
     <link rel="stylesheet" href="../src/css/enhanced.css" type="text/css" media="screen and (min-width:40.5em)"/>
@@ -48,17 +48,17 @@
     <!-- PAGINA LOGIN -->
     <div id="first-view">
         <div class="loginBox">
-            <img src="img/logo.png" id="logo" class="row">
+            <img src="img/logo.png" id="logo" class="row" alt="logo">
             <h2>Ingresa o Registrate</h2>
             <form>
-                <div class="row"><i id="icon-placeholder" class="far fa-envelope col-1"></i><input class="col-11" id="email" type="text" name="" placeholder="Ingresa tu email"></div>
-                <div class="row"><i id="icon-placeholder" class="fas fa-lock col-1"></i><input class="col-11" id="contrasena" type="password" name="" placeholder="•••••••••"></div>
-                <input id="acceder" type="submit" name="" value="Ingresar">
-                <input id="registro" type="submit" name="" value="Registrar">
+                <div class="row"><i id="email-placeholder" class="far fa-envelope col-1"></i><input class="col-11" id="email" type="text" placeholder="Ingresa tu email"></div>
+                <div class="row"><i id="pass-placeholder" class="fas fa-lock col-1"></i><input class="col-11" id="contrasena" type="password" placeholder="•••••••••"></div>
+                <input id="acceder" type="submit" value="Ingresar">
+                <input id="registro" type="submit" value="Registrar">
                 <a id="forgot-pass" href="#">¿Olvidaste tu contraseña?</a> 
             </form>
             <div class="row" id="fb-google">
-                <div class="row" id="description"><h3></br>Ingresa con tus redes sociales</h3></div>
+                <div class="row" id="description"><h3><br>Ingresa con tus redes sociales</h3></div>
                 <div class="row" id="redes">
                     <div class="col-6"><button id="button-facebook"><img src="img/icon-facebook.png" alt="icon-facebook" id="icon-facebook"/></button></div>
                     <div class="col-6"><button id="button-google"><img src="img/icon-google.png" alt="icon-google" id="icon-google"/></button></div>
@@ -66,14 +66,14 @@
             </div> 
         </div>
         <div class="row" id="login-background">
-            <img src="http://subirimagen.me/uploads/20190214192507.png" id="login-desktop" alt="">
+            <img src="http://subirimagen.me/uploads/20190214192507.png" id="login-desktop" alt="background">
         </div>
     </div>
 
     <main class ="container-fluid" id="second-view">
         <!-- PAGINA TIMELINE -->
         <div class="row" id="post-background">
-            <img src="http://subirimagen.me/uploads/20190214180224.png" id="post-desktop" alt="">
+            <img src="http://subirimagen.me/uploads/20190214180224.png" id="post-desktop" alt="post-background">
         </div>
         <div id="user-post" class="posting-container"></div>
         <div id="contenido2" class="comments-container"></div>
