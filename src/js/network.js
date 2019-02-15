@@ -7,7 +7,7 @@ document.getElementById("register").addEventListener("click",() => {
    
     firebase.auth().createUserWithEmailAndPassword(email, password)
     .then(()=>{
-        verificar()
+        verify()
     })
     .catch(error => {
         // Handle Errors here.
@@ -32,20 +32,17 @@ document.getElementById("sign").addEventListener("click",() => {
             alert("Ingrese contraseña de 6 dígitos o más");
         }else if (email2.indexOf("@"));
             alert("Ingrese email válido");
-        // var errorCode = error.code;
-        // var errorMessage = error.message;
       });
 })
 
 //OBSERVA SI ES UN USUARIO REGISTRADO
-observador = () => {
+observer = () => {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
-            aparece(user);
+            appear(user);
           // User is signed in.
           let displayName = user.displayName;
           let email = user.email;
-          //console.log(user);
           let emailVerified = user.emailVerified;
           console.log(user.emailVerified)
           let photoURL = user.photoURL;
@@ -57,27 +54,24 @@ observador = () => {
           console.log (user.providerData[0].providerId)
         } else {
             console.log("No existe usuario activo")
-            //apareceNousuario(); //ingresa tus datos para acceder
             }
       });
 }
-observador();
+observer();
 
 //APARECE INFORMACION SOLO SI EL USUARIO VERIFICA SU CUENTA CON CORREO ENVIADO AL MAIL
-aparece = user => {
-    //var user = user;
+appear = user => {
     document.getElementById("second-view").style.display="block";
     document.getElementById("footer").style.display="block";
     document.getElementById("profile").style.display="none";
     //DATOS DE LA CUENTA 
     let db = firebase.firestore();
-    let contenido = document.getElementById('contenido');
     let userPost = document.getElementById('user-post');
     let outMenu = document.getElementById('out-menu');
     if (user.emailVerified || user.providerData[0].providerId === "facebook.com"){
         document.getElementById("first-view").style.display = "none"
         outMenu.innerHTML = "";
-        outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
+        outMenu.innerHTML = `<button id="button-log-out" onclick="close()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
         userPost.innerHTML = `
         <div class="row">
             <h3>¿Qué deseas publicar?</h3>
@@ -86,18 +80,18 @@ aparece = user => {
                 <label class="col-6"><input id="r2" type="radio" name="rate" value="pregunta"> Pregunta</label>
             </div>
             <div class="row" id="posting">
-                <div class="row"><input class="post-content" type="text" id="textoPublicacion" placeholder="Escribe aquí tu publicación"></div>
-                <div class="row"><input class="post-label" type="text" id="etiquetaPublicacion" placeholder="Añade tus etiquetas"></div>
+                <div class="row"><input class="post-content" type="text" id="text-post" placeholder="Escribe aquí tu publicación"></div>
+                <div class="row"><input class="post-label" type="text" id="label-post" placeholder="Añade tus etiquetas"></div>
             </div>
             <div class="row" id="save">
-                <button id="botonGuardar" onclick="guardar()">Publicar</button>
+                <button id="button-save" onclick="save()">Publicar</button>
             </div>
         </div>          
         `;
     } 
 //CERRAR SESION
-let bntcerrar = document.getElementById('button-log-out')
-bntcerrar.addEventListener('click', function(){
+let bntclose = document.getElementById('button-log-out')
+bntclose.addEventListener('click', function(){
     document.getElementById('log-out').style.display="block";
     document.getElementById("first-view").style.display="block";
     document.getElementById("second-view").style.display="none";
@@ -121,19 +115,13 @@ function timeConverter(UNIX_timestamp){
 //MOSTRAR COLECCION POST CON TITULO Y TEXTO DE LA PUBLICACION
 let contentComment = document.getElementById('content-comment');
 
-db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapshot => {
+db.collection("post").orderBy("date", "desc").limit(10).onSnapshot(querySnapshot => {
     contentComment.innerHTML = "";
     querySnapshot.docs.forEach(doc => {
-        
-        //console.log(`uid USUARIO:  ${user.uid}`)// uid del usuario
-        //console.log(`uid de POST:  ${doc.data().uid}`)
-        //console.log("-----------------------------------------------------------")
 
         if (user.uid === doc.data().uid) { //si el id del usuario registrado es igual al uid del post registrado entonces... 
-            //console.log ("Se muestre icono borrar")
-            //console.log ("Se muestre icono editar")
             
-            let timestamp=doc.data().fecha;
+            let timestamp=doc.data().date;
             let dateTimestamp= timestamp.seconds;
             let date = timeConverter(dateTimestamp);
             contentComment.innerHTML =contentComment.innerHTML + 
@@ -142,10 +130,10 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                     <li>
                         <div class="comment-box">
                             <div class="row" id="comment-head">
-                                <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
+                                <img class="comment-avatar col-1" src="${doc.data().photo}" alt="avatar">
                                 <h6 class="comment-name by-author col-8"><a>${doc.data().displayName}</a></h6>
-                                <i id="icon-post" class="fa fa-trash col-1" onclick="eliminar('${doc.id}')"> </i>
-                                <i id="icon-post" class="fa fa-edit col-1" onclick="editar('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
+                                <i id="icon-post" class="fa fa-trash col-1" onclick="erase('${doc.id}')"> </i>
+                                <i id="icon-post" class="fa fa-edit col-1" onclick="edit('${doc.id}', '${doc.data().titulo}','${doc.data().texto}')"></i>
                             </div>
                             <div class="comment-content">
                                 <div class="row">
@@ -162,9 +150,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                 </ul> `
 
         }else{
-           // console.log ("NO muestre icono borrar")
-           //console.log ("NO muestre icono Editar")
-           let timestamp=doc.data().fecha;
+           let timestamp=doc.data().date;
            let dateTimestamp= timestamp.seconds;
            let date = timeConverter(dateTimestamp);
            contentComment.innerHTML = contentComment.innerHTML + 
@@ -173,7 +159,7 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
                     <li>
                         <div class="comment-box">
                             <div class="row" id="comment-head">
-                                <img class="comment-avatar col-1" src="${doc.data().photo}" alt="">
+                                <img class="comment-avatar col-1" src="${doc.data().photo}" alt="avatar">
                                 <h6 class="comment-name by-author col-8"><a>${doc.data().displayName}</a></h6>
                             </div>
                             <div class="comment-content">
@@ -197,13 +183,13 @@ db.collection("post").orderBy("fecha", "desc").limit(10).onSnapshot(querySnapsho
 }
 
 //CERAR SESION USUARIOS LOG
-cerrar = () => {
+close = () => {
     firebase.auth().signOut()
         console.log('Saliendo...')
 }
 
 //ENVIANDO MAIL DE VERIFICACION
-verificar = () => {
+verify = () => {
     let user = firebase.auth().currentUser;
 user.sendEmailVerification()
     .then(function() {
@@ -267,10 +253,10 @@ document.getElementById("forgot-pass").addEventListener("click",() => {
 
  //STORAGE GUARDAR DATOS EN FIRE
 firebase.auth().onAuthStateChanged( user => {
-guardar = () => {
-    let textoPublicacion = document.getElementById("textoPublicacion").value;
-    let etiquetaPublicacion = document.getElementById("etiquetaPublicacion").value;
-    let fechaPublicacion = new Date();
+save = () => {
+    let textPost= document.getElementById("text-post").value;
+    let labelPost = document.getElementById("label-post").value;
+    let datePost = new Date();
     let categoryValue;
     if (document.getElementById('r1').checked) {
         categoryValue = document.getElementById('r1').value;
@@ -285,9 +271,9 @@ guardar = () => {
     });
 
     db.collection('post').add({ //AÑADIENDO EN FIRESTORE COLECCION: "POST"
-        texto : textoPublicacion,
-        etiqueta: etiquetaPublicacion,
-        fecha: fechaPublicacion,
+        texto : textPost,
+        etiqueta: labelPost,
+        date: datePost,
         uid: user.uid,
         email: user.email, 
         displayName: user.displayName,
@@ -300,8 +286,8 @@ guardar = () => {
 
     .then(docRef => {
         document.getElementById("select-what").value = ''; //Limpiar
-        document.getElementById("textoPublicacion").value = ''; //Limpiar
-        document.getElementById("etiquetaPublicacion").value = ''; // Limpiar
+        document.getElementById("text-post").value = ''; //Limpiar
+        document.getElementById("label-post").value = ''; // Limpiar
         console.log("Se subio a dataBase correctamente")
     })
     .catch(error => {
@@ -313,7 +299,7 @@ guardar = () => {
 
     
 //BORRAR DATOS
-eliminar = (id) => {
+erase = (id) => {
     var db = firebase.firestore(); 
     confirm("Estas seguro que quieres eliminarlo?")
     db.collection("post").doc(id).delete()
@@ -325,10 +311,10 @@ eliminar = (id) => {
 }
 
 //EDITAR DATOS
-function editar(id, textoPublicacion, etiquetaPublicacion){
-    document.getElementById('textoPublicacion').value = textoPublicacion;
-    document.getElementById('etiquetaPublicacion').value = etiquetaPublicacion;
-    var boton = document.getElementById('botonGuardar');
+function edit(id, textPost, labelPost){
+    document.getElementById('text-post').value = textPost;
+    document.getElementById('label-post').value = labelPost;
+    var boton = document.getElementById('button-save');
     boton.innerHTML = "Editar";
 
     boton.onclick = function(){
@@ -336,12 +322,12 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
         let washingtonRef = db.collection("post").doc(id);
         // Set the "capital" field of the city 'DC'
 
-        var textoPublicacion = document.getElementById('textoPublicacion').value;
-        var etiquetaPublicacion = document.getElementById('etiquetaPublicacion').value;
+        var textPost = document.getElementById('text-post').value;
+        var labelPost = document.getElementById('label-post').value;
         
         return washingtonRef.update({
-            texto: textoPublicacion,
-            etiqueta: etiquetaPublicacion,
+            texto: textPost,
+            etiqueta: labelPost,
         })
         .then(function() {
             console.log("Document successfully updated!");

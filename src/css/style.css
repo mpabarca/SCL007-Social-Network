@@ -15,50 +15,50 @@ html {
 	height: auto;
 }
 	/* ---- FOOTER ----*/
-	footer{
-		margin: auto;
-		background: #00844C;
-		padding: 2% 0;
-		position: fixed;
-    left: 0;
-    bottom: 0;
-    height: auto;
-    width: 100%;
+footer{
+	margin: auto;
+	background: #00844C;
+	padding: 2% 0;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	height: auto;
+	width: 100%;
 
-	}
-	footer ul{
-		margin: 0;
-		padding: 0;
-		text-align: center;
-		display: flex;
-	}
-	footer ul li{
-		list-style: none;
-		text-align: center;
-		width: 100%;
 }
-	footer ul li a{
-		text-decoration: none;
-		color: #fff;
-		font-size: 180%;
-		margin: 7%;
-		
-	}
-	footer ul li a:hover{
-		color:#F65C75;
-	}
+footer ul{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	display: flex;
+}
+footer ul li{
+	list-style: none;
+	text-align: center;
+	width: 100%;
+}
+footer ul li a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 180%;
+	margin: 7%;
+	
+}
+footer ul li a:hover{
+	color:#F65C75;
+}
   /* ---- LOGIN MOBILE FIRST ---- */
-  .loginBox{
-    position:absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 80%;
-    height: 50%;
-    padding: 30px 40px;
-    box-sizing: border-box;
-		border-radius: 30px;
-		background: white;
+.login-box{
+	position:absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	width: 80%;
+	height: 50%;
+	padding: 30px 40px;
+	box-sizing: border-box;
+	border-radius: 30px;
+	background: white;
 } 
 /* IMAGEN USUARIO CENTRADO ARRIBA DE CAJA LOGIN */
 #logo{
@@ -89,13 +89,13 @@ h3{
 	font-family: Roboto;
 	color: #797979;
 }
-.loginBox p{
+.login-box p{
     margin: 0;
     padding: 0;
     font-weight: bold;
     color: #949494;;
 }
-.loginBox input{
+.login-box input{
     width: 100%;
     margin-bottom: 20px;
 }
@@ -117,8 +117,8 @@ h3{
 	 text-align: center;
  }
 /*SOLO LINEA ABAJO EN RELLENADO */
-.loginBox input[type="text"],
-.loginBox input[type="password"]{
+.login-box input[type="text"],
+.login-box input[type="password"]{
 	width: 60%;
     border:none;
     border-bottom: 1px solid #fff;
@@ -140,7 +140,7 @@ h3{
 	margin-right: 3%;
 	color: gray;
 }
-.loginBox input[type="submit"]{
+.login-box input[type="submit"]{
     border:none;
     outline: none;
     height: 40px;
@@ -152,11 +152,11 @@ h3{
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
 }
-.loginBox input[type="submit"]:hover{
+.login-box input[type="submit"]:hover{
     background: #F65C75;
     color: #fff;    
 }
-.loginBox a{
+.login-box a{
 	text-decoration: none;
 	font-style: normal;
 	font-weight: normal;
@@ -265,7 +265,7 @@ nav ul li a{
 ::placeholder{
     color: gray;
 }
-#botonGuardar{
+#button-save{
 	border:none;
     outline: none;
 	height: 40px;
@@ -279,7 +279,7 @@ nav ul li a{
 	border-radius: 10px;
 
 }
-#botonGuardar:hover{
+#button-save:hover{
     background: #F65C75;
     color: #fff;    
 }
@@ -294,15 +294,9 @@ nav ul li a{
 }
 /* ---- DISEÑO TIMELINE MOBILE FIRST ---- */
 /* MENU USUARIO */
-.imagen-perfil{
-  width: 50px;
-  height: 50px;
-  border-radius: 30px;
-}
-/* Lista de Comentarios */
 .comments-container {
 	margin: 5% 10% 15% 10%;
-  width: 80%;
+  	width: 80%;
 }
 
 .comments-list {
@@ -466,19 +460,14 @@ nav ul li a{
 }
 /*Responsive*/
 @media only screen and (min-width: 767px) {
-	.comments-container {
-		width:80% ;
-	}
+.comments-container {
+	width:80% ;
+}
 
-	.comments-list .comment-box {
-		width:100% ;
-  }
-  .imagen-perfil{
-    width: 50px;
-    height: 50px;
-    border-radius: 30px;
-  }
-  .loginBox{
+.comments-list .comment-box {
+	width:100% ;
+}
+.login-box{
     position:absolute;
     top: 55%;
     width: 350px;
@@ -495,8 +484,8 @@ h2{
 h3{
 	font-size: 17px;
 }
-.loginBox input[type="text"],
-.loginBox input[type="password"]{
+.login-box input[type="text"],
+.login-box input[type="password"]{
     height: 30px;
     font-size: 14px;
 }
@@ -509,12 +498,7 @@ footer{
 	margin: 5% 15% 15% 15%;
 	width:70% ;
 }
-.imagen-perfil{
-	width: 50px;
-	height: 50px;
-	border-radius: 30px;
-}
-  .loginBox{
+  .login-box{
     width: 350px;
     height: 500px;
     padding: 50px 40px;
@@ -532,12 +516,12 @@ h2{
 h3{
 	font-size: 19px;
 }
-.loginBox input[type="text"],
-.loginBox input[type="password"]{
+.login-box input[type="text"],
+.login-box input[type="password"]{
     height: 40px;
     font-size: 16px;
 }
-.loginBox a{
+.login-box a{
 	padding-left: 25%;
 } 
 footer{
