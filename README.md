@@ -142,6 +142,7 @@ gracias a los resultados obtenidos en la encuesta definimos nuestro usuario:
   
 
 Juanita, mujer de 24 años, siempre ha tenido problemas con su cabello, ya que es muy seco y eso le provoca problemas en el cuero cabelludo, además su piel se irrita cuando utiliza cualquier tipo de shampoo y los remedios recomendados en la farmacia son muy caros . Por ello, tiene semanas de buscar en internet soluciones a su problema, pero ninguna le convence ya que Juanita necesita una aplicación confiable donde leer publicaciones de más personas con su mismo problema.
+![enter image description here](http://subirimagen.me/uploads/20190214231044.jpg)
 
   
 
