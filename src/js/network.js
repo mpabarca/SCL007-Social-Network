@@ -353,3 +353,4 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
         });
     }    
 }
+
