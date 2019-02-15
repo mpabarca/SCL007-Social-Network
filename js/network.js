@@ -82,15 +82,8 @@ aparece = user => {
         <div class="row">
             <h3>¿Qué deseas publicar?</h3>
             <div class="row" id="select-what">
-
-                        <label class="col-6""><input id="r2" type="radio" name="rate" value="recomendacion">
-                        <span class="checkmark"></span> RECOMEND
-                        </label>
-
-                        <label class="col-6""><input id="r1" type="radio" name="rate" value="PREGUNTA">
-                        <span class="checkmark"></span> PREGUN
-                        </label>
-
+                <label class="col-6"><input id="r1" type="radio" name="rate" value="recomendacion"> Recomendación</label>
+                <label class="col-6"><input id="r2" type="radio" name="rate" value="pregunta"> Pregunta</label>
             </div>
             <div class="row" id="posting">
                 <div class="row"><input class="post-content" type="text" id="textoPublicacion" placeholder="Escribe aquí tu publicación"></div>
@@ -299,7 +292,7 @@ guardar = () => {
         email: user.email, 
         displayName: user.displayName,
         comentarios : 0,
-        likes: 0, 
+        like: 0, 
         photo: user.photoURL,
         categoria: categoryValue,
 
@@ -360,36 +353,3 @@ function editar(id, textoPublicacion, etiquetaPublicacion){
         });
     }    
 }
-
-//PROFILE
-document.getElementById("profile").addEventListener("click",() => {
-    firebase.auth().onAuthStateChanged(user => {
-        profile(user);
-    })
-})
-profile = user => {
-    //var user = user;
-    document.getElementById("footer").style.display="block";
-    document.getElementById("first-view").style.display="none";
-    document.getElementById("second-view").style.display="none";
-    document.getElementById("profile").style.display="block";
-    //DATOS DE LA CUENTA 
-    let db = firebase.firestore();
-    let outMenu = document.getElementById('out-menu');
-    outMenu.innerHTML = "";
-    profile.innerHTML = "";
-    outMenu.innerHTML = `<button id="button-log-out" onclick="cerrar()"><i id="log-out" class="fas fa-sign-out-alt"></i></button>`; 
-    outMenu.innerHTML = `
-    <div class="card">
-        <div class="box">
-            <div class="img">
-                <img src="" alt="">
-            </div>
-            <h2>Nombre usuario</h2>
-            <span>Profesión usuario</span>
-            <p>Descripción breve usuario</p>
-        </div>
-    </div>
-    `
-}
-;
