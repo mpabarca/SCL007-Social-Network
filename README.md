@@ -1,6 +1,10 @@
 ![enter image description here](http://subirimagen.me/uploads/20190207185555.png)
 
-  Medicina Natural...(AQUÍ DESCRIPCIÓN GENERAL)
+ Bienvenidos a nuestra apliacación llamada: Medicina Natural.
+ 
+ Medicina Natural, es una aplicación para todas las personas de diferentes edades, quienes buscan una alternativa natural y saludable para típicos problemas de salud o de estética corporal.
+ 
+ ¿Alguna vez haz tenido gripe o problemas de piel reseca? hay muchas personas que prefieren la medicina natural para curar afección de salud,o revitalizar cualquier parte del cuerpo, por ello tendrán todo al alcance de un click, ya que en nuestra aplicación podrás encontrar recomendaciones o preguntar sobre algo en esecífico, con la seguridad que encontrarás la respuesta o soluciones específicas de personas que conocen del tema o han tenido o sufrido la misma afección que tu.
 
   
 
@@ -9,7 +13,9 @@
 
 ### Encuesta
  
-Realizamos una encuesta de 9 preguntas mediante formulario de Google con la intención de...
+Realizamos una encuesta de 9 preguntas mediante formulario de Google con la intención de conocer quién será nuestra público objetivo, edades y qué les interesaría enocntrar en la aplicación.
+
+De los resultados pudimos concluir que la mayoría de nuestro público será mujeres hasta los 30 años,quienes buscan soluciones naturales a problemas comunes y que confían en que existen plantas o infusiones que las harán sentir mejor que una pastilla elaborada quimicamente.
 
   
 
@@ -30,7 +36,7 @@ En la encuesta participaron 67 personas y obtuvimos los siguientes resultados:
 ![enter image description here](http://subirimagen.me/uploads/20190207193739.png)
 
 - Se acumula la mayor cantidad en el rango 21-25 años.
-- Hay una misma cantidade entre rangos 15-20 y 26-30 años.
+- Hay una misma cantidad entre rangos 15-20 y 26-30 años.
 - Muy baja recepción en mayores de 31 años.
 
 **Tipo de medicina que utilizan como primera opción**
@@ -63,12 +69,10 @@ Más del 80% le gustaría una herramienta donde reúna todas los remedios natura
 - Especificar si es apv (etiqueta)
 
 
-
-
 **Conclusión**
-En resumen , hay muchas personas que prefieren la medicina natural como primera opción....
+En resumen , hay muchas personas que prefieren la medicina natural como primera opción, ya que es algo que no genera un efecto secundario como lo hacen los farmacos, y que además se puede conseguir a menor precio que la medicina tradicional.
 
-gracias a los resultados obtenidos en la encuesta definimos nuestro usuario:
+Gracias a los resultados obtenidos en la encuesta definimos nuestro usuario:
 *Mujer entre 21 a 25 años que busque mejorar algún aspecto físico o dolencia de salud leve.*
 
    
@@ -136,8 +140,6 @@ _"Yo como usuario de la aplicación, Quiero filtrar publicaciones segun categori
 * [ ] Quiero poder filtrar las publicacion y ver solo las recomendacion de los usuarios.
 
   
-  
-  
 
 ## Diseño de Interfaz de Usuario
 
@@ -168,11 +170,23 @@ Finalmente el resultado final del prototipo fue el siguiente:
   
 
 ## Sobre la aplicación
-
+La aplicación es una alternativa a la búsqueda de soluciones para afecciones de salud o de estética cuyo objetivo es dar una respuesta natural y que funcione efectivamente a todos los problemas de nuestras usuarias.
   
 
 ### ¿Cómo se usa?
+Puedes ingresar a nuestra aplicación a través de:
 
+* Correo electrónico y contraseña
+* Cuenta de Google
+* Cuenta de Facebook
+
+Una vez ingresas a la aplicación, tienes la opción de hacer tu pregunta o dar una recomendación sobre las prosibles soluciones a las preguntas de otros usuarios.
+
+Al hacer un post ya sea con pregunta o recomendación, tu puedes borrarlo o editarlo si así lo prefieres.
+
+Puedes ingresar únicamente a leer post de otros usuarios.
+
+Finalmente, puedes cerrar sesión e ingresar las veces que quieras.
   
 
 ### Funcionalidad
@@ -183,11 +197,16 @@ Para el desarrollo de esta página se utilizó lenguaje JavaScript (ES6), Vanill
 
 ### Resultados Testeo Usabilidad
 
+EL testeo de usabilidad se llevó acabo entre el público objetivo que mencionamos enteriormente, quienes estuvieron satisfechas de la aplicación y de su fácil manejo y acceso a todas las opciones de usabilidad puestas en ella.
   
   
 
 ## ¿Quiénes están detrás de este proyecto?
-
+Alumnas de Laboratoria de la Séptima Generación
   
 
 ### Equipo de Producción
+
+* Alicia Castañeda
+* Andrea Carreño
+* Paz Abarca
