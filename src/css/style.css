@@ -154,7 +154,7 @@ h3{
 }
 .loginBox input[type="submit"]:hover{
     background: #F65C75;
-    color: #262626;    
+    color: #fff;    
 }
 .loginBox a{
 	text-decoration: none;
