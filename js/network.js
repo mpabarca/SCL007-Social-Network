@@ -1,5 +1,6 @@
 document.getElementById("second-view").style.display="none";
 document.getElementById("footer").style.display="none";
+
 //REGISTRO USUARIO VIA MAIL Y CLAVE
 document.getElementById("register").addEventListener("click",() => {
     let email = document.getElementById('email').value;

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC:700');
+
 html {
 	font-family: Roboto;    
 }
@@ -10,6 +11,21 @@ html , footer ul , h2 , h3, .login-box p , nav #second-ul{
 #post-desktop, #login-desktop{
 	display:block;
 	width: 100%;
+}
+header{
+	height: 100vh;
+	width: 100vw;
+}
+.header-video{
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+
+}
+.header-video video{
+    min-width: 100vh;
+    min-height: 100vw;
 }
 #login-desktop{
 	bottom: 0;
@@ -43,8 +59,10 @@ footer ul li a{
 	margin: 7%;
 	
 }
-footer ul li a:hover{
+
+#icon-footer:hover{
 	color:#F65C75;
+	transform: translateY(-5px);
 }
 .login-box{
 	position:absolute;
@@ -207,6 +225,10 @@ nav ul li a{
 	font-size:25px;
 	color: #fff;
 	cursor: pointer;
+}
+#log-out:hover{
+	color:#F65C75;
+	transform: translateY(-5px);
 }
 .container-welcome{
 	font-family: Roboto;

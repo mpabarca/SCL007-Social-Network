@@ -46,7 +46,10 @@
 </head>
 <body>
     <!-- PAGINA LOGIN -->
-    <div id="first-view">
+
+    <header id="first-view">
+        <div class="header-video"><video src="./img/video.mp4" autoplay loop muted></video></div>
+        <div class="header-overlay"></div>
         <div class="login-box">
             <img src="img/logo.png" id="logo" class="row" alt="logo">
             <h2>Ingresa o Registrate</h2>
@@ -65,25 +68,22 @@
                 </div>
             </div> 
         </div>
-        <div class="row" id="login-background">
-            <img src="http://subirimagen.me/uploads/20190214192507.png" id="login-desktop" alt="background">
-        </div>
-    </div>
+    </header>
 
     <main class ="container-fluid" id="second-view">
         <!-- PAGINA TIMELINE -->
-        <div class="row" id="post-background">
-            <img src="http://subirimagen.me/uploads/20190214180224.png" id="post-desktop" alt="post-background">
-        </div>
         <div id="user-post" class="posting-container"></div>
         <div id="content-comment" class="comments-container"></div>
     </main>
+
     <div id="profile" class="profile-container"></div>
 
     <footer id="footer">
         <ul>
             <li>
                 <a href="#second-view" class="home"><i id="icon-footer" class="fas fa-home" aria-hidden="true"></i></a>
+            </li>
+            <li>
                 <a id="out-menu" class="icon"></a>  
             </li>
         </ul>
